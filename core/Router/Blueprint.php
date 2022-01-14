@@ -10,26 +10,25 @@ use Illuminate\Support\Str;
 class Blueprint extends RouteBlueprint
 {
 
+	/**
+	 * Allowed WordPress conditional tags
+	 *
+	 * @var array
+	 */
 	private array $allowedConditionals = [
 		'is_404',
 		'is_archive',
 		'is_attachment',
 		'is_author',
 		'is_category',
-		'is_comment_feed',
-		'is_customize_preview',
 		'is_date',
 		'is_day',
-		'is_embed',
-		'is_feed',
 		'is_front_page',
 		'is_home',
 		'is_month',
 		'is_page',
-		'is_page_template',
 		'is_paged',
 		'is_post_type_archive',
-		'is_preview',
 		'is_privacy_policy',
 		'is_search',
 		'is_single',
@@ -47,6 +46,6 @@ class Blueprint extends RouteBlueprint
 			return $this->get()->where( $snake, ...$arguments );
 		}
 
-		throw new \Exception( sprintf( 'Method `%s()` is not WordPress conditional tag', $snake ) );
+		throw new \Exception( sprintf( 'Method `%s()` is not allowed WordPress conditional tag', $snake ) );
 	}
 }

@@ -23,25 +23,7 @@ class DebugServiceProvider implements ServiceProviderInterface
 	public function bootstrap( $container )
 	{
 		if ( ! isProduction() ) {
-			$this->bootWhoopsHandler( $container );
 			$this->bootTwigDumper( $container );
-		}
-	}
-
-	/**
-	 * Register filp/whoops package for pretty errors
-	 *
-	 * @param Container $container
-	 * @return void
-	 */
-	private function bootWhoopsHandler( Container $container )
-	{
-		if ( Helper::containerKeyExists( $container, 'brocooly.debugger.whoops.handler' ) ) {
-			$whoops = new \Whoops\Run();
-			$whoops->pushHandler(
-				$container['brocooly.debugger.whoops.handler']
-			);
-			$whoops->register();
 		}
 	}
 
