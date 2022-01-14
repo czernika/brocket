@@ -9,7 +9,8 @@ use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class AppServiceProvider implements ServiceProviderInterface
 {
-	public function register( $container ) {
+	public function register( $container )
+	{
 		$container[ WPEMERGE_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->extend(
 			WPEMERGE_ROUTING_ROUTE_BLUEPRINT_KEY,
 			function( $blueprint, $c ) {

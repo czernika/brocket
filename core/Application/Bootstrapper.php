@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Brocooly\Application;
 
-use Theme\App;
 use Timber\Timber;
-use Brocooly\Support\Traits\HasAppTrait;
 use Theme\Brocooly;
+use Brocooly\Support\Traits\HasAppTrait;
 
 class Bootstrapper
 {
@@ -21,7 +20,8 @@ class Bootstrapper
 	 *
 	 * @param string $config
 	 */
-	public function __construct( string $config ) {
+	public function __construct( string $config )
+	{
 		if ( ! defined( 'ABSPATH' ) ) {
 			exit;
 		}
@@ -29,7 +29,8 @@ class Bootstrapper
 		$this->init( $config );
 	}
 
-	public function run() {
+	public function run()
+	{
 		if ( $this->isBooted ) {
 			return;
 		}
@@ -41,7 +42,8 @@ class Bootstrapper
 		self::$app->bootstrap( config( 'wpemerge' ) );
 	}
 
-	private function init( string $config ) {
+	private function init( string $config )
+	{
 		Config::set( $config );
 		Timber::$dirname = config( 'timber.views' );
 	}

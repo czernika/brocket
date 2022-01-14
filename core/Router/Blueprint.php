@@ -40,7 +40,8 @@ class Blueprint extends RouteBlueprint
 		'is_year',
 	];
 
-	public function __call( $name, $arguments ) {
+	public function __call( $name, $arguments )
+	{
 		$snake = Str::snake( $name );
 		if ( in_array( $snake, $this->allowedConditionals, true ) ) {
 			return $this->get()->where( $snake, ...$arguments );

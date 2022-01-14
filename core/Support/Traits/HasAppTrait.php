@@ -9,11 +9,13 @@ trait HasAppTrait
 
 	private static $app = null;
 
-	public static function getAppInstance() {
+	public static function getAppInstance()
+	{
 		return self::$app;
 	}
 
-	public static function setAppInstance( $app ) {
+	public static function setAppInstance( $app )
+	{
 		self::$app = $app;
 	}
 }

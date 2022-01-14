@@ -22,7 +22,8 @@ class PostType extends Post
 {
 	const POST_TYPE = 'post';
 
-	public static function __callStatic( $name, $arguments ) {
+	public static function __callStatic( $name, $arguments )
+	{
 		$builder = new PostTypeQueryBuilder( static::POST_TYPE, static::class );
 		return call_user_func_array( [ $builder, $name ], $arguments );
 	}

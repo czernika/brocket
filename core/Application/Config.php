@@ -13,7 +13,8 @@ class Config
 
 	private static array $data;
 
-	public static function set( string $configPath ) {
+	public static function set( string $configPath )
+	{
 
 		if ( static::$configWasSet ) {
 			return;
@@ -28,7 +29,8 @@ class Config
 		}
 	}
 
-	public static function get( $key = null ) {
+	public static function get( $key = null )
+	{
 		if ( $key ) {
 			return Arr::get( static::$data, $key, null );
 		}
