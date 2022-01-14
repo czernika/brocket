@@ -1,0 +1,95 @@
+{
+	"name": "czernika/brocket",
+	"description": "Developer-friendly framework heavily inspired by Laravel and based on Timber and Wpemerge solutions for WordPress themes development with Bedrock folder structure",
+	"license": "MIT",
+	"authors": [
+        {
+            "name": "Ihar Aliakseyenka",
+            "email": "aliha.devs@gmail.com"
+        }
+    ],
+	"type": "project",
+	"keywords": [
+		"bedrock",
+		"composer",
+		"wordpress",
+		"timber",
+		"mvc",
+		"wpemerge"
+	],
+	"require": {
+		"php": "^8.0",
+		"composer/installers": "^1.12",
+		"filp/whoops": "^2.14",
+		"hellonico/twig-dump-extension": "^1.1",
+		"htmlburger/wpemerge": "^0.16.0",
+		"illuminate/support": "^8.79",
+		"oscarotero/env": "^2.1",
+		"roots/bedrock-autoloader": "^1.0",
+		"roots/bedrock-disallow-indexing": "^2.0",
+		"roots/wordpress": "5.8.3",
+		"roots/wp-config": "1.0.0",
+		"roots/wp-password-bcrypt": "1.1.0",
+		"timber/timber": "^1.19",
+		"vlucas/phpdotenv": "^5.3",
+		"webmozart/assert": "^1.10"
+	},
+	"require-dev": {
+		"brain/monkey": "^2.6",
+		"ergebnis/composer-normalize": "^2.23",
+		"phpunit/phpunit": "^9.5",
+		"roave/security-advisories": "dev-latest",
+		"squizlabs/php_codesniffer": "^3.6",
+		"wp-coding-standards/wpcs": "^2.3",
+		"wpackagist-plugin/query-monitor": "^3.8"
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"Theme\\": "web/app/themes/brocooly/src",
+			"Brocooly\\": "core"
+		},
+		"files": [
+			"web/app/themes/brocooly/src/helpers.php",
+			"core/helpers.php"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"roots/wordpress-core-installer": true
+		},
+		"optimize-autoloader": true,
+		"preferred-install": "dist"
+	},
+	"extra": {
+		"installer-paths": {
+			"web/app/mu-plugins/{$name}/": [
+				"type:wordpress-muplugin"
+			],
+			"web/app/plugins/{$name}/": [
+				"type:wordpress-plugin"
+			],
+			"web/app/themes/{$name}/": [
+				"type:wordpress-theme"
+			]
+		},
+		"wordpress-install-dir": "web/wp"
+	},
+	"scripts": {
+		"post-root-package-install": [
+			"php -r \"copy('.env.example', '.env');\""
+		]
+	}
+}

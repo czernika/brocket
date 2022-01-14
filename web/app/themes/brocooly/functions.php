@@ -1,0 +1,39 @@
+<?php
+/**
+ * Brocooly Framework - developer-friendly framework heavily inspired by Laravel and based on Timber and Wpemerge solutions for WordPress themes development with Bedrock folder structure
+ *
+ * @package Brocooly
+ * @author Ihar Aliakseyenka <aliha.devs@gmail.com>
+ * @since 1.0.0
+ */
+
+/**
+ * -------------------------------------------------------------------------
+ * Define theme constants
+ * -------------------------------------------------------------------------
+ *
+ * ! This constants should not be changed
+ */
+require_once __DIR__ . '/bootstrap/config.php';
+
+/**
+ * -------------------------------------------------------------------------
+ * Boot application
+ * -------------------------------------------------------------------------
+ *
+ * Include bootstrap files directly
+ */
+require_once __DIR__ . '/bootstrap/app.php';
+
+/**
+ * ==========================================================================
+ * Stop line - you may place your code AFTER this block
+ * ==========================================================================
+ *
+ * All you custom functions may be placed here as it is still WordPress installation.
+ *
+ * ! But Brocooly Framework recommends you NOT to do that
+ * and handle logic inside theme source directories.
+ *
+ * Happy coding!
+ */
