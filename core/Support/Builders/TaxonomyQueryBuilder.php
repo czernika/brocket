@@ -1,4 +1,11 @@
 <?php
+/**
+ * Taxonomy query builder object
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.1.0
+ */
 
 declare(strict_types=1);
 
@@ -8,12 +15,33 @@ use Timber\Timber;
 
 class TaxonomyQueryBuilder
 {
+
+	/**
+	 * Query params
+	 *
+	 * @var array
+	 */
 	protected array $query = [];
 
+	/**
+	 * Taxonomy name for the query
+	 *
+	 * @var string
+	 */
 	protected string $taxonomy = 'category';
 
-	protected string $classMap = 'Timber\Post';
+	/**
+	 * Retrieved posts class map
+	 *
+	 * @var string
+	 */
+	protected string $classMap = 'Timber\Term';
 
+	/**
+	 * Posts per page
+	 *
+	 * @var integer
+	 */
 	protected int $postsPerPage = 10;
 
 	public function __construct( string $taxonomy, string $classMap )
@@ -25,13 +53,26 @@ class TaxonomyQueryBuilder
 		$this->setQuery();
 	}
 
+	/**
+	 * Set basic query params
+	 *
+	 * @return void
+	 */
 	protected function setQuery() : void
 	{
 		$this->query['posts_per_page'] = $this->postsPerPage;
 		$this->query['tax_query']      = [];
 	}
 
-	public function term( string $field, $terms, string $operator = 'IN' )
+	/**
+	 * Set term clause
+	 *
+	 * @param string $field
+	 * @param string|array $terms
+	 * @param string $operator
+	 * @return self
+	 */
+	public function term( string $field, $terms, string $operator = 'IN' ) : self
 	{
 		$taxQuery = [
 			'taxonomy' => $this->taxonomy,
@@ -43,54 +84,114 @@ class TaxonomyQueryBuilder
 		return $this;
 	}
 
-	public function termId( $terms, string $operator = 'IN' )
+	/**
+	 * Set term clause by id
+	 *
+	 * @param string|array $terms
+	 * @param string $operator
+	 * @return self
+	 */
+	public function termId( $terms, string $operator = 'IN' ) : self
 	{
 		$this->term( 'id', $terms, $operator );
 		return $this;
 	}
 
-	public function termName( $terms, string $operator = 'IN' )
+	/**
+	 * Set term clause by name
+	 *
+	 * @param string|array $terms
+	 * @param string $operator
+	 * @return self
+	 */
+	public function termName( $terms, string $operator = 'IN' ) : self
 	{
 		$this->term( 'name', $terms, $operator );
 		return $this;
 	}
 
-	public function termSlug( $terms, string $operator = 'IN' )
+	/**
+	 * Set term clause by slug
+	 *
+	 * @param string|array $terms
+	 * @param string $operator
+	 * @return self
+	 */
+	public function termSlug( $terms, string $operator = 'IN' ) : self
 	{
 		$this->term( 'slug', $terms, $operator );
 		return $this;
 	}
 
-	public function relation( string $relation = 'AND' )
+	/**
+	 * Set term clause relation
+	 *
+	 * @param string $relation
+	 * @return self
+	 */
+	public function relation( string $relation = 'AND' ) : self
 	{
 		$this->query['tax_query']['relation'] = $relation;
 		return $this;
 	}
 
-	public function and()
+	/**
+	 * Set `AND` term clause relation
+	 *
+	 * @return self
+	 */
+	public function and() : self
 	{
 		$this->query['tax_query']['relation'] = 'AND';
 		return $this;
 	}
 
-	public function or()
+	/**
+	 * Set `OR` term clause relation
+	 *
+	 * @return self
+	 */
+	public function or() : self
 	{
 		$this->query['tax_query']['relation'] = 'OR';
 		return $this;
 	}
 
-	public function query( array $query )
+	/**
+	 * Set any tax query
+	 *
+	 * @param array $query
+	 * @return self
+	 */
+	public function query( array $query ) : self
 	{
 		$this->query['tax_query'] = $query;
 		return $this;
 	}
 
-	public function get() : array|bool|null
+	/**
+	 * Get posts by query
+	 * You may specify Post type object
+	 * as taxonomy may be registered to many post types
+	 *
+	 * TODO change such logic but remain option
+	 *
+	 * @param string $classMap
+	 * @return array|boolean|null
+	 */
+	public function get( string $classMap = 'Timber\Post' ) : array|bool|null
 	{
-		return Timber::get_posts( $this->query, $this->classMap );
+		return Timber::get_posts( $this->query, $classMap );
 	}
 
-	public function terms( $args = null, $maybe = [] ) : array|bool|null
+	/**
+	 * Get terms
+	 *
+	 * @param string|array|null $args
+	 * @param array $maybe
+	 * @return mixed
+	 */
+	public function terms( $args = null, array $maybe = [] ) : mixed
 	{
 		return Timber::get_terms( $args, $maybe, $this->classMap );
 	}

@@ -1,6 +1,7 @@
 <?php
 /**
- *
+ * Page controller
+ * Handles page requests
  *
  * @package Brocooly
  * @since 1.0.0

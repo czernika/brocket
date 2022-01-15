@@ -1,4 +1,11 @@
 <?php
+/**
+ * Abstract Facade class
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
+ */
 
 declare(strict_types=1);
 
@@ -13,6 +20,9 @@ abstract class AbstractFacade
 	{
 		Assert::methodExists( static::class, 'accessor', 'No accessor key was provided' );
 
+		/**
+		 * FIXME allow any type and resolve it within this class
+		 */
 		Assert::object( static::accessor(), sprintf(
 			'Accessor must be an object type, %s given',
 			gettype( static::accessor() ),

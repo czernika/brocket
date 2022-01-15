@@ -1,4 +1,11 @@
 <?php
+/**
+ * Set and get app instance
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
+ */
 
 declare(strict_types=1);
 

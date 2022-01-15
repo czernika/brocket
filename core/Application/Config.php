@@ -1,4 +1,11 @@
 <?php
+/**
+ * Theme configuration object
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
+ */
 
 declare(strict_types=1);
 
@@ -9,10 +16,26 @@ use Illuminate\Support\Arr;
 class Config
 {
 
+	/**
+	 * Define if config was already set or not
+	 *
+	 * @var boolean
+	 */
 	private static bool $configWasSet = false;
 
+	/**
+	 * Config data
+	 *
+	 * @var array
+	 */
 	private static array $data;
 
+	/**
+	 * Set configuration data
+	 *
+	 * @param string $configPath
+	 * @return void
+	 */
 	public static function set( string $configPath )
 	{
 
@@ -29,7 +52,14 @@ class Config
 		}
 	}
 
-	public static function get( $key = null )
+	/**
+	 * Get data from config
+	 * or config itself
+	 *
+	 * @param string|null $key
+	 * @return mixed
+	 */
+	public static function get( ?string $key = null )
 	{
 		if ( $key ) {
 			return Arr::get( static::$data, $key, null );

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Extend WPEmerge Routing with conditional tags
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
+ */
 
 declare(strict_types=1);
 

@@ -11,16 +11,15 @@ declare(strict_types=1);
 
 namespace Theme\Providers;
 
-use Whoops\Handler\PrettyPageHandler;
-
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class ThemeServiceProvider implements ServiceProviderInterface
 {
 	public function register( $container ) {
+
 	}
 
 	public function bootstrap( $container ) {
-		// ...
+
 	}
 }

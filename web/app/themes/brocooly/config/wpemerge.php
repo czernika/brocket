@@ -9,6 +9,7 @@
 
 use Theme\Providers\ThemeServiceProvider;
 use Brocooly\Providers\AppServiceProvider;
+use Brocooly\Providers\ModelServiceProvider;
 use Brocooly\Providers\DebugServiceProvider;
 
 return [
@@ -50,6 +51,7 @@ return [
 		 * App Providers
 		 */
 		AppServiceProvider::class,
+		ModelServiceProvider::class,
 		DebugServiceProvider::class,
 
 		/**

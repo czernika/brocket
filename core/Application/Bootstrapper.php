@@ -1,4 +1,11 @@
 <?php
+/**
+ * Boot application
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
+ */
 
 declare(strict_types=1);
 
@@ -13,6 +20,11 @@ class Bootstrapper
 
 	use HasAppTrait;
 
+	/**
+	 * Define if the app was booted or not
+	 *
+	 * @var boolean
+	 */
 	private bool $isBooted = false;
 
 	/**
@@ -29,6 +41,11 @@ class Bootstrapper
 		$this->init( $config );
 	}
 
+	/**
+	 * Boot application
+	 *
+	 * @return void
+	 */
 	public function run()
 	{
 		if ( $this->isBooted ) {
@@ -42,6 +59,13 @@ class Bootstrapper
 		self::$app->bootstrap( config( 'wpemerge' ) );
 	}
 
+	/**
+	 * Initialize configuration object
+	 * and Timber resource directory
+	 *
+	 * @param string $config
+	 * @return void
+	 */
 	private function init( string $config )
 	{
 		Config::set( $config );

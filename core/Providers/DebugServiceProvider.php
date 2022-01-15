@@ -1,6 +1,12 @@
 <?php
 /**
+ * Debug Service Provider
  *
+ * Register and boot debugging features and packages
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
