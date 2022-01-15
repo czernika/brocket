@@ -16,6 +16,7 @@ use Brocooly\Support\Builders\TaxonomyQueryBuilder;
 
 /**
  * @method static self query( array $query )
+ * @method static self paginate( ?int $postsPerPage = null )
  * @method static self term( string $field, $terms, string $operator = 'IN' )
  * @method static self termId( $terms, string $operator = 'IN' )
  * @method static self termName( $terms, string $operator = 'IN' )
@@ -24,6 +25,10 @@ use Brocooly\Support\Builders\TaxonomyQueryBuilder;
  * @method static self and()
  * @method static self or()
  * @method static self taxQuery( array $query )
+ * @method static self where( string $key, $value )
+ * @method static self withStatus( string|array $status )
+ * @method static self withDrafts()
+ * @method static self withTrashed()
  *
  * @method static array|null all()
  * @method static array|null get()

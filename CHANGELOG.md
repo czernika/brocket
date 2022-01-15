@@ -5,6 +5,7 @@
 - [Refactor] `query()` method of `TaxonomyQueryBuilder` now called `taxQuery()`
 - [Feat] Added `withStatus()`, `withTrashed()` and `withDrafts()` query methods
 - [Docs] Added IDE helpers for model objects
+- [Docs] Changed theme description
 
 Release Date: Jan 16th, 2022
 

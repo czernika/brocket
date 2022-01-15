@@ -1,4 +1,11 @@
 <?php
+/**
+ * Base query builder object
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.1.1
+ */
 
 declare(strict_types=1);
 
@@ -34,6 +41,80 @@ class QueryBuilder
 	 * @var \Illuminate\Support\Collection|null
 	 */
 	public \Illuminate\Support\Collection|null $collection = null;
+
+	/**
+	 * Set custom query
+	 *
+	 * @param array $query
+	 * @return self
+	 */
+	public function query( array $query ) : self
+	{
+		$this->query = array_merge( $query, $this->query );
+		return $this;
+	}
+
+	/**
+	 * Set posts per page param
+	 *
+	 * @param integer|null $postsPerPage
+	 * @return self
+	 */
+	public function paginate( ?int $postsPerPage = null ) : self
+	{
+		if ( $postsPerPage ) {
+			$this->postsPerPage = $postsPerPage;
+		}
+		$this->query['posts_per_page'] = $this->postsPerPage;
+		return $this;
+	}
+
+	/**
+	 * Set any single query param
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 * @return self
+	 */
+	public function where( string $key, $value ) : self
+	{
+		$this->query[ $key ] = $value;
+		return $this;
+	}
+
+	/**
+	 * Get posts with special statuses
+	 *
+	 * @param string|array $status
+	 * @return self
+	 */
+	public function withStatus( string|array $status ) : self
+	{
+		$this->query['post_status'] = $status;
+		return $this;
+	}
+
+	/**
+	 * Get all posts with drafts
+	 *
+	 * @return self
+	 */
+	public function withDrafts() : self
+	{
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'draft' ] );
+		return $this;
+	}
+
+	/**
+	 * Get all posts with trashed
+	 *
+	 * @return self
+	 */
+	public function withTrashed() : self
+	{
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'trash' ] );
+		return $this;
+	}
 
 	/**
 	 * Set custom query
