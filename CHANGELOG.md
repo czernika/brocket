@@ -8,7 +8,7 @@
 - [Feat] Console commands for creating Controllers, Providers and some Models
 - [Fix] Removed `filp/whoops` package as it was already set within WPEmerge
 
-Release Date: -
+Release Date: Jan 15th, 2022
 ## Initial release - 1.0.0
 
 Initial setup

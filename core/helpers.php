@@ -7,7 +7,6 @@
  * @since 1.0.0
  */
 
-use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
@@ -101,18 +100,17 @@ if ( ! function_exists( 'app' ) ) {
 	}
 }
 
-if ( ! function_exists( 'output' ) ) {
+if ( ! function_exists( 'view' ) ) {
 
 	/**
 	 * Output twig file content
 	 *
-	 * @param string|array $view
+	 * @param string $view
 	 * @param array $ctx
 	 * @return string
 	 */
-	function output( string|array $view, array $ctx = [] ) {
-		$ctx   = array_merge( Timber::context(), $ctx );
-		$views = Helper::twigify( $view );
-		return Brocooly::output( Timber::compile( $views, $ctx ) );
+	function view( string $view, array $ctx = [] ) {
+		$view = Helper::twigify( $view );
+		return Brocooly::view( $view )->with( $ctx );
 	}
 }

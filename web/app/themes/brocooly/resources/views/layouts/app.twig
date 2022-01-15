@@ -10,7 +10,7 @@
 	<!-- Phones Link Detection -->
 	<meta name="format-detection" content="telephone=no">
 
-	<title>{% block title %} {{ __( 'Brocooly Framework', 'brocooly' ) }} | {{ site.name }} {% endblock %}</title>
+	<title>Brocooly Framework</title>
 
 	<!-- Google Fonts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
@@ -34,8 +34,6 @@
 	itemscope itemtype="http://schema.org/WebPage"
 >
 
-	{% do action('wp_body_open') %}
-
 	{% block header %}
 	{% endblock %}
 
@@ -52,10 +50,10 @@
 
 	{% endblock %}
 
-	{{ fn('wp_footer') }}
-
 	{% block scripts %}{% endblock %}
 
 	<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+
+	{{ fn('wp_footer') }}
 </body>
 </html>

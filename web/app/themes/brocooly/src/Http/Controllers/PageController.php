@@ -10,14 +10,13 @@
 declare(strict_types=1);
 
 namespace Theme\Http\Controllers;
-
 class PageController
 {
 	public function front() {
-		return output( 'content.front-page' );
+		return view( 'content.front-page' );
 	}
 
 	public function notFound() {
-		return output( 'content.404' );
+		return view( 'content.404' );
 	}
 }

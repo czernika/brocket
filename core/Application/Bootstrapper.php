@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brocooly\Application;
 
-use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Traits\HasAppTrait;
 
@@ -61,7 +60,6 @@ class Bootstrapper
 
 	/**
 	 * Initialize configuration object
-	 * and Timber resource directory
 	 *
 	 * @param string $config
 	 * @return void
@@ -69,6 +67,5 @@ class Bootstrapper
 	private function init( string $config )
 	{
 		Config::set( $config );
-		Timber::$dirname = config( 'timber.views' );
 	}
 }

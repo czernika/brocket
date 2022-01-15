@@ -29,13 +29,14 @@
 		"roots/wordpress": "5.8.3",
 		"roots/wp-config": "1.0.0",
 		"roots/wp-password-bcrypt": "1.1.0",
-		"timber/timber": "^1.19",
 		"vlucas/phpdotenv": "^5.3",
 		"webmozart/assert": "^1.10",
 		"johnbillion/extended-cpts": "^4.5",
 		"symfony/console": "^6.0",
 		"nette/php-generator": "^3.6",
-		"illuminate/filesystem": "^8.79"
+		"illuminate/filesystem": "^8.79",
+		"twig/twig": "^3.3",
+		"illuminate/collections": "^8.79"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",

@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Brocooly\Models;
 
-use Timber\Term;
 use Brocooly\Support\Builders\TaxonomyQueryBuilder;
 
 /**
+ * @method static self query( array $query )
  * @method static self term( string $field, $terms, string $operator = 'IN' )
  * @method static self termId( $terms, string $operator = 'IN' )
  * @method static self termName( $terms, string $operator = 'IN' )
@@ -22,11 +22,16 @@ use Brocooly\Support\Builders\TaxonomyQueryBuilder;
  * @method static self relation( string $relation = 'AND' )
  * @method static self and()
  * @method static self or()
- * @method static self query( array $query )
- * @method static array|bool|null get( string $classMap = 'Timber\Post' )
- * @method static mixed terms( $args = null, array $maybe = [] )
+ * @method static self taxQuery( array $query )
+ *
+ * @method static array|null all()
+ * @method static array|null get()
+ * @method static \Illuminate\Support\Collection collect()
+ *
+ * @method static object|null first()
+ * @method static object|null last()
  */
-class Taxonomy extends Term
+class Taxonomy
 {
 
 	/**

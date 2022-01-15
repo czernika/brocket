@@ -11,18 +11,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Builders;
 
-use Timber\Post;
-use Timber\Timber;
-
-class PostTypeQueryBuilder
+class PostTypeQueryBuilder extends QueryBuilder
 {
-
-	/**
-	 * Query params
-	 *
-	 * @var array
-	 */
-	protected array $query = [];
 
 	/**
 	 * Post type name for the query
@@ -32,18 +22,9 @@ class PostTypeQueryBuilder
 	protected string $postType = 'post';
 
 	/**
-	 * Retrieved posts class map
-	 *
-	 * @var string
+	 * Posts collection
 	 */
-	protected string $classMap = 'Timber\Post';
-
-	/**
-	 * Posts per page
-	 *
-	 * @var integer
-	 */
-	protected int $postsPerPage = 10;
+	public $collection;
 
 	public function __construct( string $postType, string $classMap )
 	{
@@ -63,18 +44,7 @@ class PostTypeQueryBuilder
 	{
 		$this->query['post_type']      = $this->postType;
 		$this->query['posts_per_page'] = $this->postsPerPage;
-	}
-
-	/**
-	 * Set custom query
-	 *
-	 * @param array $query
-	 * @return self
-	 */
-	public function query( array $query ) : self
-	{
-		$this->query = array_merge( $query, $this->query );
-		return $this;
+		$this->query['post_status']    = [ 'publish' ];
 	}
 
 	/**
@@ -106,65 +76,63 @@ class PostTypeQueryBuilder
 	}
 
 	/**
-	 * Retrieve all posts
+	 * Get posts with special statuses
 	 *
-	 * @return array|boolean|null
+	 * @param string|array $status
+	 * @return self
 	 */
-	public function all() : array|bool|null
+	public function withStatus( string|array $status ) : self
 	{
-		$this->query['posts_per_page'] = 500; // TODO make config for this option
-		return $this->get();
+		$this->query['post_status'] = $status;
+		return $this;
 	}
 
 	/**
-	 * Retrieve posts
+	 * Get all posts with drafts
 	 *
-	 * @return array|boolean|null
+	 * @return self
 	 */
-	public function get() : array|bool|null
+	public function withDrafts() : self
 	{
-		return Timber::get_posts( $this->query, $this->classMap );
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'draft' ] );
+		return $this;
+	}
+
+	/**
+	 * Get all posts with trashed
+	 *
+	 * @return self
+	 */
+	public function withTrashed() : self
+	{
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'trash' ] );
+		return $this;
 	}
 
 	/**
 	 * Get single post
 	 *
-	 * @param mixed $query
-	 * @return Post|boolean
+	 * @param int $id
+	 * @return object|null
 	 */
-	protected function getPost( $query = false ) : Post|bool
+	protected function getPost( int $id )
 	{
-		return Timber::get_post( $query, $this->classMap );
-	}
+		$object = $this->classMap;
+		$post   = get_post( $id );
 
-	/**
-	 * Get first post
-	 *
-	 * @return Post|boolean
-	 */
-	public function first() : Post|bool
-	{
-		$collection = $this->get();
-		return head( $collection );
-	}
+		if ( $post ) {
+			return new $object( $post );
+		}
 
-	/**
-	 * Get last post
-	 *
-	 * @return Post|boolean
-	 */
-	public function last() : Post|bool
-	{
-		$collection = $this->get();
-		return end( $collection );
+		return null;
 	}
 
 	/**
 	 * Get current post object
 	 *
-	 * @return Post|boolean
+	 * @return object|null
 	 */
-	public function current() : Post|bool
+	public function current()
 	{
 		return $this->getPost( get_queried_object_id() );
 	}
@@ -173,9 +141,9 @@ class PostTypeQueryBuilder
 	 * Get post by id
 	 *
 	 * @param integer $id
-	 * @return Post|boolean
+	 * @return object|null
 	 */
-	public function id( int $id ) : Post|bool
+	public function id( int $id )
 	{
 		return $this->getPost( $id );
 	}

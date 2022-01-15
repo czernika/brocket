@@ -11,21 +11,26 @@ declare(strict_types=1);
 
 namespace Brocooly\Models;
 
-use Timber\Post;
 use Brocooly\Support\Builders\PostTypeQueryBuilder;
 
 /**
  * @method static self query( array $query )
  * @method static self paginate( ?int $postsPerPage = null )
  * @method static self where( string $key, $value )
- * @method static array|bool|null all()
- * @method static array|bool|null get()
- * @method static object current()
- * @method static object id( int $id )
- * @method static object first()
- * @method static object last()
+ * @method static self withStatus( string|array $status )
+ * @method static self withDrafts()
+ * @method static self withTrashed()
+ *
+ * @method static array|null all()
+ * @method static array|null get()
+ * @method static \Illuminate\Support\Collection collect()
+ *
+ * @method static object|null current()
+ * @method static object|null id( int $id )
+ * @method static object|null first()
+ * @method static object|null last()
  */
-class PostType extends Post
+class PostType
 {
 
 	/**
@@ -34,6 +39,43 @@ class PostType extends Post
 	 * @var string
 	 */
 	const POST_TYPE = 'post';
+
+	/**
+	 * Post type id
+	 *
+	 * @var integer
+	 */
+	public int $id = 0;
+
+	/**
+	 * Related post object
+	 *
+	 * @var \WP_Post
+	 */
+	public \WP_Post $wpPost;
+
+	/**
+	 * Post type title
+	 *
+	 * @var string
+	 */
+	public string $title = '';
+
+	/**
+	 * Post type link
+	 *
+	 * @var string
+	 */
+	public string|false $link = false;
+
+	public function __construct( $wpPost )
+	{
+		$this->wpPost = $wpPost;
+		$this->id     = $wpPost->ID;
+
+		$this->setTitle();
+		$this->setLink();
+	}
 
 	/**
 	 * Build query to retrieve posts
@@ -46,5 +88,45 @@ class PostType extends Post
 	{
 		$builder = new PostTypeQueryBuilder( static::POST_TYPE, static::class );
 		return call_user_func_array( [ $builder, $name ], $arguments );
+	}
+
+	/**
+	 * Get post type title
+	 *
+	 * @return string
+	 */
+	public function title()
+	{
+		return $this->title;
+	}
+
+	/**
+	 * Set post type title
+	 *
+	 * @return void
+	 */
+	protected function setTitle()
+	{
+		$this->title = get_the_title( $this->id );
+	}
+
+	/**
+	 * Get post type link
+	 *
+	 * @return void
+	 */
+	public function link()
+	{
+		return $this->link;
+	}
+
+	/**
+	 * Set post type link
+	 *
+	 * @return void
+	 */
+	protected function setLink()
+	{
+		$this->link = get_permalink( $this->id );
 	}
 }

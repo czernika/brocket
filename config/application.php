@@ -200,16 +200,6 @@ if ( file_exists( $env_config ) ) {
 
 /**
  * --------------------------------------------------------------------------
- * Set dark mode for QueryMonitor plugin for Timber section to be readable
- * --------------------------------------------------------------------------
- *
- * Debug Timber bar environment is written in a white color
- * so it is become unreadable
- */
-Config::define( 'QM_DARK_MODE', true );
-
-/**
- * --------------------------------------------------------------------------
  * Boot WordPress
  * --------------------------------------------------------------------------
  */
