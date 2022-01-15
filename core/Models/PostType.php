@@ -18,12 +18,18 @@ use Brocooly\Support\Builders\PostTypeQueryBuilder;
  * @method static self query( array $query )
  * @method static self paginate( ?int $postsPerPage = null )
  * @method static self where( string $key, $value )
- * @method static array|bool|null all()
- * @method static array|bool|null get()
- * @method static object current()
- * @method static object id( int $id )
- * @method static object first()
- * @method static object last()
+ * @method static self withStatus( string|array $status )
+ * @method static self withDrafts()
+ * @method static self withTrashed()
+ *
+ * @method static array|null all()
+ * @method static array|null get()
+ * @method static \Illuminate\Support\Collection collect()
+ *
+ * @method static object|null current()
+ * @method static object|null id( int $id )
+ * @method static object|null first()
+ * @method static object|null last()
  */
 class PostType extends Post
 {

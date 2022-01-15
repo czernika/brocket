@@ -13,15 +13,8 @@ namespace Brocooly\Support\Builders;
 
 use Timber\Timber;
 
-class TaxonomyQueryBuilder
+class TaxonomyQueryBuilder extends QueryBuilder
 {
-
-	/**
-	 * Query params
-	 *
-	 * @var array
-	 */
-	protected array $query = [];
 
 	/**
 	 * Taxonomy name for the query
@@ -36,13 +29,6 @@ class TaxonomyQueryBuilder
 	 * @var string
 	 */
 	protected string $classMap = 'Timber\Term';
-
-	/**
-	 * Posts per page
-	 *
-	 * @var integer
-	 */
-	protected int $postsPerPage = 10;
 
 	public function __construct( string $taxonomy, string $classMap )
 	{
@@ -62,6 +48,7 @@ class TaxonomyQueryBuilder
 	{
 		$this->query['posts_per_page'] = $this->postsPerPage;
 		$this->query['tax_query']      = [];
+		$this->query['post_status']    = [ 'publish' ];
 	}
 
 	/**
@@ -163,25 +150,10 @@ class TaxonomyQueryBuilder
 	 * @param array $query
 	 * @return self
 	 */
-	public function query( array $query ) : self
+	public function taxQuery( array $query ) : self
 	{
 		$this->query['tax_query'] = $query;
 		return $this;
-	}
-
-	/**
-	 * Get posts by query
-	 * You may specify Post type object
-	 * as taxonomy may be registered to many post types
-	 *
-	 * TODO change such logic but remain option
-	 *
-	 * @param string $classMap
-	 * @return array|boolean|null
-	 */
-	public function get( string $classMap = 'Timber\Post' ) : array|bool|null
-	{
-		return Timber::get_posts( $this->query, $classMap );
 	}
 
 	/**

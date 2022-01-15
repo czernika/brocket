@@ -35,7 +35,8 @@
 		"johnbillion/extended-cpts": "^4.5",
 		"symfony/console": "^6.0",
 		"nette/php-generator": "^3.6",
-		"illuminate/filesystem": "^8.79"
+		"illuminate/filesystem": "^8.79",
+		"illuminate/collections": "^8.79"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",

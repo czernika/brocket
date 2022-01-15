@@ -14,15 +14,8 @@ namespace Brocooly\Support\Builders;
 use Timber\Post;
 use Timber\Timber;
 
-class PostTypeQueryBuilder
+class PostTypeQueryBuilder extends QueryBuilder
 {
-
-	/**
-	 * Query params
-	 *
-	 * @var array
-	 */
-	protected array $query = [];
 
 	/**
 	 * Post type name for the query
@@ -37,13 +30,6 @@ class PostTypeQueryBuilder
 	 * @var string
 	 */
 	protected string $classMap = 'Timber\Post';
-
-	/**
-	 * Posts per page
-	 *
-	 * @var integer
-	 */
-	protected int $postsPerPage = 10;
 
 	public function __construct( string $postType, string $classMap )
 	{
@@ -63,6 +49,7 @@ class PostTypeQueryBuilder
 	{
 		$this->query['post_type']      = $this->postType;
 		$this->query['posts_per_page'] = $this->postsPerPage;
+		$this->query['post_status']    = [ 'publish' ];
 	}
 
 	/**
@@ -106,24 +93,37 @@ class PostTypeQueryBuilder
 	}
 
 	/**
-	 * Retrieve all posts
+	 * Get posts with special statuses
 	 *
-	 * @return array|boolean|null
+	 * @param string|array $status
+	 * @return self
 	 */
-	public function all() : array|bool|null
+	public function withStatus( string|array $status ) : self
 	{
-		$this->query['posts_per_page'] = 500; // TODO make config for this option
-		return $this->get();
+		$this->query['post_status'] = $status;
+		return $this;
 	}
 
 	/**
-	 * Retrieve posts
+	 * Get all posts with drafts
 	 *
-	 * @return array|boolean|null
+	 * @return self
 	 */
-	public function get() : array|bool|null
+	public function withDrafts() : self
 	{
-		return Timber::get_posts( $this->query, $this->classMap );
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'draft' ] );
+		return $this;
+	}
+
+	/**
+	 * Get all posts with trashed
+	 *
+	 * @return self
+	 */
+	public function withTrashed() : self
+	{
+		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'trash' ] );
+		return $this;
 	}
 
 	/**
@@ -135,28 +135,6 @@ class PostTypeQueryBuilder
 	protected function getPost( $query = false ) : Post|bool
 	{
 		return Timber::get_post( $query, $this->classMap );
-	}
-
-	/**
-	 * Get first post
-	 *
-	 * @return Post|boolean
-	 */
-	public function first() : Post|bool
-	{
-		$collection = $this->get();
-		return head( $collection );
-	}
-
-	/**
-	 * Get last post
-	 *
-	 * @return Post|boolean
-	 */
-	public function last() : Post|bool
-	{
-		$collection = $this->get();
-		return end( $collection );
 	}
 
 	/**

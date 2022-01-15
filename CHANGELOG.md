@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.1.1
+
+- [Refactor] `query()` method of `TaxonomyQueryBuilder` now called `taxQuery()`
+- [Feat] Added `withStatus()`, `withTrashed()` and `withDrafts()` query methods
+- [Docs] Added IDE helpers for model objects
+
+Release Date: Jan 16th, 2022
+
 ## Release 1.1.0
 
 - [Feat] Added support for registering custom post types and taxonomies via `models` configuration file
@@ -8,7 +16,8 @@
 - [Feat] Console commands for creating Controllers, Providers and some Models
 - [Fix] Removed `filp/whoops` package as it was already set within WPEmerge
 
-Release Date: -
+Release Date: Jan 15th, 2022
+
 ## Initial release - 1.0.0
 
 Initial setup
