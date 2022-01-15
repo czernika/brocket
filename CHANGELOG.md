@@ -5,6 +5,7 @@
 - [Feat] Added support for registering custom post types and taxonomies via `models` configuration file
 - [Feat] Added `PostType` and `Taxonomy` models with simple query builders
 - [Feat] Added `ModelServiceProvider` provider
+- [Feat] Console commands for creating Controllers, Providers and some Models
 - [Fix] Removed `filp/whoops` package as it was already set within WPEmerge
 
 Release Date: -

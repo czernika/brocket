@@ -1,6 +1,6 @@
 <?php
 /**
- * WPEmerge App\route() facade
+ * \Illuminate\Filesystem\Filesystem facade
  *
  * @package Brocooly
  * @subpackage Brocket
@@ -11,12 +11,12 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Facades;
 
-use Theme\Brocooly;
+use Illuminate\Filesystem\Filesystem;
 
-class Route extends AbstractFacade
+class File extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return Brocooly::route();
+		return new Filesystem();
 	}
 }

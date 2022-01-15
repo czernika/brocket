@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/web/wp/wp-load.php';
+
+use Brocooly\Commands;
+use Symfony\Component\Console\Application;
+
+$app = new Application();
+
+# add your commands
+$commands = Commands::get();
+
+foreach ( $commands as $command ) {
+    $commandObject = new $command();
+
+    if ( $commandObject->notAllowedInProduction() ) {
+        continue;
+    }
+
+	$app->add( $commandObject );
+}
+
+$app->run();
