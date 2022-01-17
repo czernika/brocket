@@ -1,12 +1,14 @@
 # Changelog
 
-## Release 1.2.1
+## Release 1.3.0
 
+- [Feat] Added support for post types and terms metaboxes
 - [Feat] Added `cache:flush` console command
 - [Refactor] Removed `QM_DARK_MODE` constant 
 - [Refactor] Removed duplicated `timber.limit` options as it was doing nothing
 - [Refactor] Refactored `QueryBuilder` class
 - [Refactor] Changed `wp-cli.yml` file to be more secure by default. Use `wp-cli.local.yml` file to override it for local development
+- [Refactor] Removed "trash" code
 - [Docs] Minor description changes across all files 
 
 Release Date: Jan 18th, 2022

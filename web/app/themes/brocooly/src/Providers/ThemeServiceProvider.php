@@ -21,5 +21,26 @@ class ThemeServiceProvider implements ServiceProviderInterface
 
 	public function bootstrap( $container ) {
 
+		/**
+		 * --------------------------------------------------------------------------
+		 * Register Carbon Fields package
+		 * --------------------------------------------------------------------------
+		 *
+		 * Register metaboxes for post types, theme widgets, options and more
+		 * Uncomment this line to have access for metaboxes
+		 *
+		 * @link https://docs.carbonfields.net/quickstart.html
+		 */
+		// add_action( 'after_setup_theme', [ $this, 'bootCarbonFields' ] );
+	}
+
+	/**
+	 * Boot Carbon Fields callback
+	 *
+	 * @return void
+	 */
+	public function bootCarbonFields()
+	{
+		\Carbon_Fields\Carbon_Fields::boot();
 	}
 }

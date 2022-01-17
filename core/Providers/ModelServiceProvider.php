@@ -68,6 +68,15 @@ class ModelServiceProvider implements ServiceProviderInterface
 				}
 			);
 		}
+
+		if ( method_exists( $postType, 'metaboxes' ) ) {
+			add_action(
+				'carbon_fields_register_fields',
+				function() use ( $postType ) {
+					$postType->metaboxes();
+				},
+			);
+		}
 	}
 
 	/**
@@ -91,6 +100,15 @@ class ModelServiceProvider implements ServiceProviderInterface
 						$taxonomy->getNames(),
 					);
 				}
+			);
+		}
+
+		if ( method_exists( $taxonomy, 'metaboxes' ) ) {
+			add_action(
+				'carbon_fields_register_fields',
+				function() use ( $taxonomy ) {
+					$taxonomy->metaboxes();
+				},
 			);
 		}
 	}

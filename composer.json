@@ -2,12 +2,6 @@
 	"name": "czernika/brocket",
 	"description": "Developer-friendly framework heavily inspired by Laravel and based on Timber and Wpemerge solutions for WordPress themes development with Bedrock folder structure",
 	"license": "MIT",
-	"authors": [
-        {
-            "name": "Ihar Aliakseyenka",
-            "email": "aliha.devs@gmail.com"
-        }
-    ],
 	"type": "project",
 	"keywords": [
 		"bedrock",
@@ -17,26 +11,34 @@
 		"mvc",
 		"wpemerge"
 	],
+	"authors": [
+		{
+			"name": "Ihar Aliakseyenka",
+			"email": "aliha.devs@gmail.com"
+		}
+	],
 	"require": {
 		"php": "^8.0",
 		"composer/installers": "^1.12",
 		"hellonico/twig-dump-extension": "^1.1",
+		"htmlburger/carbon-fields": "^3.3",
 		"htmlburger/wpemerge": "^0.16.0",
+		"illuminate/collections": "^8.79",
+		"illuminate/filesystem": "^8.79",
 		"illuminate/support": "^8.79",
+		"johnbillion/extended-cpts": "^4.5",
+		"mnsami/composer-custom-directory-installer": "^2.0",
+		"nette/php-generator": "^3.6",
 		"oscarotero/env": "^2.1",
 		"roots/bedrock-autoloader": "^1.0",
 		"roots/bedrock-disallow-indexing": "^2.0",
 		"roots/wordpress": "5.8.3",
 		"roots/wp-config": "1.0.0",
 		"roots/wp-password-bcrypt": "1.1.0",
+		"symfony/console": "^6.0",
 		"timber/timber": "^1.19",
 		"vlucas/phpdotenv": "^5.3",
-		"webmozart/assert": "^1.10",
-		"johnbillion/extended-cpts": "^4.5",
-		"symfony/console": "^6.0",
-		"nette/php-generator": "^3.6",
-		"illuminate/filesystem": "^8.79",
-		"illuminate/collections": "^8.79"
+		"webmozart/assert": "^1.10"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
@@ -87,6 +89,10 @@
 			],
 			"web/app/themes/{$name}/": [
 				"type:wordpress-theme"
+			],
+			"web/app/vendor/{$vendor}/{$name}": [
+				"htmlburger/carbon-fields",
+				"aristath/kirki"
 			]
 		},
 		"wordpress-install-dir": "web/wp"
