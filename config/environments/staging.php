@@ -21,4 +21,9 @@ use Roots\WPConfig\Config;
  * Example: `Config::define( 'DISALLOW_FILE_MODS', false );`
  */
 
+/**
+ * --------------------------------------------------------------------------
+ * Disallow indexing website in staging mode
+ * --------------------------------------------------------------------------
+ */
 Config::define( 'DISALLOW_INDEXING', true );

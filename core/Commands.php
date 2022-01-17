@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly;
 
+use Brocooly\Console\ClearCache;
 use Brocooly\Console\MakeProvider;
 use Brocooly\Console\MakeController;
 use Brocooly\Console\MakeModelTaxonomy;
@@ -28,6 +29,7 @@ class Commands
 		MakeProvider::class,
 		MakeModelPostType::class,
 		MakeModelTaxonomy::class,
+		ClearCache::class,
 	];
 
 	/**

@@ -117,24 +117,25 @@ class QueryBuilder
 	}
 
 	/**
+	 * Get posts query
+	 *
+	 * @return array|boolean|null
+	 */
+	protected function getPosts()
+	{
+		return Timber::get_posts( $this->query, $this->classMap );
+	}
+
+	/**
 	 * Retrieve all posts
+	 * Same as `get()` but more convenient for users
+	 * as `get()` ends query while `all()` starts and ends it.
 	 *
 	 * @return array|boolean|null
 	 */
 	public function all()
 	{
-		return $this->get();
-	}
-
-	/**
-	 * Retrieve posts
-	 *
-	 * @return \Illuminate\Support\Collection
-	 */
-	public function collect()
-	{
-		$this->collection = collect( Timber::get_posts( $this->query, $this->classMap ) );
-		return $this->collection;
+		return $this->getPosts();
 	}
 
 	/**
@@ -144,7 +145,18 @@ class QueryBuilder
 	 */
 	public function get()
 	{
-		return $this->collect()?->toArray();
+		return $this->getPosts();
+	}
+
+	/**
+	 * Retrieve posts
+	 *
+	 * @return \Illuminate\Support\Collection
+	 */
+	public function collect()
+	{
+		$this->collection = collect( $this->getPosts() );
+		return $this->collection;
 	}
 
 	/**

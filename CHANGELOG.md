@@ -1,5 +1,16 @@
 # Changelog
 
+## Release 1.2.1
+
+- [Feat] Added `cache:flush` console command
+- [Refactor] Removed `QM_DARK_MODE` constant 
+- [Refactor] Removed duplicated `timber.limit` options as it was doing nothing
+- [Refactor] Refactored `QueryBuilder` class
+- [Refactor] Changed `wp-cli.yml` file to be more secure by default. Use `wp-cli.local.yml` file to override it for local development
+- [Docs] Minor description changes across all files 
+
+Release Date: Jan 18th, 2022
+
 ## Release 1.2.0
 
 - [Fix] **Breaking**: Timber` lib added as a main dependency of a `Bootstrapper` as not declared TImber caused issues
@@ -23,7 +34,7 @@ Release Date: Jan 17th, 2022
 
 Release Date: Jan 15th, 2022
 
-## Initial release - 1.0.0
+## Initial release 1.0.0
 
 Initial setup
 

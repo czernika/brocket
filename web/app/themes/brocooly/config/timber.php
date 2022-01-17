@@ -23,21 +23,6 @@ return [
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Posts per page limit
-	 * --------------------------------------------------------------------------
-	 *
-	 * When you are getting all posts you may set `posts_per_page` query parameter as -1.
-	 * It is not recommended for performance reasons way so we're set it 300.
-	 *
-	 * This settings applied for `PostType::all()` etc.
-	 *
-	 * @var int
-	 * @since 1.2.0
-	 */
-	'limit' => 300,
-
-	/**
-	 * --------------------------------------------------------------------------
 	 * Set Timber cache or not
 	 * --------------------------------------------------------------------------
 	 *

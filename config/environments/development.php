@@ -31,6 +31,8 @@ Config::define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
 Config::define( 'DISALLOW_FILE_MODS', false );
 
 /**
- * @since Brocooly 0.14.2
+ * --------------------------------------------------------------------------
+ * Disallow indexing website in development mode
+ * --------------------------------------------------------------------------
  */
 Config::define( 'DISALLOW_INDEXING', true );
