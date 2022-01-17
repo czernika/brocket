@@ -32,9 +32,9 @@ class TaxonomyQueryBuilder extends QueryBuilder
 
 	public function __construct( string $taxonomy, string $classMap )
 	{
-		$this->taxonomy     = $taxonomy;
-		$this->classMap     = $classMap;
-		$this->postsPerPage = 10; // TODO add config option.
+		$this->taxonomy = $taxonomy;
+
+		parent::__construct( $classMap );
 
 		$this->setQuery();
 	}
@@ -46,9 +46,8 @@ class TaxonomyQueryBuilder extends QueryBuilder
 	 */
 	protected function setQuery() : void
 	{
-		$this->query['posts_per_page'] = $this->postsPerPage;
-		$this->query['tax_query']      = [];
-		$this->query['post_status']    = [ 'publish' ];
+		$this->query['tax_query']   = [];
+		$this->query['post_status'] = [ 'publish' ];
 	}
 
 	/**

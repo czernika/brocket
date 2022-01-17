@@ -1,13 +1,17 @@
 # Changelog
 
-## Release 1.1.1
+## Release 1.2.0
 
-- [Refactor] `query()` method of `TaxonomyQueryBuilder` now called `taxQuery()`
+- [Fix] **Breaking**: Timber` lib added as a main dependency of a `Bootstrapper` as not declared TImber caused issues
+- [Fix] Removed duplicated `query()` method from `QueryBuilder` 
+- [Feat] Added `query.php` configuration file for defining default query params
 - [Feat] Added `withStatus()`, `withTrashed()` and `withDrafts()` query methods
+- [Feat] Added `withStatus()`, `withTrashed()` and `withDrafts()` query methods
+- [Refactor] Refactored `QueryBuilder` class
 - [Docs] Added IDE helpers for model objects
 - [Docs] Changed theme description
 
-Release Date: Jan 16th, 2022
+Release Date: Jan 17th, 2022
 
 ## Release 1.1.0
 

@@ -7,6 +7,7 @@
  * @since 1.0.0
  */
 
+use Timber\Timber;
 use Brocooly\Application\Bootstrapper;
 
 /**
@@ -15,8 +16,12 @@ use Brocooly\Application\Bootstrapper;
  * -------------------------------------------------------------------------
  *
  * It creates application instance and defines configuration object globally available
+ * Requires Timber library to init its constants
+ *
+ * @since 1.2.0
  */
 $app = new Bootstrapper(
+	new Timber(),
 	wp_normalize_path( BROCOOLY_THEME_PATH . '/config/*.php' ),
 );
 

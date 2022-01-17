@@ -28,15 +28,24 @@ class Bootstrapper
 	private bool $isBooted = false;
 
 	/**
+	 * Timber object
+	 *
+	 * @var Timber
+	 */
+	public Timber $timber;
+
+	/**
 	 * Init configuration object
 	 *
 	 * @param string $config
 	 */
-	public function __construct( string $config )
+	public function __construct( Timber $timber, string $config )
 	{
 		if ( ! defined( 'ABSPATH' ) ) {
 			exit;
 		}
+
+		$this->timber = $timber;
 
 		$this->init( $config );
 	}
@@ -69,6 +78,29 @@ class Bootstrapper
 	private function init( string $config )
 	{
 		Config::set( $config );
-		Timber::$dirname = config( 'timber.views' );
+
+		$this->timber::$dirname = config( 'timber.views' );
+		$this->timber::$cache   = config( 'timber.cache.apply' );
+
+		if ( true === config( 'timber.cache.apply' ) ) {
+			$this->applyTimberCache();
+		}
+	}
+
+	private function applyTimberCache() {
+		add_filter(
+			'timber/cache/location',
+			function( $path ) {
+				return config( 'timber.cache.location' );
+			}
+		);
+
+		add_filter(
+			'timber/twig/environment/options',
+			function( $options ) {
+				$options['cache'] = config( 'timber.cache.location' );
+			return $options;
+			}
+		);
 	}
 }

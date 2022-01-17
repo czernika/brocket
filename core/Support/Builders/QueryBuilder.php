@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Builders;
 
+use Timber\Timber;
+
 class QueryBuilder
 {
 
@@ -20,13 +22,6 @@ class QueryBuilder
 	 * @var array
 	 */
 	protected array $query = [];
-
-	/**
-	 * Posts per page
-	 *
-	 * @var integer
-	 */
-	protected int $postsPerPage = 10;
 
 	/**
 	 * Retrieved posts class map
@@ -41,6 +36,12 @@ class QueryBuilder
 	 * @var \Illuminate\Support\Collection|null
 	 */
 	public \Illuminate\Support\Collection|null $collection = null;
+
+	public function __construct( string $classMap )
+	{
+		$this->classMap = $classMap;
+		$this->query    = config( 'query.defaults' ) ?? [];
+	}
 
 	/**
 	 * Set custom query
@@ -63,9 +64,8 @@ class QueryBuilder
 	public function paginate( ?int $postsPerPage = null ) : self
 	{
 		if ( $postsPerPage ) {
-			$this->postsPerPage = $postsPerPage;
+			$this->query['posts_per_page'] = $postsPerPage;
 		}
-		$this->query['posts_per_page'] = $this->postsPerPage;
 		return $this;
 	}
 
@@ -117,25 +117,12 @@ class QueryBuilder
 	}
 
 	/**
-	 * Set custom query
-	 *
-	 * @param array $query
-	 * @return self
-	 */
-	public function query( array $query ) : self
-	{
-		$this->query = array_merge( $query, $this->query );
-		return $this;
-	}
-
-	/**
 	 * Retrieve all posts
 	 *
 	 * @return array|boolean|null
 	 */
 	public function all()
 	{
-		$this->query['posts_per_page'] = 500; // TODO make config for this option
 		return $this->get();
 	}
 

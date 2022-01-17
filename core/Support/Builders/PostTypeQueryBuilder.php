@@ -33,9 +33,9 @@ class PostTypeQueryBuilder extends QueryBuilder
 
 	public function __construct( string $postType, string $classMap )
 	{
-		$this->postType     = $postType;
-		$this->classMap     = $classMap;
-		$this->postsPerPage = 10; // TODO add config option.
+		$this->postType = $postType;
+
+		parent::__construct( $classMap );
 
 		$this->setQuery();
 	}
@@ -47,9 +47,8 @@ class PostTypeQueryBuilder extends QueryBuilder
 	 */
 	protected function setQuery() : void
 	{
-		$this->query['post_type']      = $this->postType;
-		$this->query['posts_per_page'] = $this->postsPerPage;
-		$this->query['post_status']    = [ 'publish' ];
+		$this->query['post_type']   = $this->postType;
+		$this->query['post_status'] = [ 'publish' ];
 	}
 
 	/**
