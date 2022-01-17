@@ -8,8 +8,9 @@
 - [Refactor] Removed duplicated `timber.limit` options as it was doing nothing
 - [Refactor] Refactored `QueryBuilder` class
 - [Refactor] Changed `wp-cli.yml` file to be more secure by default. Use `wp-cli.local.yml` file to override it for local development
-- [Refactor] Removed "trash" code
+- [Refactor] Removed "trash" code from testing
 - [Docs] Minor description changes across all files 
+- [Docs] Added conditional methods for `Route` facade to help IDE to understand it
 
 Release Date: Jan 18th, 2022
 
