@@ -14,6 +14,8 @@ namespace Brocooly;
 use Brocooly\Console\ClearCache;
 use Brocooly\Console\MakeProvider;
 use Brocooly\Console\MakeController;
+use Brocooly\Console\MakeCustomizerPanel;
+use Brocooly\Console\MakeCustomizerSection;
 use Brocooly\Console\MakeModelTaxonomy;
 use Brocooly\Console\MakeModelPostType;
 
@@ -29,6 +31,8 @@ class Commands
 		MakeProvider::class,
 		MakeModelPostType::class,
 		MakeModelTaxonomy::class,
+		MakeCustomizerPanel::class,
+		MakeCustomizerSection::class,
 		ClearCache::class,
 	];
 

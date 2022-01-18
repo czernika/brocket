@@ -33,7 +33,7 @@ return [
 		 *
 		 * @var int
 		 */
-		'posts_per_page' => 300, // phpcs:disable WordPress.WP.PostsPerPage
+		'posts_per_page' => 300, // phpcs:ignore WordPress.WP.PostsPerPage
 	],
 
 ];

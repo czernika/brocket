@@ -38,7 +38,8 @@
 		"symfony/console": "^6.0",
 		"timber/timber": "^1.19",
 		"vlucas/phpdotenv": "^5.3",
-		"webmozart/assert": "^1.10"
+		"webmozart/assert": "^1.10",
+		"aristath/kirki": "^4.0"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
@@ -82,7 +83,8 @@
 	"extra": {
 		"installer-paths": {
 			"web/app/mu-plugins/{$name}/": [
-				"type:wordpress-muplugin"
+				"type:wordpress-muplugin",
+				"aristath/kirki"
 			],
 			"web/app/plugins/{$name}/": [
 				"type:wordpress-plugin"
@@ -91,8 +93,7 @@
 				"type:wordpress-theme"
 			],
 			"web/app/vendor/{$vendor}/{$name}": [
-				"htmlburger/carbon-fields",
-				"aristath/kirki"
+				"htmlburger/carbon-fields"
 			]
 		},
 		"wordpress-install-dir": "web/wp"

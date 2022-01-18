@@ -25,6 +25,16 @@ class ClearCache extends Command
 	protected static $defaultName = 'cache:flush';
 
 	/**
+	 * Allow execution in production mode or not
+	 *
+	 * @return boolean
+	 */
+	public function notAllowedInProduction() : bool
+	{
+		return false;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) {

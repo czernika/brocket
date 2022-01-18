@@ -25,7 +25,7 @@ if ( ! function_exists( 'dump' ) ) {
 	 */
 	function dump( $var ) {
 		echo '<pre></pre>';
-		var_dump( $var );
+		var_dump( $var ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 		echo '</pre>';
 	}
 }
