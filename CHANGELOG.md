@@ -1,5 +1,17 @@
 # Changelog
 
+## Release 1.4.0
+
+- [Fix] Added `notAllowedInProduction()` method for `cache:flush` object as it caused error for any command
+- [Feat] Added support for theme options with customizer settings
+- [Feat] Added `new:customizer:panel` console command
+- [Feat] Added `new:customizer:section --panel` console command
+- [Feat] Added `CustomizerServiceProvider` provider
+- [Docs] Minor description changes across all files 
+- [Docs] Added conditional methods for `Mod` facade to help IDE to understand it
+
+Release Date: Jan 19th, 2022
+
 ## Release 1.3.0
 
 - [Feat] Added support for post types and terms metaboxes
