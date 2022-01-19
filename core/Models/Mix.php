@@ -60,6 +60,9 @@ use Brocooly\Support\Builders\PostTypeQueryBuilder;
  * @method static array all()
  * @method static array get()
  * @method static self query( array $query )
+ * @method static self with( array $postsIn )
+ * @method static self except( array $postsIn )
+ * @method static self exceptCurrent()
  *
  * @method static \Illuminate\Support\Collection collect()
  * @method static object|null first()

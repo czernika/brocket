@@ -46,7 +46,7 @@ class QueryBuilder
 	 */
 	protected function getPosts()
 	{
-		return Timber::get_posts( $this->query, $this->classMap );
+		return new \Timber\PostQuery( $this->query, $this->classMap );
 	}
 
 	/**
@@ -57,6 +57,7 @@ class QueryBuilder
 	public function all()
 	{
 		$this->query['posts_per_page'] = config( 'query.limit' );
+		$this->query['nopaging']       = true;
 		return $this->getPosts();
 	}
 
@@ -80,5 +81,39 @@ class QueryBuilder
 	{
 		$this->query = wp_parse_args( $query, $this->query );
 		return $this;
+	}
+
+	/**
+	 * Add given posts into query
+	 *
+	 * @param array $postsIn
+	 * @return self
+	 */
+	public function with( array $postsIn ) : self
+	{
+		$this->query['post__in'] = $postsIn;
+		return $this;
+	}
+
+	/**
+	 * Get posts except given
+	 *
+	 * @param array $postsIn
+	 * @return self
+	 */
+	public function except( array $postsIn ) : self
+	{
+		$this->query['post__not_in'] = $postsIn;
+		return $this;
+	}
+
+	/**
+	 * Get posts except current object
+	 *
+	 * @return self
+	 */
+	public function exceptCurrent() : self
+	{
+		return $this->except( [ get_queried_object_id() ] );
 	}
 }

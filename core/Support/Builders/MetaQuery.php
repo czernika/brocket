@@ -96,20 +96,20 @@ trait MetaQuery
 	/**
 	 * Set `AND` meta clause relation
 	 *
-	 * @return void
+	 * @return self
 	 */
-	public function andMeta() : void
+	public function andMeta() : self
 	{
-		$this->metaRelation( 'AND' );
+		return $this->metaRelation( 'AND' );
 	}
 
 	/**
 	 * Set `OR` meta clause relation
 	 *
-	 * @return void
+	 * @return self
 	 */
-	public function orMeta() : void
+	public function orMeta() : self
 	{
-		$this->metaRelation( 'OR' );
+		return $this->metaRelation( 'OR' );
 	}
 }

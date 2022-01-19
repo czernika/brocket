@@ -89,22 +89,22 @@ trait TaxQuery
 	 * Set `AND` term clause relation
 	 *
 	 * @since 1.4.2
-	 * @return void
+	 * @return self
 	 */
-	public function andTax() : void
+	public function andTax() : self
 	{
-		$this->taxRelation( 'AND' );
+		return $this->taxRelation( 'AND' );
 	}
 
 	/**
 	 * Set `OR` term clause relation
 	 *
 	 * @since 1.4.2
-	 * @return void
+	 * @return self
 	 */
-	public function orTax() : void
+	public function orTax() : self
 	{
-		$this->taxRelation( 'OR' );
+		return $this->taxRelation( 'OR' );
 	}
 
 	/**

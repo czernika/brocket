@@ -23,6 +23,7 @@ trait PaginationQuery
 	{
 		if ( $postsPerPage ) {
 			$this->query['posts_per_page'] = $postsPerPage;
+			$this->query['paged']          = max( 1, get_query_var( 'paged' ) );
 		}
 		return $this;
 	}

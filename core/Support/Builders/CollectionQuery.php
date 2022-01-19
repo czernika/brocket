@@ -25,22 +25,15 @@ trait CollectionQuery
 	}
 
 	/**
-	 * Get first post
+	 * Get any \Illuminate\Support\Collection method
 	 *
-	 * @return object|null
+	 * TODO add list of available methods
+	 * @param string $method
+	 * @param array $arguments
+	 * @return mixed
 	 */
-	public function first()
+	public function __call( $method, $arguments )
 	{
-		return $this->collect()?->first();
-	}
-
-	/**
-	 * Get last post
-	 *
-	 * @return object|null
-	 */
-	public function last()
-	{
-		return $this->collect()?->last();
+		return $this->collect()?->$method( ...$arguments );
 	}
 }
