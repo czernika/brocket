@@ -15,6 +15,7 @@ use Theme\Models\WP\Post;
 use Illuminate\Support\Str;
 use Brocooly\Models\Taxonomy;
 use Nette\PhpGenerator\Literal;
+use Brocooly\Support\Traits\HasTermMetaboxes;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
@@ -63,14 +64,28 @@ class MakeModelTaxonomy extends CreateClassCommand
 	private ?string $postTypeClassName = null;
 
 	/**
+	 * Define if this model has metaboxes
+	 *
+	 * @var boolean
+	 */
+	private $meta = false;
+
+	/**
 	 * @inheritDoc
 	 */
 	protected function configure(): void
 	{
-		$this->addArgument(
+		$this
+			->addArgument(
 				'taxonomy',
 				InputArgument::REQUIRED,
 				'Create custom taxonomy',
+			)
+			->addOption(
+				'meta',
+				'm',
+				InputOption::VALUE_NONE,
+				'Does this taxonomy has metaboxes or not?',
 			)
 			->addOption(
 				'post_type',
@@ -90,6 +105,7 @@ class MakeModelTaxonomy extends CreateClassCommand
 		$name = $input->getArgument( 'taxonomy' );
 
 		$this->postType = $input->getOption( 'post_type' );
+		$this->meta     = $input->getOption( 'meta' );
 
 		$this->defineDataByArgument( $name );
 
@@ -114,6 +130,13 @@ class MakeModelTaxonomy extends CreateClassCommand
 		$this->createNamesMethod( $class );
 
 		$this->createPostTypesProperty( $class );
+
+		/**
+		 * @since 1.4.1
+		 */
+		if ( $this->meta ) {
+			$this->createMethod( $class, 'metaboxes' );
+		}
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
@@ -142,6 +165,11 @@ class MakeModelTaxonomy extends CreateClassCommand
 			$this->postTypes         = [ new Literal( $postTypeSlug ) ];
 			$this->postTypeClassName = 'Theme\Models\\' . Str::replace( '/', '\\', $this->postType );
 			$namespace->addUse( $this->postTypeClassName );
+		}
+
+		if ( $this->meta ) {
+			$class->addTrait( HasTermMetaboxes::class );
+			$namespace->addUse( HasTermMetaboxes::class );
 		}
 
 		return $class;
@@ -234,15 +262,4 @@ class MakeModelTaxonomy extends CreateClassCommand
 		$taxonomyConstant->addComment( "Taxonomy slug\n" )
 						->addComment( '@var string' );
 	}
-
-	private function createWebUrlProperty( $class ) {
-		$class->addProperty( 'webUrl', $this->snakeCaseClassName )
-				->setType( 'string' )
-				->setPublic()
-				->addComment( 'Web URL' )
-				->addComment( "Publicly accessible name\n" )
-				->addComment( '@var string' );
-	}
-
-
 }

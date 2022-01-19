@@ -13,7 +13,9 @@ namespace Brocooly\Console;
 
 use Illuminate\Support\Str;
 use Brocooly\Models\PostType;
+use Brocooly\Support\Traits\HasPostMetaboxes;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,6 +41,13 @@ class MakeModelPostType extends CreateClassCommand
 	protected string $themeFileFolder = 'Models';
 
 	/**
+	 * Define if this model has metaboxes
+	 *
+	 * @var boolean
+	 */
+	private $meta = false;
+
+	/**
 	 * @inheritDoc
 	 */
 	protected function configure(): void
@@ -48,6 +57,12 @@ class MakeModelPostType extends CreateClassCommand
 				'post_type',
 				InputArgument::REQUIRED,
 				'Create custom post type',
+			)
+			->addOption(
+				'meta',
+				'm',
+				InputOption::VALUE_NONE,
+				'Does this post type has metaboxes or not?',
 			);
 	}
 
@@ -58,7 +73,8 @@ class MakeModelPostType extends CreateClassCommand
 	{
 		$io = new SymfonyStyle( $input, $output );
 
-		$name = $input->getArgument( 'post_type' );
+		$name       = $input->getArgument( 'post_type' );
+		$this->meta = $input->getOption( 'meta' );
 
 		$this->defineDataByArgument( $name );
 
@@ -77,6 +93,13 @@ class MakeModelPostType extends CreateClassCommand
 		$this->createArgsMethod( $class );
 		$this->createLabelsMethod( $class );
 		$this->createNamesMethod( $class );
+
+		/**
+		 * @since 1.4.1
+		 */
+		if ( $this->meta ) {
+			$this->createMethod( $class, 'metaboxes' );
+		}
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
@@ -181,6 +204,11 @@ class MakeModelPostType extends CreateClassCommand
 		$class = $namespace->addClass( $this->className );
 		$class->addExtend( PostType::class );
 		$class->addTrait( RequiresRegistrationTrait::class );
+
+		if ( $this->meta ) {
+			$class->addTrait( HasPostMetaboxes::class );
+			$namespace->addUse( HasPostMetaboxes::class );
+		}
 
 		return $class;
 	}

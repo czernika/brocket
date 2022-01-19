@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.4.1
+
+- [Feat] `new:model` commands are now supports `-m` flag which will create methods to register metaboxes within generated class
+
+Release Date: Jan 19th, 2022
+
 ## Release 1.4.0
 
 - [Fix] Added `notAllowedInProduction()` method for `cache:flush` object as it caused error for any command
