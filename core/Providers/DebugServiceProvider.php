@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
+use Whoops\Handler\PrettyPageHandler;
 use Pimple\Container;
 use Brocooly\Support\Helper;
 use HelloNico\Twig\DumpExtension;
@@ -24,6 +25,25 @@ class DebugServiceProvider implements ServiceProviderInterface
 	public function register( $container )
 	{
 		$container['brocooly.debugger.twig'] = fn( $c ) => new DumpExtension();
+
+		/**
+		 * Override WPEmerge PrettyPage Handler as it cause error
+		 * "Undefined variable $prettify" with nasty error page
+		 * We just removed custom resource path
+		 *
+		 * @since 1.4.3
+		 */
+		$container[ PrettyPageHandler::class ] = $container->extend(
+			PrettyPageHandler::class,
+			function( $debugger, $c ) {
+				$handler = new PrettyPageHandler();
+				$handler->addDataTableCallback( 'WP Emerge: Route', function ( $inspector ) use ( $c ) {
+					return $c[ DebugDataProvider::class ]->route( $inspector );
+				} );
+
+				return $handler;
+			}
+		);
 	}
 
 	public function bootstrap( $container )

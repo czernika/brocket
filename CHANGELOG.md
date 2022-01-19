@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.4.3
+
+- [Fix] Fixed WPEmerge custom resource path for PrettyPageHandler as it cause error
+- [Style] Added `screenshot.png` file
+- [Style] Added PHP version badge into repository
+
+Release Date: Jan 20th, 2022
+
 ## Release 1.4.2
 
 - [Fix] Fixed pagination issue
