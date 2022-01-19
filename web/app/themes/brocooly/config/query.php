@@ -21,6 +21,7 @@ return [
 	 * It is not recommended way for performance reasons
 	 * so we're set it to 300 while calling `all()` method of QueryBuilder.
 	 *
+	 * @since 1.4.2
 	 * @var int
 	 */
 	'limit'    => 300,

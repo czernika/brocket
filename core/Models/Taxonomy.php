@@ -23,6 +23,8 @@ use Brocooly\Support\Builders\TaxonomyQueryBuilder;
  * @method static self andTax()
  * @method static self orTax()
  * @method static self taxQuery( array $query )
+ * @method static array|null terms( $args = null, array $maybe = [] )
+ * @method static self returnAs( string $classMap )
  *
  * @method static self whereAuthor( $author )
  * @method static self whereAuthorId( int $id )

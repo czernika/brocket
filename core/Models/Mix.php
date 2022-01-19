@@ -1,4 +1,11 @@
 <?php
+/**
+ * Experimental mixed post types class
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.4.2
+ */
 
 declare(strict_types=1);
 

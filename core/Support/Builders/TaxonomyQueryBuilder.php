@@ -28,7 +28,7 @@ class TaxonomyQueryBuilder extends QueryBuilder
 	 *
 	 * @var string
 	 */
-	protected string $classMap = 'Timber\Term';
+	protected string $classMap = 'Timber\Post';
 
 	public function __construct( string $taxonomy, string $classMap )
 	{
@@ -48,5 +48,17 @@ class TaxonomyQueryBuilder extends QueryBuilder
 	{
 		$this->query['tax_query']   = [];
 		$this->query['post_status'] = [ 'publish' ];
+	}
+
+	/**
+	 * Rewrite default classmap
+	 *
+	 * @param string $classMap
+	 * @return self
+	 */
+	public function returnAs( string $classMap )
+	{
+		$this->classMap = $classMap;
+		return $this;
 	}
 }
