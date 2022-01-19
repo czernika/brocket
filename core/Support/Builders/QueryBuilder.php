@@ -16,6 +16,8 @@ use Timber\Timber;
 class QueryBuilder
 {
 
+	use AuthorQuery, MetaQuery, ConditionalQuery, PaginationQuery, StatusQuery, DateQuery, SortQuery, SearchQuery, CollectionQuery;
+
 	/**
 	 * Query params
 	 *
@@ -37,85 +39,6 @@ class QueryBuilder
 	 */
 	public \Illuminate\Support\Collection|null $collection = null;
 
-	public function __construct( string $classMap )
-	{
-		$this->classMap = $classMap;
-		$this->query    = config( 'query.defaults' ) ?? [];
-	}
-
-	/**
-	 * Set custom query
-	 *
-	 * @param array $query
-	 * @return self
-	 */
-	public function query( array $query ) : self
-	{
-		$this->query = array_merge( $query, $this->query );
-		return $this;
-	}
-
-	/**
-	 * Set posts per page param
-	 *
-	 * @param integer|null $postsPerPage
-	 * @return self
-	 */
-	public function paginate( ?int $postsPerPage = null ) : self
-	{
-		if ( $postsPerPage ) {
-			$this->query['posts_per_page'] = $postsPerPage;
-		}
-		return $this;
-	}
-
-	/**
-	 * Set any single query param
-	 *
-	 * @param string $key
-	 * @param mixed $value
-	 * @return self
-	 */
-	public function where( string $key, $value ) : self
-	{
-		$this->query[ $key ] = $value;
-		return $this;
-	}
-
-	/**
-	 * Get posts with special statuses
-	 *
-	 * @param string|array $status
-	 * @return self
-	 */
-	public function withStatus( string|array $status ) : self
-	{
-		$this->query['post_status'] = $status;
-		return $this;
-	}
-
-	/**
-	 * Get all posts with drafts
-	 *
-	 * @return self
-	 */
-	public function withDrafts() : self
-	{
-		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'draft' ] );
-		return $this;
-	}
-
-	/**
-	 * Get all posts with trashed
-	 *
-	 * @return self
-	 */
-	public function withTrashed() : self
-	{
-		$this->query['post_status'] = array_merge( $this->query['post_status'], [ 'trash' ] );
-		return $this;
-	}
-
 	/**
 	 * Get posts query
 	 *
@@ -128,13 +51,12 @@ class QueryBuilder
 
 	/**
 	 * Retrieve all posts
-	 * Same as `get()` but more convenient for users
-	 * as `get()` ends query while `all()` starts and ends it.
 	 *
 	 * @return array|boolean|null
 	 */
 	public function all()
 	{
+		$this->query['posts_per_page'] = config( 'query.limit' );
 		return $this->getPosts();
 	}
 
@@ -149,33 +71,14 @@ class QueryBuilder
 	}
 
 	/**
-	 * Retrieve posts
+	 * Set custom query
 	 *
-	 * @return \Illuminate\Support\Collection
+	 * @param array $query
+	 * @return self
 	 */
-	public function collect()
+	public function query( array $query ) : self
 	{
-		$this->collection = collect( $this->getPosts() );
-		return $this->collection;
-	}
-
-	/**
-	 * Get first post
-	 *
-	 * @return object|null
-	 */
-	public function first()
-	{
-		return $this->collect()?->first();
-	}
-
-	/**
-	 * Get last post
-	 *
-	 * @return object|null
-	 */
-	public function last()
-	{
-		return $this->collect()?->last();
+		$this->query = wp_parse_args( $query, $this->query );
+		return $this;
 	}
 }

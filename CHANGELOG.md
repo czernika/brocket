@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.4.2
+
+- [Feat] Added new query methods
+- [Refactor] Refactored Query builders
+- [Refactor] Refactored `query.php` configuration file - added `limit` option which set `posts_per_page` ONLY within all method
+
+Release Date: Jan 20th, 2022
+
 ## Release 1.4.1
 
 - [Feat] `new:model` commands are now supports `-m` flag which will create methods to register metaboxes within generated class

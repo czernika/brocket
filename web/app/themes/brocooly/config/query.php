@@ -14,6 +14,19 @@ return [
 
 	/**
 	 * --------------------------------------------------------------------------
+	 * Posts per page limit
+	 * --------------------------------------------------------------------------
+	 *
+	 * When you are getting all posts you may set `posts_per_page` query parameter as `-1`.
+	 * It is not recommended way for performance reasons
+	 * so we're set it to 300 while calling `all()` method of QueryBuilder.
+	 *
+	 * @var int
+	 */
+	'limit'    => 300,
+
+	/**
+	 * --------------------------------------------------------------------------
 	 * Default query parameters
 	 * --------------------------------------------------------------------------
 	 *
@@ -22,18 +35,7 @@ return [
 	 * @var array
 	 */
 	'defaults' => [
-
-		/**
-		 * --------------------------------------------------------------------------
-		 * Posts per page limit
-		 * --------------------------------------------------------------------------
-		 *
-		 * When you are getting all posts you may set `posts_per_page` query parameter as `-1`.
-		 * It is not recommended way for performance reasons so we're set it to 300.
-		 *
-		 * @var int
-		 */
-		'posts_per_page' => 300, // phpcs:ignore WordPress.WP.PostsPerPage
+		'posts_per_page' => get_option( 'posts_per_page' ), // phpcs:ignore WordPress.WP.PostsPerPage
 	],
 
 ];

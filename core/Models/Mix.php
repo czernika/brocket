@@ -1,29 +1,12 @@
 <?php
-/**
- * Taxonomy model object
- *
- * @package Brocooly
- * @subpackage Brocket
- * @since 1.1.0
- */
 
 declare(strict_types=1);
 
 namespace Brocooly\Models;
 
-use Timber\Term;
-use Brocooly\Support\Builders\TaxonomyQueryBuilder;
+use Brocooly\Support\Builders\PostTypeQueryBuilder;
 
 /**
- * @method static self term( string $field, $terms, string $operator = 'IN' )
- * @method static self termId( $terms, string $operator = 'IN' )
- * @method static self termName( $terms, string $operator = 'IN' )
- * @method static self termSlug( $terms, string $operator = 'IN' )
- * @method static self taxRelation( string $relation = 'AND' )
- * @method static self andTax()
- * @method static self orTax()
- * @method static self taxQuery( array $query )
- *
  * @method static self whereAuthor( $author )
  * @method static self whereAuthorId( int $id )
  * @method static self whereAuthorName( string $name )
@@ -75,25 +58,10 @@ use Brocooly\Support\Builders\TaxonomyQueryBuilder;
  * @method static object|null first()
  * @method static object|null last()
  */
-class Taxonomy extends Term
+class Mix
 {
-
 	/**
-	 * Taxonomy name
-	 *
-	 * @var string
-	 */
-	const TAXONOMY = 'category';
-
-	/**
-	 * Post types attached to taxonomy
-	 *
-	 * @var string|array
-	 */
-	protected string|array $postTypes = 'post';
-
-	/**
-	 * Build query to retrieve posts
+	 * Build query to retrieve mixed posts
 	 *
 	 * @param string $name
 	 * @param array $arguments
@@ -101,17 +69,7 @@ class Taxonomy extends Term
 	 */
 	public static function __callStatic( string $name, array $arguments )
 	{
-		$builder = new TaxonomyQueryBuilder( static::TAXONOMY, static::class );
-		return call_user_func_array( [ $builder, $name ], $arguments );
-	}
-
-	/**
-	 * Get taxonomy post types
-	 *
-	 * @return string|array
-	 */
-	public function getPostTypes()
-	{
-		return $this->postTypes;
+		$builder = new PostTypeQueryBuilder( $arguments[0], 'Timber\Post' );
+		return call_user_func_array( [ $builder, $name ], array_shift( $arguments ) );
 	}
 }
