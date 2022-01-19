@@ -83,8 +83,7 @@
 	"extra": {
 		"installer-paths": {
 			"web/app/mu-plugins/{$name}/": [
-				"type:wordpress-muplugin",
-				"aristath/kirki"
+				"type:wordpress-muplugin"
 			],
 			"web/app/plugins/{$name}/": [
 				"type:wordpress-plugin"
@@ -93,7 +92,8 @@
 				"type:wordpress-theme"
 			],
 			"web/app/vendor/{$vendor}/{$name}": [
-				"htmlburger/carbon-fields"
+				"htmlburger/carbon-fields",
+				"aristath/kirki"
 			]
 		},
 		"wordpress-install-dir": "web/wp"

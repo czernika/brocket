@@ -9,6 +9,7 @@
 - [Feat] Added `CustomizerServiceProvider` provider
 - [Docs] Minor description changes across all files 
 - [Docs] Added conditional methods for `Mod` facade to help IDE to understand it
+- [Docs] Updated `README.md`, added some badges and link to documentation
 
 Release Date: Jan 19th, 2022
 

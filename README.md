@@ -1,8 +1,14 @@
 # Lightweight Brocooly (Brocket)
 
+[![GitHub license](https://img.shields.io/github/license/czernika/brocket)](https://github.com/czernika/brocket/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/v/release/czernika/brocket)](https://gitHub.com/czernika/brocket/releases/) ![Last commit](https://img.shields.io/github/last-commit/czernika/brocket) ![PHP version](https://img.shields.io/packagist/php-v/czernika/brocket)
+
 Improved Controllers, Middleware and Routers, but slightly less powerful Container
 
 > Open beta. Package in development
+
+## Documentation
+
+[In progress](https://czernika.github.io/brocket-docs/#/)
 
 ## Credentials
 
@@ -17,3 +23,7 @@ Thanks to all people which has impact on building this
 - [WordPress](https://wordpress.org/) - WordPress team for making great CMS
 
 and many others authors of Composer packages and WordPress plugins Brocket uses
+
+## License
+
+MIT

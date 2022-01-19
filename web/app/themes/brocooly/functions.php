@@ -26,6 +26,18 @@ require_once __DIR__ . '/bootstrap/config.php';
 require_once __DIR__ . '/bootstrap/app.php';
 
 /**
+ * -------------------------------------------------------------------------
+ * Include Kirki Framework
+ * -------------------------------------------------------------------------
+ *
+ * If your theme requires theme options
+ * you may include this file
+ */
+if ( ! class_exists( 'Kirki' ) ) {
+	require_once WP_CONTENT_DIR . '/vendor/aristath/kirki/kirki.php';
+}
+
+/**
  * ==========================================================================
  * Stop line - you may place your code AFTER this block
  * ==========================================================================
