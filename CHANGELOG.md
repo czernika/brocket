@@ -1,5 +1,15 @@
 # Changelog
 
+## Release 1.5.0
+
+- [Feat] Added `ValidatorFactory` and `Validator` facade to validate incoming request
+- [Feat] Added validation rules file and validation methods to request object
+- [Feat] Added `app.php` configuration file
+- [Feat] Defined default theme language directory
+- [Refactor] Changed `CustomizerFactory` namespace
+
+Release Date: Jan 20th, 2022
+
 ## Release 1.4.3
 
 - [Fix] Fixed WPEmerge custom resource path for PrettyPageHandler as it cause error

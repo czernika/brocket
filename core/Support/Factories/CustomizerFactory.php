@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Brocooly\Customizer;
+namespace Brocooly\Support\Factories;
 
 use Kirki\Field\Checkbox;
 use Kirki\Field\Background;

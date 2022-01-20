@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Facades;
 
-use Brocooly\Customizer\CustomizerFactory;
+use Brocooly\Support\Factories\CustomizerFactory;
 
 /**
  * @method static array background()

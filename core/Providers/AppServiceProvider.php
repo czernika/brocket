@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
+use Brocooly\Request\Request;
 use Brocooly\Router\Blueprint;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
@@ -29,6 +30,16 @@ class AppServiceProvider implements ServiceProviderInterface
 					$c[ WPEMERGE_ROUTING_ROUTER_KEY ],
 					$c[ WPEMERGE_VIEW_SERVICE_KEY ],
 				);
+			}
+		);
+
+		/**
+		 * Extend WPEmerge request object
+		 */
+		$container[ WPEMERGE_REQUEST_KEY ] = $container->extend(
+			WPEMERGE_REQUEST_KEY,
+			function( $request, $c ) {
+				return Request::fromGlobals();
 			}
 		);
 	}
