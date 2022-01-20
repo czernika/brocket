@@ -33,7 +33,7 @@ require_once __DIR__ . '/bootstrap/app.php';
  * If your theme requires theme options
  * you may include this file
  */
-if ( ! class_exists( 'Kirki' ) ) {
+if ( ! class_exists( \Kirki\Compatibility\Kirki::class ) ) {
 	require_once WP_CONTENT_DIR . '/vendor/aristath/kirki/kirki.php';
 }
 

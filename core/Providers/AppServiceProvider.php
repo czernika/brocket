@@ -13,6 +13,9 @@ namespace Brocooly\Providers;
 
 use Brocooly\Request\Request;
 use Brocooly\Router\Blueprint;
+use Illuminate\Filesystem\Filesystem;
+use Brocooly\Support\Factories\ValidatorFactory;
+use Brocooly\Support\Factories\CustomizerFactory;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class AppServiceProvider implements ServiceProviderInterface
@@ -35,6 +38,8 @@ class AppServiceProvider implements ServiceProviderInterface
 
 		/**
 		 * Extend WPEmerge request object
+		 *
+		 * @since 1.5.0
 		 */
 		$container[ WPEMERGE_REQUEST_KEY ] = $container->extend(
 			WPEMERGE_REQUEST_KEY,
@@ -42,6 +47,15 @@ class AppServiceProvider implements ServiceProviderInterface
 				return Request::fromGlobals();
 			}
 		);
+
+		/**
+		 * Facades
+		 *
+		 * @since 1.5.0
+		 */
+		$container['brocooly.customizer'] = fn( $c ) => new CustomizerFactory();
+		$container['brocooly.validator']  = fn( $c ) => new ValidatorFactory();
+		$container['brocooly.file']       = fn( $c ) => new Filesystem();
 	}
 
 	public function bootstrap($container)

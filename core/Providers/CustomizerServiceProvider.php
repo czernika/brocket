@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
-use Kirki\Compatibility\Kirki;
 use Kirki\Panel;
 use Kirki\Section;
+use Kirki\Compatibility\Kirki;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class CustomizerServiceProvider implements ServiceProviderInterface
@@ -25,7 +25,7 @@ class CustomizerServiceProvider implements ServiceProviderInterface
 
 	public function bootstrap( $container )
 	{
-		if ( ! class_exists( 'Kirki' ) ) {
+		if ( ! class_exists( Kirki::class ) ) {
 			return;
 		}
 
@@ -73,6 +73,10 @@ class CustomizerServiceProvider implements ServiceProviderInterface
 		foreach ( config( 'customizer.sections' ) as $section ) {
 			$customizerSection = new $section();
 			$sectionArgs       = $customizerSection->args();
+
+			if ( is_string( $sectionArgs ) ) {
+				$sectionArgs = [ 'title' => $sectionArgs ];
+			}
 
 			new Section( $customizerSection::SECTION_ID, $sectionArgs );
 

@@ -155,7 +155,7 @@ class MakeCustomizerSection extends CreateClassCommand
 	}
 
 	private function createFieldsMethod( $class ) {
-		$controlsMethod = $this->createMethod( $class, 'controls', $this->createFieldsMethodContent() );
+		$controlsMethod = $this->createMethod( $class, 'fields', $this->createFieldsMethodContent() );
 
 		$controlsMethod
 			->addComment( "Section controls\n" )

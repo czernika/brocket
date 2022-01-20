@@ -2,11 +2,14 @@
 
 ## Release 1.5.0
 
+- [Fix] Fixed error for generated Customizer section
+- [Fix] Fixed check for Kirki Framework to be present
 - [Feat] Added `ValidatorFactory` and `Validator` facade to validate incoming request
 - [Feat] Added validation rules file and validation methods to request object
 - [Feat] Added `app.php` configuration file
 - [Feat] Defined default theme language directory
 - [Refactor] Changed `CustomizerFactory` namespace
+- [Refactor] Facades accessor refactored to accept string values
 
 Release Date: Jan 20th, 2022
 

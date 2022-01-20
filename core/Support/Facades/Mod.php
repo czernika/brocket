@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Facades;
 
-use Brocooly\Support\Factories\CustomizerFactory;
-
 /**
  * @method static array background()
  * @method static array code()
@@ -52,6 +50,6 @@ class Mod extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return new CustomizerFactory();
+		return 'brocooly.customizer';
 	}
 }

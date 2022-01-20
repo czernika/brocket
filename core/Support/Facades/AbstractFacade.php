@@ -19,6 +19,12 @@ abstract class AbstractFacade
 	public static function __callStatic( $name, $arguments )
 	{
 		Assert::methodExists( static::class, 'accessor', 'No accessor key was provided' );
-		return call_user_func_array( [ static::accessor(), $name ], $arguments );
+
+		$accessor = static::accessor();
+		if ( is_string( $accessor ) ) {
+			$accessor = app( $accessor );
+		}
+
+		return call_user_func_array( [ $accessor, $name ], $arguments );
 	}
 }
