@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.5.1
+
+- [Feat] Added support for Docker
+
+Release Date: Jan 21st, 2022
+
 ## Release 1.5.0
 
 - [Fix] Fixed error for generated Customizer section
