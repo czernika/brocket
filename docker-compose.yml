@@ -81,7 +81,7 @@ services:
   #   image: composer
   #   container_name: brocket-composer
   #   working_dir: /var/www/html
-  #   restart: 'no'
+  #   restart: no
   #   volumes:
   #     - ./:/var/www/html:rw,cached
   #   networks:

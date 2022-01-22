@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.5.2
+
+- [Feat] Added support for ssl certs for Docker
+- [Refactor] Refactored `Bootstrapper` class to define theme constants within
+- [Refactor] Removed `config.php` bootstrap file
+
+Release Date: Jan 22nd, 2022
+
 ## Release 1.5.1
 
 - [Feat] Added support for Docker

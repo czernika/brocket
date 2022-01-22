@@ -77,6 +77,8 @@ class Bootstrapper
 	 */
 	private function init( string $config )
 	{
+		$this->setDefinitions();
+
 		Config::set( $config );
 
 		$this->timber::$dirname = config( 'timber.views' );
@@ -87,7 +89,13 @@ class Bootstrapper
 		}
 	}
 
-	private function applyTimberCache() {
+	/**
+	 * Set Timber cache for twig templates
+	 *
+	 * @return void
+	 */
+	private function applyTimberCache()
+	{
 		add_filter(
 			'timber/cache/location',
 			function( $path ) {
@@ -99,8 +107,33 @@ class Bootstrapper
 			'timber/twig/environment/options',
 			function( $options ) {
 				$options['cache'] = config( 'timber.cache.location' );
-			return $options;
+				return $options;
 			}
 		);
+	}
+
+	/**
+	 * Set main theme constants
+	 *
+	 * @return void
+	 */
+	private function setDefinitions()
+	{
+		if ( ! defined( 'BROCOOLY_THEME_PATH' ) ) {
+			define( 'BROCOOLY_THEME_PATH', trailingslashit( get_template_directory() ) );
+		}
+
+		if ( ! defined( 'BROCOOLY_THEME_URI' ) ) {
+			define( 'BROCOOLY_THEME_URI', trailingslashit( get_template_directory_uri() ) );
+		}
+
+		/**
+		 * Path where all i18n files are
+		 *
+		 * @since 1.5.0
+		 */
+		if ( ! defined( 'BROCOOLY_THEME_LANG_PATH' ) ) {
+			define( 'BROCOOLY_THEME_LANG_PATH', BROCOOLY_THEME_PATH . 'languages' );
+		}
 	}
 }

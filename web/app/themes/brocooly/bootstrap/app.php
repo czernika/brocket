@@ -22,7 +22,7 @@ use Brocooly\Application\Bootstrapper;
  */
 $app = new Bootstrapper(
 	new Timber(),
-	wp_normalize_path( BROCOOLY_THEME_PATH . '/config/*.php' ),
+	wp_normalize_path( get_template_directory() . '/config/*.php' ),
 );
 
 /**
