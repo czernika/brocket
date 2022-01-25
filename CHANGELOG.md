@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.6.0
+
+- [Feat] Added assets autoloader
+- [Feat] Added `laravel-mix` config file
+- [Style] Fixed some minor typos
+
+Release Date: Jan 25th, 2022
+
 ## Release 1.5.3
 
 - [Fix] Cache was not set correctly and applied in a development mode

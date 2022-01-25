@@ -1,0 +1,38 @@
+{
+  "name": "brocket",
+  "version": "1.0.0",
+  "description": "Developer-friendly framework heavily inspired by Laravel and based on Timber and Wpemerge solutions for WordPress themes development with Bedrock folder structure",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "mix",
+    "watch": "mix watch",
+    "prod": "mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/czernika/brocket.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/czernika/brocket/issues"
+  },
+  "homepage": "https://github.com/czernika/brocket#readme",
+  "dependencies": {
+    "laravel-mix": "^6.0.41"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "dotenv": "^14.3.0",
+    "laravel-mix-clean": "^0.1.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0"
+  }
+}

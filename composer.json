@@ -28,6 +28,8 @@
 		"illuminate/collections": "^8.79",
 		"illuminate/filesystem": "^8.79",
 		"illuminate/support": "^8.79",
+		"illuminate/translation": "^8.80",
+		"illuminate/validation": "^8.80",
 		"johnbillion/extended-cpts": "^4.5",
 		"mnsami/composer-custom-directory-installer": "^2.0",
 		"nette/php-generator": "^3.6",
@@ -40,9 +42,7 @@
 		"symfony/console": "^6.0",
 		"timber/timber": "^1.19",
 		"vlucas/phpdotenv": "^5.3",
-		"webmozart/assert": "^1.10",
-		"illuminate/translation": "^8.80",
-		"illuminate/validation": "^8.80"
+		"webmozart/assert": "^1.10"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",

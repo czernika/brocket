@@ -93,7 +93,7 @@ if ( ! function_exists( 'app' ) ) {
 		$app = Brocooly::container();
 
 		if ( $key ) {
-			return $app->resolve( $key );
+			return $app[ $key ];
 		}
 
 		return $app;
