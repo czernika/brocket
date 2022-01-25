@@ -2,7 +2,7 @@
 /**
  * Main theme object
  *
- * @package Brcooly
+ * @package Brocooly
  * @since 1.0.0
  */
 
@@ -12,9 +12,7 @@ namespace Theme;
 
 use WPEmerge\Application\ApplicationTrait;
 
-/**
- * @mixin \WPEmerge\Application\ApplicationMixin
- */
+/** @mixin \WPEmerge\Application\ApplicationMixin */
 class Brocooly
 {
 	use ApplicationTrait;

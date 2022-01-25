@@ -39,7 +39,7 @@ return [
 		 *
 		 * @var bool
 		 */
-		'apply'    => WP_DEBUG,
+		'apply'    => isProduction(),
 
 		/**
 		 * Cache location

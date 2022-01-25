@@ -11,7 +11,6 @@ use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
-use Brocooly\Application\Bootstrapper;
 
 use function Env\env;
 
@@ -91,7 +90,7 @@ if ( ! function_exists( 'app' ) ) {
 	 * @return mixed
 	 */
 	function app( ?string $key = null ) {
-		$app = Bootstrapper::getAppInstance();
+		$app = Brocooly::container();
 
 		if ( $key ) {
 			return $app->resolve( $key );

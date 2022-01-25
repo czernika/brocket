@@ -1,11 +1,15 @@
 <?php
 /**
- * Brocooly Framework - developer-friendly framework heavily inspired by Laravel and based on Timber and Wpemerge solutions for WordPress themes development with Bedrock folder structure
+ * Brocooly Framework - developer-friendly framework
+ * heavily inspired by Laravel and based on Timber and WPEmerge solutions
+ * for WordPress themes development with Bedrock folder structure
  *
  * @package Brocooly
  * @author Ihar Aliakseyenka <aliha.devs@gmail.com>
  * @since 1.0.0
  */
+
+use Theme\Brocooly;
 
 /**
  * -------------------------------------------------------------------------

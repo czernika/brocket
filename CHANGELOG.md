@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.5.3
+
+- [Fix] Cache was not set correctly and applied in a development mode
+- [Refactor] Refactored `app()` helper function to use built-in WPEmerge container
+- [Refactor] Refactored `AbstractFacade` class to have more functionality
+- [Style] Fixed some typos
+
+Release Date: Jan 25th, 2022
+
 ## Release 1.5.2
 
 - [Feat] Added support for ssl certs for Docker
