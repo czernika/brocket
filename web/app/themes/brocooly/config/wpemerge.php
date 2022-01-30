@@ -61,4 +61,16 @@ return [
 		 */
 		ThemeServiceProvider::class,
 	],
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Custom theme middleware classes
+	 * --------------------------------------------------------------------------
+	 *
+	 * Array of service providers you wish to enable.
+	 *
+	 * @since 1.7.0
+	 * @var array
+	 */
+	'middleware' => [],
 ];

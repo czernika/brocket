@@ -15,11 +15,32 @@ use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class ThemeServiceProvider implements ServiceProviderInterface
 {
-	public function register( $container ) {
+	public function register( $container )
+	{
 
 	}
 
-	public function bootstrap( $container ) {
+	public function bootstrap( $container )
+	{
+		add_action( 'after_setup_theme', [ $this, 'afterSetupTheme' ] );
+	}
+
+	/**
+	 * Boot Carbon Fields callback
+	 *
+	 * @return void
+	 */
+	public function afterSetupTheme()
+	{
+		/**
+		 * --------------------------------------------------------------------------
+		 * Load theme text domain
+		 * --------------------------------------------------------------------------
+		 *
+		 * Make theme multilingual
+		 * @since 1.7.0
+		 */
+		load_theme_textdomain( 'brocooly', BROCOOLY_THEME_LANG_PATH );
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -31,16 +52,6 @@ class ThemeServiceProvider implements ServiceProviderInterface
 		 *
 		 * @link https://docs.carbonfields.net/quickstart.html
 		 */
-		// add_action( 'after_setup_theme', [ $this, 'bootCarbonFields' ] );
-	}
-
-	/**
-	 * Boot Carbon Fields callback
-	 *
-	 * @return void
-	 */
-	public function bootCarbonFields()
-	{
-		\Carbon_Fields\Carbon_Fields::boot();
+		// \Carbon_Fields\Carbon_Fields::boot();
 	}
 }

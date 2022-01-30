@@ -1,0 +1,90 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Brocooly\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-30 17:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.8; wp-5.9\n"
+"X-Domain: brocooly"
+
+#: resources/views/content/404.twig:26
+msgid "404! Not found"
+msgstr ""
+
+#. Author of the theme
+msgid "Aliakseyenka Ihar "
+msgstr ""
+
+#: resources/views/example.twig:28
+#, php-format
+msgid "Brocket Framework v%s"
+msgstr ""
+
+#. Name of the theme
+msgid "Brocooly"
+msgstr ""
+
+#: resources/views/layouts/app.twig:13
+msgid "Brocooly Framework"
+msgstr ""
+
+#: resources/views/example.twig:59
+msgid "CMS Documentation"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Developer-friendly framework heavily inspired by Laravel and based on Timber "
+"and Wpemerge solutions for WordPress themes development with Bedrock folder "
+"structure"
+msgstr ""
+
+#: resources/views/example.twig:43
+msgid "Documentation"
+msgstr ""
+
+#. URI of the theme
+msgid "https://czernika.github.io/brocooly/"
+msgstr ""
+
+#: resources/views/example.twig:93
+#, php-format
+msgid "Icons made by %1$s, %2$s from %3$s"
+msgstr ""
+
+#: resources/views/example.twig:73
+msgid "Learn about Timber theme"
+msgstr ""
+
+#: resources/views/example.twig:81
+msgid "Login"
+msgstr ""
+
+#: resources/views/content/404.twig:3
+msgid "Not found"
+msgstr ""
+
+#: resources/views/example.twig:44
+msgid "Read about main Brocooly features"
+msgstr ""
+
+#: resources/views/example.twig:72
+msgid "Timber"
+msgstr ""
+
+#: resources/views/example.twig:58
+msgid "WordPress"
+msgstr ""
+
+#: resources/views/example.twig:31
+msgid "You can find this file at `resources/views/example.twig`"
+msgstr ""

@@ -16,6 +16,7 @@ use Brocooly\Console\MakeProvider;
 use Brocooly\Console\MakeController;
 use Brocooly\Console\MakeCustomizerPanel;
 use Brocooly\Console\MakeCustomizerSection;
+use Brocooly\Console\MakeMiddleware;
 use Brocooly\Console\MakeModelTaxonomy;
 use Brocooly\Console\MakeModelPostType;
 
@@ -29,6 +30,7 @@ class Commands
 	private static array $commands = [
 		MakeController::class,
 		MakeProvider::class,
+		MakeMiddleware::class,
 		MakeModelPostType::class,
 		MakeModelTaxonomy::class,
 		MakeCustomizerPanel::class,

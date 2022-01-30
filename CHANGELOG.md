@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.7.0
+
+- [Feat] Added `new:middleware` console command to create Middleware classes
+- [Feat] Added `-m` flag for controller creation command to help with middleware
+- [Feat] Added multilanguage support
+
+Release Date: Jan 30th, 2022
+
 ## Release 1.6.3
 
 - [Feat] Added `asset()` helper function for PHP and twig templates both

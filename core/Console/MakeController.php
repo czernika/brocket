@@ -16,6 +16,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use WPEmerge\Middleware\HasControllerMiddlewareTrait;
+use WPEmerge\Middleware\HasControllerMiddlewareInterface;
 
 class MakeController extends CreateClassCommand
 {
@@ -58,6 +60,12 @@ class MakeController extends CreateClassCommand
 				'Add construct method',
 			)
 			->addOption(
+				'middleware',
+				'm',
+				InputOption::VALUE_NONE,
+				'Add middleware',
+			)
+			->addOption(
 				'resource',
 				'r',
 				InputOption::VALUE_NONE,
@@ -74,7 +82,7 @@ class MakeController extends CreateClassCommand
 
 		$name = $input->getArgument( 'controller' );
 
-		$options = [ 'resource', 'construct' ];
+		$options = [ 'resource', 'construct', 'middleware' ];
 		foreach ( $options as $option ) {
 			$this->$option = $input->getOption( $option );
 		}
@@ -111,6 +119,27 @@ class MakeController extends CreateClassCommand
 			$this->createMethod( $class, 'index' );
 			$this->createMethod( $class, 'single' );
 		}
+	}
+
+	protected function generateClassCap()
+	{
+		$namespace = $this->file->addNamespace( $this->rootNamespace );
+		$class = $namespace->addClass( $this->className );
+
+		/**
+		 * @since 1.7.0
+		 */
+		if ( $this->middleware ) {
+			$namespace->addUse( HasControllerMiddlewareInterface::class );
+			$namespace->addUse( HasControllerMiddlewareTrait::class );
+
+			$class->addImplement( HasControllerMiddlewareInterface::class );
+			$class->addTrait( HasControllerMiddlewareTrait::class );
+
+			$this->createMethod( $class, '__construct', "\$this->middleware( 'mymiddleware' );" );
+		}
+
+		return $class;
 	}
 
 }

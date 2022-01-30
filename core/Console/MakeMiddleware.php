@@ -15,30 +15,31 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use WPEmerge\Requests\RequestInterface;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
-class MakeProvider extends CreateClassCommand
+class MakeMiddleware extends CreateClassCommand
 {
 	/**
 	 * The name of the command
 	 *
 	 * @var string
 	 */
-	protected static $defaultName = 'new:provider';
+	protected static $defaultName = 'new:middleware';
 
 	/**
 	 * Generated class root namespace (its own namespace excluded)
 	 *
 	 * @var string
 	 */
-	protected string $rootNamespace = 'Theme\Providers';
+	protected string $rootNamespace = 'Theme\Http\Middleware';
 
 	/**
 	 * Under which path will be created file
 	 *
 	 * @var string
 	 */
-	protected string $themeFileFolder = 'Providers';
+	protected string $themeFileFolder = 'Http/Middleware';
 
 	/**
 	 * @inheritDoc
@@ -47,9 +48,9 @@ class MakeProvider extends CreateClassCommand
 	{
 		$this
 			->addArgument(
-				'provider',
+				'middleware',
 				InputArgument::REQUIRED,
-				'Provider name',
+				'Middleware name',
 			);
 	}
 
@@ -60,21 +61,20 @@ class MakeProvider extends CreateClassCommand
 	{
 		$io = new SymfonyStyle( $input, $output );
 
-		$name = $input->getArgument( 'provider' );
+		$name = $input->getArgument( 'middleware' );
 
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
 			[
-				$this->className . " - custom theme service provider\n",
+				$this->className . " - custom theme middleware\n",
 				"! Register this class inside `config/wpemerge.php` file to have effect\n",
 			]
 		);
 
 		$class = $this->generateClassCap();
 
-		$this->createProviderMethod( $class, 'register' );
-		$this->createProviderMethod( $class, 'bootstrap' );
+		$this->createHandleMethod( $class, 'handle' );
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
@@ -82,29 +82,33 @@ class MakeProvider extends CreateClassCommand
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Provider ' . $name . ' was successfully created' );
+		$io->success( 'Middleware ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 
 	protected function generateClassCap()
 	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
-		$namespace->addUse( ServiceProviderInterface::class );
+		$namespace->addUse( RequestInterface::class );
 
 		$class = $namespace->addClass( $this->className );
-		$class->addImplement( ServiceProviderInterface::class );
 
 		return $class;
 	}
 
-	private function createProviderMethod( $class, string $method )
+	private function createHandleMethod( $class, string $method )
 	{
 		$method = $this->createMethod(
 			$class,
 			$method,
+"//...
+return \$next( \$request );
+"
 		);
 
-		$method->addParameter( 'container' );
+		$request = $method->addParameter( 'request' );
+		$request->setType( RequestInterface::class );
+		$method->addParameter( 'next' );
 	}
 
 }
