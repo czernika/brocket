@@ -139,10 +139,10 @@ class MakeModelTaxonomy extends CreateClassCommand
 		}
 
 		$exists = $this->createFile( $this->file );
-		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
-			return CreateClassCommand::FAILURE;
-		}
+		// if ( $exists ) {
+		// 	$io->warning( 'File ' . $exists . ' already exists' );
+		// 	return CreateClassCommand::FAILURE;
+		// }
 
 		$io->success( 'Custom taxonomy ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
@@ -178,6 +178,7 @@ class MakeModelTaxonomy extends CreateClassCommand
 	private function createPostTypesProperty( $class ) {
 		$class->addProperty( 'postTypes', $this->postTypes )
 			->setProtected()
+			->setType( 'array|string' )
 			->addComment( 'Post type related to this taxonomy' )
 			->addComment( "Same as for `register_extended_taxonomy()`\n" )
 			->addComment( '@var array|string' );
@@ -229,7 +230,7 @@ class MakeModelTaxonomy extends CreateClassCommand
 
 		$optionsMethod
 			->setProtected()
-			->addComment( 'Taxonomyregister options' )
+			->addComment( 'Taxonomy options' )
 			->addComment( "Same as for `register_extended_taxonomy()`\n" )
 			->addComment( '@return array' )
 			->setReturnType( 'array' );

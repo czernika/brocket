@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Brocooly\Models;
 
 use Timber\Post;
+use Timber\Timber;
 use Brocooly\Support\Builders\PostTypeQueryBuilder;
 
 /**
@@ -83,6 +84,13 @@ class PostType extends Post
 	const POST_TYPE = 'post';
 
 	/**
+	 * Post type terms
+	 *
+	 * @var array
+	 */
+	protected array $terms = [];
+
+	/**
 	 * Build query to retrieve posts
 	 *
 	 * @param string $name
@@ -93,5 +101,20 @@ class PostType extends Post
 	{
 		$builder = new PostTypeQueryBuilder( static::POST_TYPE, static::class );
 		return call_user_func_array( [ $builder, $name ], $arguments );
+	}
+
+	/**
+	 * Return post terms for specified taxonomy
+	 *
+	 * @param string $term
+	 * @return array|null
+	 */
+	public function belongsToTaxonomy( string $term )
+	{
+		if ( ! array_key_exists( $term, $this->terms ) || ! $this->terms[ $term ] ) {
+			$terms = Timber::get_terms( $term );
+			$this->terms[ $term ] = collect( $terms )->filter( fn( $term ) => $this->has_term( $term->id ) )->toArray();
+		}
+		return $this->terms[ $term ];
 	}
 }

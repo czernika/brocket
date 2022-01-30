@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.6.1
+
+- [Fix] Fixed compiled taxonomy class when created by console command
+- [Feat] Added `belongsToTaxonomy` relation for post types
+- [Build] Updated to WordPress 5.9
+- [Docs] Added description for `webpack.mix.js` file
+
+Release Date: Jan 30th, 2022
+
 ## Release 1.6.0
 
 - [Feat] Added assets autoloader
