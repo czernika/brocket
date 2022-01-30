@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.6.2
+
+- [Feat] Added few extra features for webpack
+- [Feat] Added support for [TailwindCSS](https://tailwindcss.com/)
+- [Docs] Changed `README.md`
+
+Release Date: Jan 30th, 2022
+
 ## Release 1.6.1
 
 - [Fix] Fixed compiled taxonomy class when created by console command

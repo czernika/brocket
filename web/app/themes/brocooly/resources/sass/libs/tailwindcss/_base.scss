@@ -1,0 +1,11 @@
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+@layer base {
+	body {
+		@apply antialiased min-h-screen flex flex-col text-base font-normal;
+	}
+}

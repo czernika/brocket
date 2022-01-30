@@ -162,10 +162,6 @@ class Assets
 	 */
 	private function setAssetVersion( string $file )
 	{
-		if ( 2 === count( explode( '?id=', $file ) ) ) {
-			return Str::afterLast( $file, '?id=' );
-		}
-
 		return filemtime( BROCOOLY_THEME_PATH . $this->publicDir . $file );
 	}
 
