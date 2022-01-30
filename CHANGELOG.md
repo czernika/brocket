@@ -1,10 +1,17 @@
 # Changelog
 
+## Release 1.6.3
+
+- [Feat] Added `asset()` helper function for PHP and twig templates both
+- [Refactor] Refactored `Assets` class
+- [Build] Added welcome screen and 404 templates
+
+Release Date: Jan 30th, 2022
+
 ## Release 1.6.2
 
 - [Feat] Added few extra features for webpack
 - [Feat] Added support for [TailwindCSS](https://tailwindcss.com/)
-- [Feat] Added `asset()` helper function
 - [Docs] Changed `README.md`
 
 Release Date: Jan 30th, 2022
