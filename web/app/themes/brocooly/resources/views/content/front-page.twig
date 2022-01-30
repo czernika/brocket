@@ -1,6 +1,9 @@
 {% extends 'layouts/app.twig' %}
 
+{% block body_class %} h-screen {% endblock %}
+
 {% block content %}
-	<h1>{{ __( 'Hello World', 'brocooly' ) }}</h1>
+
+	{% include 'example.twig' %}
 
 {% endblock %}

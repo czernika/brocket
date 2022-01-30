@@ -4,6 +4,7 @@
 
 - [Feat] Added few extra features for webpack
 - [Feat] Added support for [TailwindCSS](https://tailwindcss.com/)
+- [Feat] Added `asset()` helper function
 - [Docs] Changed `README.md`
 
 Release Date: Jan 30th, 2022

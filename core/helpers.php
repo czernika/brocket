@@ -11,6 +11,7 @@ use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
+use Brocooly\Assets\Assets;
 
 use function Env\env;
 
@@ -113,5 +114,25 @@ if ( ! function_exists( 'output' ) ) {
 		$ctx   = array_merge( Timber::context(), $ctx );
 		$views = Helper::twigify( $view );
 		return Brocooly::output( Timber::compile( $views, $ctx ) );
+	}
+}
+
+if ( ! function_exists( 'asset' ) ) {
+
+	/**
+	 * Get asset path from manifest file
+	 *
+	 * @param string $filePath | value to check.
+	 * @return string
+	 */
+	function asset( string $filePath ) {
+		$asset = ( new Assets() )->asset( $filePath );
+
+		if ( $asset ) {
+			$publicFilePath = BROCOOLY_THEME_URI . 'public' . $asset;
+			return $publicFilePath;
+		}
+
+		return BROCOOLY_THEME_URI . 'resources' . $filePath;
 	}
 }

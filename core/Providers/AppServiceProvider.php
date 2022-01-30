@@ -60,6 +60,24 @@ class AppServiceProvider implements ServiceProviderInterface
 
 	public function bootstrap($container)
 	{
+		$this->extendTwig();
+	}
 
+	/**
+	 * Extend Timber functionality
+	 *
+	 * @since 1.6.2
+	 * @return void
+	 */
+	private function extendTwig()
+	{
+		add_filter(
+			'timber/twig',
+			function( $twig ) {
+				$twig->addFunction( new \Timber\Twig_Function( 'asset', 'asset' ) );
+
+				return $twig;
+			},
+		);
 	}
 }

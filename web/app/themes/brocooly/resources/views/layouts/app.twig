@@ -12,6 +12,8 @@
 
 	<title>{% block title %} {{ __( 'Brocooly Framework', 'brocooly' ) }} | {{ site.name }} {% endblock %}</title>
 
+	<link rel="stylesheet" href="{{ theme.link ~ '/style.css' }}">
+
 	<!-- Google Fonts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 	<script>
@@ -42,7 +44,7 @@
 	<main
 		id="content"
 		role="main"
-		class="site-main"
+		class="h-full site-main"
 		tabindex="-1"
 	>
 		{% block content %}{% endblock %}

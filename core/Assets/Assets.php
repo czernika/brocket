@@ -52,15 +52,22 @@ class Assets
 	 */
 	private array $scripts = [];
 
+	/**
+	 * Manifest file
+	 *
+	 * @var string
+	 */
+	private string $manifestFile;
+
 	public function __construct( string $publicDir = 'public', string $manifest = 'mix-manifest.json' )
 	{
 		$this->publicDir = $publicDir;
 		$this->manifest  = $manifest;
 
-		$manifestFile = wp_normalize_path( BROCOOLY_THEME_PATH . $this->publicDir . DIRECTORY_SEPARATOR . $this->manifest );
+		$this->manifestFile = wp_normalize_path( BROCOOLY_THEME_PATH . $this->publicDir . DIRECTORY_SEPARATOR . $this->manifest );
 
-		if ( File::exists( $manifestFile ) ) {
-			$this->assets  = (array) json_decode( File::get( $manifestFile ) );
+		if ( File::exists( $this->manifestFile ) ) {
+			$this->assets  = (array) json_decode( File::get( $this->manifestFile ) );
 			$this->styles  = $this->getAssetByExtension( 'css' );
 			$this->scripts = $this->getAssetByExtension( 'js' );
 		}
@@ -182,5 +189,19 @@ class Assets
 			->toArray();
 
 		return $styles;
+	}
+
+	/**
+	 * Get single asset
+	 *
+	 * @param string $key | file name according to manifest.
+	 * @return string
+	 */
+	public function asset( string $key ) {
+		if ( file_exists( $this->manifestFile ) ) {
+			return array_key_exists( $key, $this->assets ) ? $this->assets[ $key ] : null;
+		}
+
+		return null;
 	}
 }
