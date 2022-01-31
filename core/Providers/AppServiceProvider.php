@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
+use Brocooly\Mail\Mailer;
 use Brocooly\Request\Request;
 use Brocooly\Router\Blueprint;
 use Illuminate\Filesystem\Filesystem;

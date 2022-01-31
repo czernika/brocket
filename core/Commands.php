@@ -11,14 +11,15 @@ declare(strict_types=1);
 
 namespace Brocooly;
 
+use Brocooly\Console\MakeMail;
 use Brocooly\Console\ClearCache;
 use Brocooly\Console\MakeProvider;
-use Brocooly\Console\MakeController;
-use Brocooly\Console\MakeCustomizerPanel;
-use Brocooly\Console\MakeCustomizerSection;
 use Brocooly\Console\MakeMiddleware;
+use Brocooly\Console\MakeController;
 use Brocooly\Console\MakeModelTaxonomy;
 use Brocooly\Console\MakeModelPostType;
+use Brocooly\Console\MakeCustomizerPanel;
+use Brocooly\Console\MakeCustomizerSection;
 
 class Commands
 {
@@ -31,6 +32,7 @@ class Commands
 		MakeController::class,
 		MakeProvider::class,
 		MakeMiddleware::class,
+		MakeMail::class,
 		MakeModelPostType::class,
 		MakeModelTaxonomy::class,
 		MakeCustomizerPanel::class,

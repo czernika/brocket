@@ -3,6 +3,7 @@
  * Clear folder with all cached view files
  *
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.2.1
  */
 

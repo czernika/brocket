@@ -9,9 +9,10 @@
 
 use Theme\Providers\ThemeServiceProvider;
 use Brocooly\Providers\AppServiceProvider;
-use Brocooly\Providers\CustomizerServiceProvider;
+use Brocooly\Providers\MailServiceProvider;
 use Brocooly\Providers\ModelServiceProvider;
 use Brocooly\Providers\DebugServiceProvider;
+use Brocooly\Providers\CustomizerServiceProvider;
 
 return [
 
@@ -28,7 +29,7 @@ return [
 	 *
 	 * @var array
 	 */
-	'routes'    => [
+	'routes'     => [
 		'web' => [
 			'definitions' => dirname( __DIR__ ) . '/routes/web.php',
 			'attributes'  => [
@@ -43,18 +44,27 @@ return [
 	 * --------------------------------------------------------------------------
 	 *
 	 * Array of service providers you wish to enable.
+	 * Do not change order of App Providers unless you sure
+	 * what are you doing
 	 *
 	 * @var array
 	 */
-	'providers' => [
+	'providers'  => [
 
 		/**
 		 * App Providers
 		 */
 		AppServiceProvider::class,
-		ModelServiceProvider::class,
 		DebugServiceProvider::class,
+		ModelServiceProvider::class,
 		CustomizerServiceProvider::class,
+
+		/**
+		 * Uncomment next line if your theme uses custom mailers.
+		 *
+		 * @since 1.7.0
+		 */
+		// MailServiceProvider::class,
 
 		/**
 		 * Theme Providers

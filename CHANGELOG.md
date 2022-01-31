@@ -5,6 +5,7 @@
 - [Feat] Added `new:middleware` console command to create Middleware classes
 - [Feat] Added `-m` flag for controller creation command to help with middleware
 - [Feat] Added multilanguage support
+- [Feat] Added `Mailable` class to send Emails
 
 Release Date: Jan 30th, 2022
 
