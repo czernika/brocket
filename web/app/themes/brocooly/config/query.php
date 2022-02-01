@@ -7,6 +7,7 @@
  * @see https://timber.github.io/docs/v2/guides/posts/#differences-from-wp-cores-get_posts
  *
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.2.0
  */
 

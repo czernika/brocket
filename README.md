@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/czernika/brocket)](https://github.com/czernika/brocket/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/v/release/czernika/brocket)](https://gitHub.com/czernika/brocket/releases/) ![Last commit](https://img.shields.io/github/last-commit/czernika/brocket) ![PHP version](https://badgen.net/packagist/php/czernika/brocket)
 
-Improved Controllers, Middleware and Routers, but slightly less powerful Container
+Looks Laravelishly!
 
 > Open beta. Package in development
 

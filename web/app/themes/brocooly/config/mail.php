@@ -3,6 +3,7 @@
  * Mailer configuration
  *
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.7.0
  */
 
@@ -16,6 +17,8 @@ return [
 	 * -------------------------------------------------------------------------
 	 *
 	 * Your application will use this default mailer to send emails
+	 *
+	 * @var string
 	 */
 	'default' => env( 'MAIL_MAILER' ) ?? 'wordpress',
 
@@ -25,17 +28,27 @@ return [
 	 * -------------------------------------------------------------------------
 	 *
 	 * Here you may specify all of the mailers used by application.
-	 * WordPress by default includes PHPMailer library so we're use it via 'phpmailer_init' hook.
+	 * WordPress by default includes PHPMailer library
+	 * so we're use it via 'phpmailer_init' WordPress hook.
+	 *
+	 * @var array
 	 */
 	'mailers' => [
 
+		/**
+		 * Use default `wp_mail()` function
+		 *
+		 * @link https://developer.wordpress.org/reference/functions/wp_mail/
+		 */
 		'wordpress' => [
 			'transport' => 'wordpress',
 		],
 
 		/**
 		 * Mailhog for Dev environment
-		 * WebUI will be available under http://localhost:8025
+		 * WebUI will be available under http://0.0.0.0:8025
+		 *
+		 * @link https://github.com/mailhog/MailHog
 		 */
 		'mailhog'   => [
 			'transport' => 'mailhog',
@@ -44,7 +57,9 @@ return [
 		],
 
 		/**
-		 * SMTP
+		 * SMTP settings added within `phpmailer_init` hook
+		 *
+		 * @link https://developer.wordpress.org/reference/hooks/phpmailer_init/
 		 */
 		'mailtrap'  => [
 			'transport'  => 'smtp',
@@ -81,6 +96,8 @@ return [
 	 * -------------------------------------------------------------------------
 	 *
 	 * Like name and email address (like <no-reply>)
+	 *
+	 * @var array
 	 */
 	'from'    => [
 		'name'    => env( 'MAIL_FROM_NAME' ) ?? get_bloginfo( 'name' ),
@@ -94,6 +111,8 @@ return [
 	 *
 	 * Default to "text/html" as it is most common use
 	 * Alternatively set "text/plain" to pass text only
+	 *
+	 * @var string
 	 */
 	'type'    => 'text/html',
 

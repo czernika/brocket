@@ -4,6 +4,7 @@
  * and give them support for metaboxes
  *
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.1.0
  */
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.7.1
+
+- [Feat] Added configuration for `fonts` folder for `laravel-mix`
+- [Docs] Fixed some typos and added extra description
+
+Release Date: Feb 1st, 2022
+
 ## Release 1.7.0
 
 - [Feat] Added `new:middleware` console command to create Middleware classes
@@ -7,7 +14,7 @@
 - [Feat] Added multilanguage support
 - [Feat] Added `Mailable` class to send Emails
 
-Release Date: Jan 30th, 2022
+Release Date: Jan 31st, 2022
 
 ## Release 1.6.3
 

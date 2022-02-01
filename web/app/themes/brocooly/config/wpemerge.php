@@ -4,6 +4,7 @@
  *
  * @see https://docs.wpemerge.com/#/framework/configuration
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.0.0
  */
 

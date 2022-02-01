@@ -29,6 +29,8 @@ const publicPath   = themePath + publicDir;
 const resourcePath = themePath + 'resources/';
 const imagesDir    = 'images';
 const imagesPath   = resourcePath + imagesDir;
+const fontsDir     = 'fonts';
+const fontsPath    = resourcePath + fontsDir;
 const iconsPath    = resourcePath + 'icons';
 
 const finalize = m => m.inProduction() ? m.versionHash() : m.sourceMaps();
@@ -47,7 +49,9 @@ const aliases = {
  *
  * {@link https://laravel-mix.com/docs/6.0/browsersync}
  */
-const browserSyncSettings = { proxy };
+const browserSyncSettings = {
+	proxy,
+};
 const browserSyncFiles = {
 	watch: false, // set to `true` to enable live-reload (will disable `hmr`)
 	files: [
@@ -151,7 +155,7 @@ mix.alias({...aliases});
 
 /**
  * --------------------------------------------------------------------------
- * Copying Images
+ * Copying Images and Fonts
  * --------------------------------------------------------------------------
  *
  * If images exists in a resource folder copy it to public
@@ -161,6 +165,10 @@ mix.alias({...aliases});
  */
 if (fs.existsSync(imagesPath)) {
 	mix.copyDirectory(imagesPath, publicPath + imagesDir);
+}
+
+if (fs.existsSync(fontsPath)) {
+	mix.copyDirectory(fontsPath, publicPath + fontsDir);
 }
 
 /**

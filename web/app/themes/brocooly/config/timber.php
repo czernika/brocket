@@ -4,6 +4,7 @@
  *
  * @see https://timber.github.io/docs/guides/extending-timber/#adding-functionality-to-twig
  * @package Brocooly
+ * @subpackage Brocket
  * @since 1.0.0
  */
 
