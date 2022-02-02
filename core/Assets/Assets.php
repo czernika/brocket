@@ -11,18 +11,10 @@ declare(strict_types=1);
 
 namespace Brocooly\Assets;
 
-use Illuminate\Support\Str;
 use Brocooly\Support\Facades\File;
 
 class Assets
 {
-
-	/**
-	 * Public folder name
-	 *
-	 * @var string
-	 */
-	private string $publicDir = 'public';
 
 	/**
 	 * Manifest file
@@ -59,55 +51,31 @@ class Assets
 	 */
 	private string $manifestFile;
 
-	public function __construct( string $publicDir = 'public', string $manifest = 'mix-manifest.json' )
+	public function __construct()
 	{
-		$this->publicDir = $publicDir;
-		$this->manifest  = $manifest;
+		$this->manifest = config( 'app.assets.manifest' ) ?? 'mix-manifest.json';
 
-		$this->manifestFile = wp_normalize_path( BROCOOLY_THEME_PATH . $this->publicDir . DIRECTORY_SEPARATOR . $this->manifest );
+		$this->manifestFile = wp_normalize_path(
+			BROCOOLY_THEME_PUBLIC_PATH . DIRECTORY_SEPARATOR . $this->manifest
+		);
 
-		if ( File::exists( $this->manifestFile ) ) {
-			$this->assets  = (array) json_decode( File::get( $this->manifestFile ) );
-			$this->styles = $this->defineStyles();
-			$this->scripts = $this->defineScripts();
-		}
+		$this->assets  = $this->setAssets();
+		$this->styles  = $this->defineStyles();
+		$this->scripts = $this->defineScripts();
 	}
 
 	/**
-	 * Autoload assets
+	 * Get theme assets
 	 *
-	 * @return void
+	 * @return array
 	 */
-	public function loadAssets()
+	private function setAssets()
 	{
-		add_action(
-			'wp_enqueue_scripts',
-			function() {
-				foreach ( $this->styles as $key => $style ) {
-					if ( call_user_func( $style->condition ) ) {
-						wp_enqueue_style(
-							$style->name ?? $this->setAssetName( $key ),
-							$this->setAssetSource( $style->public ),
-							$style->deps,
-							$style->version ?? $this->setAssetVersion( $style->public ),
-							$style->media,
-						);
-					}
-				}
+		if ( File::exists( $this->manifestFile ) ) {
+			return (array) json_decode( File::get( $this->manifestFile ) );
+		}
 
-				foreach ( $this->scripts as $key => $script ) {
-					if ( call_user_func( $script->condition ) ) {
-						wp_enqueue_script(
-							$script->name ?? $this->setAssetName( $key ),
-							$this->setAssetSource( $script->public ),
-							$script->deps,
-							$script->version ?? $this->setAssetVersion( $script->public ),
-							$script->inFooter,
-						);
-					}
-				}
-			}
-		);
+		return [];
 	}
 
 	/**
@@ -157,6 +125,35 @@ class Assets
 	}
 
 	/**
+	 * Autoload assets
+	 *
+	 * @return void
+	 */
+	public function loadAssets()
+	{
+		add_action(
+			'wp_enqueue_scripts',
+			function() {
+				foreach ( $this->getStyles() as $key => $style ) {
+					if ( call_user_func( $style->getCondition() ) ) {
+						wp_enqueue_style(
+							...$style->getProperties()
+						);
+					}
+				}
+
+				foreach ( $this->getScripts() as $key => $script ) {
+					if ( call_user_func( $script->getCondition() ) ) {
+						wp_enqueue_script(
+							...$script->getProperties()
+						);
+					}
+				}
+			}
+		);
+	}
+
+	/**
 	 * Get styles list
 	 *
 	 * @return array
@@ -187,44 +184,11 @@ class Assets
 	}
 
 	/**
-	 * Set asset name
-	 *
-	 * @param string $file
-	 * @return string
-	 */
-	private function setAssetName( string $file )
-	{
-		return 'brocket-' . Str::afterLast( $file, '/' );
-	}
-
-	/**
-	 * Set asset source
-	 *
-	 * @param string $file
-	 * @return string
-	 */
-	private function setAssetSource( string $file )
-	{
-		return BROCOOLY_THEME_URI . $this->publicDir . $file;
-	}
-
-	/**
-	 * Set asset version
-	 *
-	 * @param string $file
-	 * @return string
-	 */
-	private function setAssetVersion( string $file )
-	{
-		return filemtime( BROCOOLY_THEME_PATH . $this->publicDir . $file );
-	}
-
-	/**
 	 * Gt specific assets by extension
 	 *
 	 * @param string $ext
 	 */
-	protected function getAssetByRegex( string $regexp )
+	private function getAssetByRegex( string $regexp )
 	{
 		$assets = collect( $this->assets )
 			->filter(
@@ -241,8 +205,11 @@ class Assets
 	 * @return string
 	 */
 	public function asset( string $key ) {
-		if ( file_exists( $this->manifestFile ) ) {
-			return array_key_exists( $key, $this->assets ) ? $this->assets[ $key ] : null;
+		if ( File::exists( $this->manifestFile ) ) {
+			$assets = $this->getAssets();
+			return array_key_exists( $key, $assets ) ?
+				$assets[ $key ] :
+				null;
 		}
 
 		return null;

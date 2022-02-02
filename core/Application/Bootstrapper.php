@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace Brocooly\Application;
 
-use Brocooly\Assets\Assets;
 use Timber\Timber;
 use Theme\Brocooly;
+use Brocooly\Assets\Assets;
 use Brocooly\Support\Traits\HasAppTrait;
 
 class Bootstrapper
@@ -149,6 +149,32 @@ class Bootstrapper
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_LANG_PATH' ) ) {
 			define( 'BROCOOLY_THEME_LANG_PATH', BROCOOLY_THEME_PATH . 'languages' );
+		}
+
+		/**
+		 * Public folder
+		 *
+		 * @since 1.7.3
+		 */
+		if ( ! defined( 'BROCOOLY_THEME_PUBLIC_PATH' ) ) {
+			define( 'BROCOOLY_THEME_PUBLIC_PATH', BROCOOLY_THEME_PATH . 'public' );
+		}
+
+		if ( ! defined( 'BROCOOLY_THEME_PUBLIC_URI' ) ) {
+			define( 'BROCOOLY_THEME_PUBLIC_URI', BROCOOLY_THEME_URI . 'public' );
+		}
+
+		/**
+		 * Resources folder
+		 *
+		 * @since 1.7.3
+		 */
+		if ( ! defined( 'BROCOOLY_THEME_RESOURCES_PATH' ) ) {
+			define( 'BROCOOLY_THEME_RESOURCES_PATH', BROCOOLY_THEME_PATH . 'resources' );
+		}
+
+		if ( ! defined( 'BROCOOLY_THEME_RESOURCES_URI' ) ) {
+			define( 'BROCOOLY_THEME_RESOURCES_URI', BROCOOLY_THEME_URI . 'resources' );
 		}
 	}
 }

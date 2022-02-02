@@ -8,7 +8,6 @@
  */
 
 use Timber\Timber;
-use Brocooly\Assets\Assets;
 use Brocooly\Application\Bootstrapper;
 
 /**

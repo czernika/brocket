@@ -1,5 +1,15 @@
 # Changelog
 
+## Release 1.7.3
+
+- [Feat] Added `BROCOOLY_THEME_PUBLIC_PATH` and `BROCOOLY_THEME_PUBLIC_URI` constants
+- [Feat] Added `BROCOOLY_THEME_RESOURCES_PATH` and `BROCOOLY_THEME_RESOURCES_URI` constants
+- [Feat] Added `manifest` key within `config/app.php` to have possibility to change manifest filename
+- [Refactor] Refactored `Assets` class to split into `Style` and `Script`
+- [Docs] Fixed some typos
+
+Release Date: Feb 2nd, 2022
+
 ## Release 1.7.2
 
 - [Feat] Added heme global context within `Brocooly` class

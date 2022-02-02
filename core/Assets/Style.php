@@ -1,6 +1,6 @@
 <?php
 /**
- * Create Style object ot be loaded
+ * Create style object ot be loaded
  *
  * @package Brocooly
  * @subpackage Brocket
@@ -13,78 +13,29 @@ namespace Brocooly\Assets;
 
 class Style
 {
-
-	/**
-	 * Style handle
-	 *
-	 * @var string|null
-	 */
-	public ?string $name = null;
-
-	/**
-	 * Resource key
-	 *
-	 * @var string
-	 */
-	public string $resource;
-
-	/**
-	 * Public key
-	 *
-	 * @var string
-	 */
-	public string $public;
-
-	/**
-	 * Style dependencies
-	 *
-	 * @var array
-	 */
-	public array $deps = [];
-
-	/**
-	 * Style version
-	 *
-	 * @var string|null
-	 */
-	public ?string $version = null;
+	use SetAssetsPropertiesTrait;
 
 	/**
 	 * Style media
 	 *
 	 * @var string
 	 */
-	public string $media = 'all';
+	private string $media = 'all';
 
 	/**
-	 * Condition to load style
+	 * Get enqueue properties
 	 *
-	 * @var string|array|null
+	 * @since 1.7.3
+	 * @return array
 	 */
-	public string|array|null $condition = '__return_true';
-
-	public function __construct( $resource, $public, ?array $extra = null )
+	public function getProperties()
 	{
-		$this->resource = $resource;
-		$this->public = $public;
-
-		if ( $extra ) {
-			$this->setProperties( $extra );
-		}
-	}
-
-	/**
-	 * Set style properties
-	 *
-	 * @param array $extra
-	 * @return void
-	 */
-	private function setProperties( array $extra )
-	{
-		$this->name = $extra['name'] ?? null;
-		$this->deps = $extra['deps'] ?? [];
-		$this->version = $extra['version'] ?? null;
-		$this->media = $extra['media'] ?? 'all';
-		$this->condition = $extra['condition'] ?? '__return_true';
+		return [
+			$this->name,
+			$this->src,
+			$this->deps,
+			$this->version,
+			$this->media,
+		];
 	}
 }

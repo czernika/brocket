@@ -41,29 +41,20 @@ return [
 	 */
 	'assets' => [
 
-		/**
-		 * --------------------------------------------------------------------------
-		 * Assets configuration
-		 * --------------------------------------------------------------------------
-		 *
-		 * Load assets or not by default. Set to `false` of you wish register
-		 * styles and scripts by your own
-		 *
-		 * @var array
-		 */
-		'autoload' => true,
-
 		'styles'   => [
 			'regex' => '/(\/css\/)[\w]+\.css$/',
 
 			/**
+			 * Enqueue styles under specific rule
+			 *
 			 * @example
 			 * ```
 			 * 'queue' => [
-			 * 		[
-			 * 			'key' => '/css/app.css' // same as within `mix-manifest.json`
-			 * 			'condition' => 'is_front_page' // condition to load style
-			 * 		],
+			 *   [
+			 *     'key' => '/css/app.css', // same as within `mix-manifest.json`
+			 *     'condition' => 'is_front_page', // condition to load style
+			 *   ],
+			 *   ...
 			 * ],
 			 *
 			 * Extra keys are `version`, `media` and `deps` - same as for `wp_enqueue_style()`
@@ -76,6 +67,8 @@ return [
 			'regex' => '/(\/js\/)[\w]+\.js$/',
 
 			/**
+			 * Enqueue scripts under specific rule
+			 *
 			 * @example
 			 * ```
 			 * Same as for styles but instead of `media` key there is `inFooter`
@@ -83,6 +76,29 @@ return [
 			 */
 			'queue' => [],
 		],
+
+		/**
+		 * --------------------------------------------------------------------------
+		 * Assets configuration
+		 * --------------------------------------------------------------------------
+		 *
+		 * Load assets or not by default. Set to `false` of you wish register
+		 * styles and scripts by your own
+		 *
+		 * @var array
+		 */
+		'autoload' => true,
+
+		/**
+		 * --------------------------------------------------------------------------
+		 * Manifest filename
+		 * --------------------------------------------------------------------------
+		 *
+		 * Manifest filename in case you renamed it
+		 *
+		 * @var string
+		 */
+		'manifest' => 'mix-manifest.json',
 
 	],
 

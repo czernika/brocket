@@ -13,78 +13,29 @@ namespace Brocooly\Assets;
 
 class Script
 {
-
-	/**
-	 * Script handle
-	 *
-	 * @var string|null
-	 */
-	public ?string $name = null;
-
-	/**
-	 * Resource key
-	 *
-	 * @var string
-	 */
-	public string $resource;
-
-	/**
-	 * Public key
-	 *
-	 * @var string
-	 */
-	public string $public;
-
-	/**
-	 * Script dependencies
-	 *
-	 * @var array
-	 */
-	public array $deps = [];
-
-	/**
-	 * Script version
-	 *
-	 * @var string|null
-	 */
-	public ?string $version = null;
+	use SetAssetsPropertiesTrait;
 
 	/**
 	 * Load script on footer or not
 	 *
 	 * @var boolean
 	 */
-	public bool $inFooter = true;
+	private bool $inFooter = true;
 
 	/**
-	 * Condition to load script
+	 * Get enqueue properties
 	 *
-	 * @var string|array|null
+	 * @since 1.7.3
+	 * @return array
 	 */
-	public string|array|null $condition = '__return_true';
-
-	public function __construct( $resource, $public, ?array $extra = null )
+	public function getProperties()
 	{
-		$this->resource = $resource;
-		$this->public = $public;
-
-		if ( $extra ) {
-			$this->setProperties( $extra );
-		}
-	}
-
-	/**
-	 * Set style properties
-	 *
-	 * @param array $extra
-	 * @return void
-	 */
-	private function setProperties( array $extra )
-	{
-		$this->name = $extra['name'] ?? null;
-		$this->deps = $extra['deps'] ?? [];
-		$this->version = $extra['version'] ?? null;
-		$this->inFooter = $extra['inFooter'] ?? true;
-		$this->condition = $extra['condition'] ?? '__return_true';
+		return [
+			$this->name,
+			$this->src,
+			$this->deps,
+			$this->version,
+			$this->inFooter,
+		];
 	}
 }

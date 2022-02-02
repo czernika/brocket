@@ -129,10 +129,10 @@ if ( ! function_exists( 'asset' ) ) {
 		$asset = ( new Assets() )->asset( $filePath );
 
 		if ( $asset ) {
-			$publicFilePath = BROCOOLY_THEME_URI . 'public' . $asset;
+			$publicFilePath = BROCOOLY_THEME_PUBLIC_URI . $asset;
 			return $publicFilePath;
 		}
 
-		return BROCOOLY_THEME_URI . 'resources' . $filePath;
+		return BROCOOLY_THEME_RESOURCES_URI . $filePath;
 	}
 }
