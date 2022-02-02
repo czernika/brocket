@@ -34,28 +34,3 @@ $app = new Bootstrapper(
  * Boot defined application instance
  */
 $app->run();
-
-/**
- * -------------------------------------------------------------------------
- * Define theme assets like styles and scripts
- * -------------------------------------------------------------------------
- *
- * With a help of `laravel-mix` package
- * If you change params here make sure it is ok with webpack configuration
- *
- * @since 1.6.0
- */
-$assets = new Assets();
-
-/**
- * -------------------------------------------------------------------------
- * Autoload theme assets
- * -------------------------------------------------------------------------
- *
- * If param set to false, no assets will be autoloaded.
- * In a production mode it is sometimes a good idea to handle assets manually
- * where they are required
- *
- * @since 1.6.0
- */
-$assets->loadAssets( ! isProduction() );

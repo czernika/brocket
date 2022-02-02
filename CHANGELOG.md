@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.7.2
+
+- [Feat] Added heme global context within `Brocooly` class
+- [Refactor] Changed assets autoloader and regex for defining what is script and what is style
+- [Refactor] Removed autoloader option and replaced with conditional `queue` for `assets`
+- [Refactor] `Assets` loader removed from theme bootstrap
+
+Release Date: Feb 2nd, 2022
+
 ## Release 1.7.1
 
 - [Feat] Added configuration for `fonts` folder for `laravel-mix`

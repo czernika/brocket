@@ -68,45 +68,92 @@ class Assets
 
 		if ( File::exists( $this->manifestFile ) ) {
 			$this->assets  = (array) json_decode( File::get( $this->manifestFile ) );
-			$this->styles  = $this->getAssetByExtension( 'css' );
-			$this->scripts = $this->getAssetByExtension( 'js' );
+			$this->styles = $this->defineStyles();
+			$this->scripts = $this->defineScripts();
 		}
 	}
 
 	/**
 	 * Autoload assets
 	 *
-	 * @param boolean $load
 	 * @return void
 	 */
-	public function loadAssets( bool $load = true )
+	public function loadAssets()
 	{
-		if ( $load ) {
-			add_action(
-				'wp_enqueue_scripts',
-				function() {
-					foreach ( $this->styles as $resource => $public ) {
+		add_action(
+			'wp_enqueue_scripts',
+			function() {
+				foreach ( $this->styles as $key => $style ) {
+					if ( call_user_func( $style->condition ) ) {
 						wp_enqueue_style(
-							$this->setAssetName( $resource ),
-							$this->setAssetSource( $public ),
-							[],
-							$this->setAssetVersion( $public ),
-							'all',
-						);
-					}
-
-					foreach ( $this->scripts as $resource => $public ) {
-						wp_enqueue_script(
-							$this->setAssetName( $resource ),
-							$this->setAssetSource( $public ),
-							[],
-							$this->setAssetVersion( $public ),
-							true,
+							$style->name ?? $this->setAssetName( $key ),
+							$this->setAssetSource( $style->public ),
+							$style->deps,
+							$style->version ?? $this->setAssetVersion( $style->public ),
+							$style->media,
 						);
 					}
 				}
-			);
-		}
+
+				foreach ( $this->scripts as $key => $script ) {
+					if ( call_user_func( $script->condition ) ) {
+						wp_enqueue_script(
+							$script->name ?? $this->setAssetName( $key ),
+							$this->setAssetSource( $script->public ),
+							$script->deps,
+							$script->version ?? $this->setAssetVersion( $script->public ),
+							$script->inFooter,
+						);
+					}
+				}
+			}
+		);
+	}
+
+	/**
+	 * Define styles to be loaded
+	 *
+	 * @return array
+	 */
+	private function defineStyles()
+	{
+		return $this->getAssetByRegex( config( 'app.assets.styles.regex' ) )
+			->map( function( $public, $resource ) {
+
+				if ( config( 'app.assets.styles.queue' ) ) {
+					foreach ( config( 'app.assets.styles.queue' ) as $style ) {
+						if ( $resource === $style['key'] ) {
+							return new Style( $resource, $public, $style );
+						}
+					}
+				}
+
+				return new Style( $resource, $public );
+			} )
+			->toArray();
+	}
+
+	/**
+	 * Define scripts to be loaded
+	 *
+	 * @return array
+	 */
+	private function defineScripts()
+	{
+		return $this->getAssetByRegex( config( 'app.assets.scripts.regex' ) )
+			->map( function( $public, $resource ) {
+
+				if ( config( 'app.assets.scripts.queue' ) ) {
+					foreach ( config( 'app.assets.scripts.queue' ) as $script ) {
+						if ( $resource === $script['key'] ) {
+							return new Script( $resource, $public, $script );
+						}
+					}
+				}
+
+				return new Script( $resource, $public );
+			} )
+			->toArray();
 	}
 
 	/**
@@ -176,19 +223,15 @@ class Assets
 	 * Gt specific assets by extension
 	 *
 	 * @param string $ext
-	 * @return void
 	 */
-	protected function getAssetByExtension( string $ext )
+	protected function getAssetByRegex( string $regexp )
 	{
-		$styles = collect( $this->assets )->filter(
-			fn( $resource, $publicFile ) => Str::startsWith(
-					pathinfo( BROCOOLY_THEME_PATH . $this->publicDir . $publicFile )['extension'],
-					$ext,
-				)
-			)
-			->toArray();
+		$assets = collect( $this->assets )
+			->filter(
+				fn( $resource, $public ) => preg_match( $regexp, $public, $matches ),
+			);
 
-		return $styles;
+		return $assets;
 	}
 
 	/**

@@ -16,4 +16,20 @@ use WPEmerge\Application\ApplicationTrait;
 class Brocooly
 {
 	use ApplicationTrait;
+
+	/**
+	 * -------------------------------------------------------------------------
+	 * Theme global context
+	 * -------------------------------------------------------------------------
+	 *
+	 * Will be available on every view template when calling `output` helper
+	 *
+	 * @since 1.7.2
+	 */
+	public function context()
+	{
+		$context = [];
+
+		return $context;
+	}
 }

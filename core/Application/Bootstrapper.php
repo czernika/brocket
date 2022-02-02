@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Application;
 
+use Brocooly\Assets\Assets;
 use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Traits\HasAppTrait;
@@ -47,6 +48,7 @@ class Bootstrapper
 
 		$this->timber = $timber;
 
+		$this->setDefinitions();
 		$this->init( $config );
 	}
 
@@ -66,6 +68,10 @@ class Bootstrapper
 		$this->setAppInstance( Brocooly::make() );
 
 		self::$app->bootstrap( config( 'wpemerge' ) );
+
+		if ( config( 'app.assets.autoload' ) ) {
+			$this->loadAssets();
+		}
 	}
 
 	/**
@@ -77,8 +83,6 @@ class Bootstrapper
 	 */
 	private function init( string $config )
 	{
-		$this->setDefinitions();
-
 		Config::set( $config );
 
 		$this->timber::$dirname = config( 'timber.views' );
@@ -110,6 +114,17 @@ class Bootstrapper
 				return $options;
 			}
 		);
+	}
+
+	/**
+	 * Load assets from manifest file
+	 *
+	 * @return void
+	 */
+	private function loadAssets()
+	{
+		$assets = new Assets();
+		$assets->loadAssets();
 	}
 
 	/**

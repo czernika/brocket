@@ -111,7 +111,7 @@ if ( ! function_exists( 'output' ) ) {
 	 * @return string
 	 */
 	function output( string|array $view, array $ctx = [] ) {
-		$ctx   = array_merge( Timber::context(), $ctx );
+		$ctx   = array_merge( Timber::context(), ( new Brocooly() )->context(), $ctx );
 		$views = Helper::twigify( $view );
 		return Brocooly::output( Timber::compile( $views, $ctx ) );
 	}
