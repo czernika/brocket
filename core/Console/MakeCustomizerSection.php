@@ -14,7 +14,6 @@ namespace Brocooly\Console;
 use Illuminate\Support\Str;
 use Brocooly\Support\Facades\Mod;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -90,8 +89,6 @@ class MakeCustomizerSection extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name        = $input->getArgument( 'section' );
 		$this->panel = $input->getOption( 'panel' );
 
@@ -118,12 +115,12 @@ class MakeCustomizerSection extends CreateClassCommand
 		$this->createFieldsMethod( $class );
 
 		if ( $this->panel && ! class_exists( $this->panelNamespace ) ) {
-			$io->warning( 'Model class ' . $this->panelNamespace . ' doesn\'t exists' );
+			$this->io->warning( 'Model class ' . $this->panelNamespace . ' doesn\'t exists' );
 		}
 
 		$this->createFile( $this->file );
 
-		$io->success( 'Customizer section ' . $name . ' was successfully created' );
+		$this->io->success( 'Customizer section ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

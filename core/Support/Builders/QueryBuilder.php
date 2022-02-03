@@ -56,7 +56,7 @@ class QueryBuilder
 	 */
 	public function all()
 	{
-		$this->query['posts_per_page'] = config( 'query.limit' );
+		$this->query['posts_per_page'] = config( 'query.limit', 300 );
 		$this->query['nopaging']       = true;
 		return $this->getPosts();
 	}

@@ -41,7 +41,7 @@ class CustomizerServiceProvider implements ServiceProviderInterface
 	 */
 	private function registerCustomizerConfig()
 	{
-		Kirki::add_config( ...config( 'customizer.config' ) );
+		Kirki::add_config( ...config( 'customizer.config', [] ) );
 	}
 
 	/**
@@ -51,7 +51,7 @@ class CustomizerServiceProvider implements ServiceProviderInterface
 	 */
 	private function registerCustomizerPanels()
 	{
-		foreach ( config( 'customizer.panels' ) as $panel ) {
+		foreach ( config( 'customizer.panels', [] ) as $panel ) {
 			$customizerPanel = new $panel();
 			$panelArgs       = $customizerPanel->args();
 
@@ -70,7 +70,7 @@ class CustomizerServiceProvider implements ServiceProviderInterface
 	 */
 	private function registerCustomizerSections()
 	{
-		foreach ( config( 'customizer.sections' ) as $section ) {
+		foreach ( config( 'customizer.sections', [] ) as $section ) {
 			$customizerSection = new $section();
 			$sectionArgs       = $customizerSection->args();
 

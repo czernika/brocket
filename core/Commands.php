@@ -13,6 +13,7 @@ namespace Brocooly;
 
 use Brocooly\Console\MakeMail;
 use Brocooly\Console\ClearCache;
+use Brocooly\Console\GenerateSalts;
 use Brocooly\Console\MakeProvider;
 use Brocooly\Console\MakeMiddleware;
 use Brocooly\Console\MakeController;
@@ -38,6 +39,7 @@ class Commands
 		MakeCustomizerPanel::class,
 		MakeCustomizerSection::class,
 		ClearCache::class,
+		GenerateSalts::class,
 	];
 
 	/**

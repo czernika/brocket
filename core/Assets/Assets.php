@@ -53,7 +53,7 @@ class Assets
 
 	public function __construct()
 	{
-		$this->manifest = config( 'app.assets.manifest' ) ?? 'mix-manifest.json';
+		$this->manifest = config( 'app.assets.manifest', 'mix-manifest.json' );
 
 		$this->manifestFile = wp_normalize_path(
 			BROCOOLY_THEME_PUBLIC_PATH . DIRECTORY_SEPARATOR . $this->manifest
@@ -85,14 +85,12 @@ class Assets
 	 */
 	private function defineStyles()
 	{
-		return $this->getAssetByRegex( config( 'app.assets.styles.regex' ) )
+		return $this->getAssetByRegex( config( 'app.assets.styles.regex', '/(\/css\/)[\w]+\.css$/' ) )
 			->map( function( $public, $resource ) {
 
-				if ( config( 'app.assets.styles.queue' ) ) {
-					foreach ( config( 'app.assets.styles.queue' ) as $style ) {
-						if ( $resource === $style['key'] ) {
-							return new Style( $resource, $public, $style );
-						}
+				foreach ( config( 'app.assets.styles.queue', [] ) as $style ) {
+					if ( $resource === $style['key'] ) {
+						return new Style( $resource, $public, $style );
 					}
 				}
 
@@ -108,14 +106,12 @@ class Assets
 	 */
 	private function defineScripts()
 	{
-		return $this->getAssetByRegex( config( 'app.assets.scripts.regex' ) )
+		return $this->getAssetByRegex( config( 'app.assets.scripts.regex', '/(\/js\/)[\w]+\.js$/' ) )
 			->map( function( $public, $resource ) {
 
-				if ( config( 'app.assets.scripts.queue' ) ) {
-					foreach ( config( 'app.assets.scripts.queue' ) as $script ) {
-						if ( $resource === $script['key'] ) {
-							return new Script( $resource, $public, $script );
-						}
+				foreach ( config( 'app.assets.scripts.queue', [] ) as $script ) {
+					if ( $resource === $script['key'] ) {
+						return new Script( $resource, $public, $script );
 					}
 				}
 

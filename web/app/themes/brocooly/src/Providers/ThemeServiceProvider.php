@@ -38,6 +38,7 @@ class ThemeServiceProvider implements ServiceProviderInterface
 		 * --------------------------------------------------------------------------
 		 *
 		 * Make theme multilingual
+		 *
 		 * @since 1.7.0
 		 */
 		load_theme_textdomain( 'brocooly', BROCOOLY_THEME_LANG_PATH );

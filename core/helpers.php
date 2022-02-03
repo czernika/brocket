@@ -75,10 +75,13 @@ if ( ! function_exists( 'config' ) ) {
 	 * Get config key
 	 *
 	 * @param string|null $key
+	 * @param mixed $default
+	 * @since 1.7.4 added default value
 	 * @return mixed
 	 */
-	function config( ?string $key = null ) {
-		return Config::get( $key );
+	function config( ?string $key = null, $default = null ) {
+		$value = Config::get( $key );
+		return $value ?? $default;
 	}
 }
 

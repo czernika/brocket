@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Brocooly\Console;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -58,8 +57,6 @@ class MakeProvider extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name = $input->getArgument( 'provider' );
 
 		$this->defineDataByArgument( $name );
@@ -78,11 +75,11 @@ class MakeProvider extends CreateClassCommand
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
+			$this->io->warning( 'File ' . $exists . ' already exists' );
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Provider ' . $name . ' was successfully created' );
+		$this->io->success( 'Provider ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

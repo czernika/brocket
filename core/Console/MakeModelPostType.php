@@ -14,7 +14,6 @@ namespace Brocooly\Console;
 use Illuminate\Support\Str;
 use Brocooly\Models\PostType;
 use Brocooly\Support\Traits\HasPostMetaboxes;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -71,8 +70,6 @@ class MakeModelPostType extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name       = $input->getArgument( 'post_type' );
 		$this->meta = $input->getOption( 'meta' );
 
@@ -103,11 +100,11 @@ class MakeModelPostType extends CreateClassCommand
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
+			$this->io->warning( 'File ' . $exists . ' already exists' );
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Custom post type ' . $name . ' was successfully created' );
+		$this->io->success( 'Custom post type ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

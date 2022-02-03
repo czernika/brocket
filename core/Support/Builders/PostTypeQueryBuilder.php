@@ -34,7 +34,7 @@ class PostTypeQueryBuilder extends QueryBuilder
 	{
 		$this->postType = $postType;
 		$this->classMap = $classMap;
-		$this->query    = config( 'query.defaults' ) ?? [];
+		$this->query    = config( 'query.defaults', [] );
 
 		$this->setQuery();
 	}

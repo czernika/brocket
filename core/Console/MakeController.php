@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Brocooly\Console;
 
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -78,8 +77,6 @@ class MakeController extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name = $input->getArgument( 'controller' );
 
 		$options = [ 'resource', 'construct', 'middleware' ];
@@ -101,11 +98,11 @@ class MakeController extends CreateClassCommand
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
+			$this->io->warning( 'File ' . $exists . ' already exists' );
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Controller ' . $name . ' was successfully created' );
+		$this->io->success( 'Controller ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

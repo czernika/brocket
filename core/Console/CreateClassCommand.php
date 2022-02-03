@@ -19,6 +19,8 @@ use Symfony\Component\Console\Command\Command;
 class CreateClassCommand extends Command
 {
 
+	use SymfonyStyleTrait;
+
 	/**
 	 * Root path
 	 *

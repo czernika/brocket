@@ -77,7 +77,7 @@ class MailServiceProvider implements ServiceProviderInterface
 		$this->mailer        = config( 'mail.mailers' )[ $this->defaultMailer ];
 		$this->transport     = $this->mailer['transport'];
 
-		$this->mailType = config( 'mail.type' );
+		$this->mailType = config( 'mail.type', 'text/html' );
 	}
 
 	public function register( $container )

@@ -34,7 +34,7 @@ class TaxonomyQueryBuilder extends QueryBuilder
 	{
 		$this->taxonomy = $taxonomy;
 		$this->classMap = $classMap;
-		$this->query    = config( 'query.defaults' ) ?? [];
+		$this->query    = config( 'query.defaults', [] );
 
 		$this->setQuery();
 	}

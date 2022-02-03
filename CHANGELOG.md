@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.7.4
+
+- [Feat] Added script to generate WordPress salts after package installation
+- [Refactor] Added default value to a `config()` helper
+- [Refactor] Refactored use of `config()` helper within core
+- [Refactor] Refactored all console classes
+
+Release Date: Feb 3rd, 2022
+
 ## Release 1.7.3
 
 - [Feat] Added `BROCOOLY_THEME_PUBLIC_PATH` and `BROCOOLY_THEME_PUBLIC_URI` constants

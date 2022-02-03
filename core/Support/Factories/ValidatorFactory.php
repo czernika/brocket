@@ -56,7 +56,7 @@ class ValidatorFactory
     public function __construct()
     {
 		$this->langDir = BROCOOLY_THEME_LANG_PATH . DIRECTORY_SEPARATOR . $this->group;
-		$this->locale  = config( 'app.locale' );
+		$this->locale  = config( 'app.locale', get_locale() );
 
         $this->factory = new Validation\Factory(
             $this->loadTranslator()

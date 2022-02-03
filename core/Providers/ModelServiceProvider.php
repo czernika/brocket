@@ -18,7 +18,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 {
 	public function register( $container )
 	{
-		foreach ( config( 'models.post_types' ) as $class ) {
+		foreach ( config( 'models.post_types', [] ) as $class ) {
 			$container[ $class::POST_TYPE ] = $container->factory(
 				function( $c ) use ( $class ) {
 					return new $class();
@@ -26,7 +26,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 			);
 		}
 
-		foreach ( config( 'models.taxonomies' ) as $class ) {
+		foreach ( config( 'models.taxonomies', [] ) as $class ) {
 			$container[ $class::TAXONOMY ] = $container->factory(
 				function( $c ) use ( $class ) {
 					return new $class();
@@ -37,11 +37,11 @@ class ModelServiceProvider implements ServiceProviderInterface
 
 	public function bootstrap($container)
 	{
-		foreach ( config( 'models.taxonomies' ) as $class ) {
+		foreach ( config( 'models.taxonomies', [] ) as $class ) {
 			$this->registerTaxonomy( $container[ $class::TAXONOMY ] );
 		}
 
-		foreach ( config( 'models.post_types' ) as $class ) {
+		foreach ( config( 'models.post_types', [] ) as $class ) {
 			$this->registerPostType( $container[ $class::POST_TYPE ] );
 		}
 	}

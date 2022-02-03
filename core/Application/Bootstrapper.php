@@ -69,7 +69,7 @@ class Bootstrapper
 
 		self::$app->bootstrap( config( 'wpemerge' ) );
 
-		if ( config( 'app.assets.autoload' ) ) {
+		if ( config( 'app.assets.autoload', true ) ) {
 			$this->loadAssets();
 		}
 	}
@@ -85,7 +85,7 @@ class Bootstrapper
 	{
 		Config::set( $config );
 
-		$this->timber::$dirname = config( 'timber.views' );
+		$this->timber::$dirname = config( 'timber.views', 'resources/views' );
 		$this->timber::$cache   = config( 'timber.cache.apply' );
 
 		if ( true === config( 'timber.cache.apply' ) ) {

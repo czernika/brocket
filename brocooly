@@ -14,7 +14,7 @@ $commands = Commands::get();
 foreach ( $commands as $command ) {
     $commandObject = new $command();
 
-    if ( $commandObject->notAllowedInProduction() ) {
+    if ( isProduction() && $commandObject->notAllowedInProduction() ) {
         continue;
     }
 

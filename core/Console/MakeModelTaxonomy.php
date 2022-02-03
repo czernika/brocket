@@ -17,7 +17,6 @@ use Brocooly\Models\Taxonomy;
 use Nette\PhpGenerator\Literal;
 use Brocooly\Support\Traits\HasTermMetaboxes;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -100,8 +99,6 @@ class MakeModelTaxonomy extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name = $input->getArgument( 'taxonomy' );
 
 		$this->postType = $input->getOption( 'post_type' );
@@ -139,12 +136,12 @@ class MakeModelTaxonomy extends CreateClassCommand
 		}
 
 		$exists = $this->createFile( $this->file );
-		// if ( $exists ) {
-		// 	$io->warning( 'File ' . $exists . ' already exists' );
-		// 	return CreateClassCommand::FAILURE;
-		// }
+		if ( $exists ) {
+			$this->io->warning( 'File ' . $exists . ' already exists' );
+			return CreateClassCommand::FAILURE;
+		}
 
-		$io->success( 'Custom taxonomy ' . $name . ' was successfully created' );
+		$this->io->success( 'Custom taxonomy ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

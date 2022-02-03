@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class MakeCustomizerPanel extends CreateClassCommand
 {
@@ -53,8 +52,6 @@ class MakeCustomizerPanel extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name = $input->getArgument( 'panel' );
 
 		$this->defineDataByArgument( $name );
@@ -74,11 +71,11 @@ class MakeCustomizerPanel extends CreateClassCommand
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
+			$this->io->warning( 'File ' . $exists . ' already exists' );
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Customizer panel ' . $name . ' was successfully created' );
+		$this->io->success( 'Customizer panel ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

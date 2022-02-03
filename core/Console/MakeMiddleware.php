@@ -11,12 +11,10 @@ declare(strict_types=1);
 
 namespace Brocooly\Console;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
+use WPEmerge\Requests\RequestInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use WPEmerge\Requests\RequestInterface;
-use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class MakeMiddleware extends CreateClassCommand
 {
@@ -59,8 +57,6 @@ class MakeMiddleware extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$io = new SymfonyStyle( $input, $output );
-
 		$name = $input->getArgument( 'middleware' );
 
 		$this->defineDataByArgument( $name );
@@ -78,11 +74,11 @@ class MakeMiddleware extends CreateClassCommand
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
-			$io->warning( 'File ' . $exists . ' already exists' );
+			$this->io->warning( 'File ' . $exists . ' already exists' );
 			return CreateClassCommand::FAILURE;
 		}
 
-		$io->success( 'Middleware ' . $name . ' was successfully created' );
+		$this->io->success( 'Middleware ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 

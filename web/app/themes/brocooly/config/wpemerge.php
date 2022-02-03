@@ -32,7 +32,7 @@ return [
 	 */
 	'routes'     => [
 		'web' => [
-			'definitions' => dirname( __DIR__ ) . '/routes/web.php',
+			'definitions' => BROCOOLY_THEME_PATH . 'routes/web.php',
 			'attributes'  => [
 				'namespace' => 'Theme\\Http\\Controllers\\',
 			],
