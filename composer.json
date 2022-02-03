@@ -104,9 +104,6 @@
 	"scripts": {
 		"post-root-package-install": [
 			"php -r \"copy('.env.example', '.env');\""
-		],
-		"post-create-project-cmd": [
-            "php brocooly salts:generate"
-        ]
+		]
 	}
 }

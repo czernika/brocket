@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.7.5
+
+- [Fix] Removed `post-create-project-cmd` from `composer.json` 
+
+Release Date: Feb 3rd, 2022
+
 ## Release 1.7.4
 
 - [Feat] Added script to generate WordPress salts after package installation
