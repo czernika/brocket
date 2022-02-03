@@ -49,7 +49,7 @@ class MakeController extends CreateClassCommand
 		$this
 			->addArgument(
 				'controller',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Controller name',
 			)
 			->addOption(
@@ -83,6 +83,8 @@ class MakeController extends CreateClassCommand
 		foreach ( $options as $option ) {
 			$this->$option = $input->getOption( $option );
 		}
+
+		$name = $this->askName( $name, 'Controller name' );
 
 		$this->defineDataByArgument( $name );
 

@@ -42,7 +42,7 @@ class MakeCustomizerPanel extends CreateClassCommand
 	{
 		$this->addArgument(
 			'panel',
-			InputArgument::REQUIRED,
+			InputArgument::OPTIONAL,
 			'Customizer panel name',
 		);
 	}
@@ -53,6 +53,8 @@ class MakeCustomizerPanel extends CreateClassCommand
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
 		$name = $input->getArgument( 'panel' );
+
+		$name = $this->askName( $name, 'Customizer panel name' );
 
 		$this->defineDataByArgument( $name );
 

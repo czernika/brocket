@@ -54,7 +54,7 @@ class MakeModelPostType extends CreateClassCommand
 		$this
 			->addArgument(
 				'post_type',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Create custom post type',
 			)
 			->addOption(
@@ -72,6 +72,8 @@ class MakeModelPostType extends CreateClassCommand
 	{
 		$name       = $input->getArgument( 'post_type' );
 		$this->meta = $input->getOption( 'meta' );
+
+		$name = $this->askName( $name, 'Post type name' );
 
 		$this->defineDataByArgument( $name );
 

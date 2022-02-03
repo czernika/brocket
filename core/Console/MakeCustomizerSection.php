@@ -73,7 +73,7 @@ class MakeCustomizerSection extends CreateClassCommand
 		$this
 			->addArgument(
 				'section',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Customizer section name',
 			)
 			->addOption(
@@ -91,6 +91,8 @@ class MakeCustomizerSection extends CreateClassCommand
 	{
 		$name        = $input->getArgument( 'section' );
 		$this->panel = $input->getOption( 'panel' );
+
+		$name = $this->askName( $name, 'Customizer section name' );
 
 		$this->defineDataByArgument( $name );
 		$this->sectionName = Str::headline( $this->className );

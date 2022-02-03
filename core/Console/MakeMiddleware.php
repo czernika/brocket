@@ -47,7 +47,7 @@ class MakeMiddleware extends CreateClassCommand
 		$this
 			->addArgument(
 				'middleware',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Middleware name',
 			);
 	}
@@ -58,6 +58,8 @@ class MakeMiddleware extends CreateClassCommand
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
 		$name = $input->getArgument( 'middleware' );
+
+		$name = $this->askName( $name, 'Mailable name' );
 
 		$this->defineDataByArgument( $name );
 

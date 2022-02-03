@@ -47,7 +47,7 @@ class MakeProvider extends CreateClassCommand
 		$this
 			->addArgument(
 				'provider',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Provider name',
 			);
 	}
@@ -58,6 +58,8 @@ class MakeProvider extends CreateClassCommand
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
 		$name = $input->getArgument( 'provider' );
+
+		$name = $this->askName( $name, 'Provider name' );
 
 		$this->defineDataByArgument( $name );
 

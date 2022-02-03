@@ -77,7 +77,7 @@ class MakeModelTaxonomy extends CreateClassCommand
 		$this
 			->addArgument(
 				'taxonomy',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Create custom taxonomy',
 			)
 			->addOption(
@@ -103,6 +103,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 
 		$this->postType = $input->getOption( 'post_type' );
 		$this->meta     = $input->getOption( 'meta' );
+
+		$name = $this->askName( $name, 'Taxonomy name' );
 
 		$this->defineDataByArgument( $name );
 

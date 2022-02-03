@@ -174,4 +174,20 @@ class CreateClassCommand extends Command
 
 		return false;
 	}
+
+	/**
+	 * Ask Question if the name missed
+	 *
+	 * @param string|null $name
+	 * @param string $question
+	 * @return string
+	 */
+	protected function askName( ?string $name, string $question )
+	{
+		if ( null === $name ) {
+			$name = $this->io->ask( $question );
+		}
+
+		return $name;
+	}
 }

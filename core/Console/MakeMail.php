@@ -48,7 +48,7 @@ class MakeMail extends CreateClassCommand
 		$this
 			->addArgument(
 				'mail',
-				InputArgument::REQUIRED,
+				InputArgument::OPTIONAL,
 				'Mailable name',
 			);
 	}
@@ -59,6 +59,8 @@ class MakeMail extends CreateClassCommand
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
 		$name = $input->getArgument( 'mail' );
+
+		$name = $this->askName( $name, 'Mailable name' );
 
 		$this->defineDataByArgument( $name );
 
