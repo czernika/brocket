@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.8.1
+
+- [Fix] Fixed composer script to execute after package was installed
+
+Release Date: Feb 4th, 2022
+
 ## Release 1.8.0
 
 - [Feat] Added `vendor:docker` command to create docker environment

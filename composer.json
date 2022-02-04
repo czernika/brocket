@@ -108,8 +108,8 @@
 		"wordpress-install-dir": "web/wp"
 	},
 	"scripts": {
-		"post-root-package-install": [
-			"\\Framework\\Core\\Console\\Composer::execute"
+		"post-create-project-cmd": [
+			"\\Brocooly\\Console\\Composer\\PostInstall::execute"
 		]
 	}
 }

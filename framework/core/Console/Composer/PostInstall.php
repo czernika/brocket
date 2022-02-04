@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Framework\Core\Console\Composer;
+namespace Brocooly\Console\Composer;
 
 use Brocooly\Support\Facades\File;
 
