@@ -55,8 +55,8 @@ return [
 		/**
 		 * App Providers
 		 */
-		AppServiceProvider::class,
 		DebugServiceProvider::class,
+		AppServiceProvider::class,
 		ModelServiceProvider::class,
 		CustomizerServiceProvider::class,
 
