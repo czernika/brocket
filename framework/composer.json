@@ -1,0 +1,11 @@
+{
+	"name": "czernika/brocket-framework",
+	"autoload": {
+		"psr-4": {
+			"Brocooly\\": "core"
+		},
+		"files": [
+			"core/helpers.php"
+		]
+	}
+}

@@ -21,6 +21,7 @@
 		"php": "^8.0",
 		"aristath/kirki": "^4.0",
 		"composer/installers": "^1.12",
+		"czernika/brocket-framework": "*",
 		"filp/whoops": "^2.14",
 		"hellonico/twig-dump-extension": "^1.1",
 		"htmlburger/carbon-fields": "^3.3",
@@ -61,18 +62,23 @@
 				"wpackagist-plugin/*",
 				"wpackagist-theme/*"
 			]
+		},
+		{
+			"type": "path",
+			"url": "./framework",
+			"only": [
+				"czernika/brocket-framework"
+			]
 		}
 	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"autoload": {
 		"psr-4": {
-			"Theme\\": "web/app/themes/brocooly/src",
-			"Brocooly\\": "core"
+			"Theme\\": "web/app/themes/brocooly/src"
 		},
 		"files": [
-			"web/app/themes/brocooly/src/helpers.php",
-			"core/helpers.php"
+			"web/app/themes/brocooly/src/helpers.php"
 		]
 	},
 	"config": {
@@ -103,7 +109,7 @@
 	},
 	"scripts": {
 		"post-root-package-install": [
-			"php -r \"copy('.env.example', '.env');\""
+			"\\Framework\\Core\\Console\\Composer::execute"
 		]
 	}
 }

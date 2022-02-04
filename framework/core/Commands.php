@@ -11,18 +11,21 @@ declare(strict_types=1);
 
 namespace Brocooly;
 
-use Brocooly\Console\MakeMail;
-use Brocooly\Console\ClearCache;
-use Brocooly\Console\GenerateSalts;
-use Brocooly\Console\MakeProvider;
-use Brocooly\Console\MakeMiddleware;
-use Brocooly\Console\MakeController;
-use Brocooly\Console\MakeModelTaxonomy;
-use Brocooly\Console\MakeModelPostType;
-use Brocooly\Console\MakeCustomizerPanel;
-use Brocooly\Console\MakeCustomizerSection;
-use Brocooly\Console\MakeRequest;
-use Brocooly\Console\MakeRule;
+use Brocooly\Console\Support\ClearCache;
+use Brocooly\Console\Support\GenerateSalts;
+use Brocooly\Console\Vendors\CopyDockerVendor;
+use Brocooly\Console\Files\MakeMail;
+use Brocooly\Console\Files\MakeRule;
+use Brocooly\Console\Files\MakeRequest;
+use Brocooly\Console\Files\MakeProvider;
+use Brocooly\Console\Files\MakeController;
+use Brocooly\Console\Files\MakeMiddleware;
+use Brocooly\Console\Files\MakeModelTaxonomy;
+use Brocooly\Console\Files\MakeModelPostType;
+use Brocooly\Console\Files\MakeCustomizerPanel;
+use Brocooly\Console\Files\MakeCustomizerSection;
+use Brocooly\Console\Vendors\CopyMixVendor;
+use Brocooly\Console\Vendors\CopyTestsVendor;
 
 class Commands
 {
@@ -44,6 +47,9 @@ class Commands
 		MakeRule::class,
 		ClearCache::class,
 		GenerateSalts::class,
+		CopyDockerVendor::class,
+		CopyTestsVendor::class,
+		CopyMixVendor::class,
 	];
 
 	/**

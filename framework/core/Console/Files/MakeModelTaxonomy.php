@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Files;
 
 use Theme\Models\WP\Post;
 use Illuminate\Support\Str;

@@ -1,5 +1,16 @@
 # Changelog
 
+## Release 1.8.0
+
+- [Feat] Added `vendor:docker` command to create docker environment
+- [Feat] Added `.browserslistrc` file
+- [Build] Added `stubs` folder with docker, mix and tests files. It will be separated in a near future within external core package with `core` folder
+- [Refactor] Removed docker files by default
+- [Refactor] Removed `DOMAIN` key from `.env`
+- [Refactor] Removed `sass` and `js` folders within theme
+
+Release Date: Feb 4th, 2022
+
 ## Release 1.7.7
 
 - [Feat] Added `new:rule` and `new:request` commands

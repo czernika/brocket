@@ -1,0 +1,4 @@
+> 0.25%
+not IE 11
+not dead
+extends @wordpress/browserslist-config

@@ -134,6 +134,11 @@ class Bootstrapper
 	 */
 	private function setDefinitions()
 	{
+
+		if ( ! defined( 'BROCOOLY_FRAMEWORK_PATH' ) ) {
+			define( 'BROCOOLY_FRAMEWORK_PATH', dirname( __DIR__, 2 ) );
+		}
+
 		if ( ! defined( 'BROCOOLY_THEME_PATH' ) ) {
 			define( 'BROCOOLY_THEME_PATH', trailingslashit( get_template_directory() ) );
 		}

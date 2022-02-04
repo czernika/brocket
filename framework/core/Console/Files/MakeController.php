@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Files;
 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;

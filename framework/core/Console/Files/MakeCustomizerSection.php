@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Files;
 
 use Illuminate\Support\Str;
 use Brocooly\Support\Facades\Mod;

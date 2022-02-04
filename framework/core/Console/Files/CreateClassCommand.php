@@ -9,11 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Files;
 
 use Illuminate\Support\Str;
 use Nette\PhpGenerator\PhpFile;
 use Brocooly\Support\Facades\File;
+use Brocooly\Console\SymfonyStyleTrait;
 use Symfony\Component\Console\Command\Command;
 
 class CreateClassCommand extends Command

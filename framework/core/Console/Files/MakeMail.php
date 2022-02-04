@@ -1,43 +1,43 @@
 <?php
 /**
- * Create provider
+ * Create mailable instance
  *
  * @package Brocooly
  * @subpackage Brocket
- * @since 1.1.0
+ * @since 1.7.0
  */
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Files;
 
-use WPEmerge\Requests\RequestInterface;
+use Brocooly\Mail\Mailable;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class MakeMiddleware extends CreateClassCommand
+class MakeMail extends CreateClassCommand
 {
 	/**
 	 * The name of the command
 	 *
 	 * @var string
 	 */
-	protected static $defaultName = 'new:middleware';
+	protected static $defaultName = 'new:mail';
 
 	/**
 	 * Generated class root namespace (its own namespace excluded)
 	 *
 	 * @var string
 	 */
-	protected string $rootNamespace = 'Theme\Http\Middleware';
+	protected string $rootNamespace = 'Theme\Mail';
 
 	/**
 	 * Under which path will be created file
 	 *
 	 * @var string
 	 */
-	protected string $themeFileFolder = 'Http/Middleware';
+	protected string $themeFileFolder = 'Mail';
 
 	/**
 	 * @inheritDoc
@@ -46,9 +46,9 @@ class MakeMiddleware extends CreateClassCommand
 	{
 		$this
 			->addArgument(
-				'middleware',
+				'mail',
 				InputArgument::OPTIONAL,
-				'Middleware name',
+				'Mailable name',
 			);
 	}
 
@@ -57,20 +57,20 @@ class MakeMiddleware extends CreateClassCommand
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) : int
 	{
-		$name = $input->getArgument( 'middleware' );
+		$name = $input->getArgument( 'mail' );
 
 		$name = $this->askName( $name, 'Mailable name' );
 
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			$this->className . " - custom theme middleware\n",
-			"! Register this class inside `config/wpemerge.php` file to have effect\n",
+			$this->className . " - custom theme mailable\n",
 		);
 
 		$class = $this->generateClassCap();
 
-		$this->createHandleMethod( $class, 'handle' );
+		$this->createMethod( $class );
+		$this->createMethod( $class, 'build' );
 
 		$exists = $this->createFile( $this->file );
 		if ( $exists ) {
@@ -78,33 +78,19 @@ class MakeMiddleware extends CreateClassCommand
 			return CreateClassCommand::FAILURE;
 		}
 
-		$this->io->success( 'Middleware ' . $name . ' was successfully created' );
+		$this->io->success( 'Mailable ' . $name . ' was successfully created' );
 		return CreateClassCommand::SUCCESS;
 	}
 
 	protected function generateClassCap()
 	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
-		$namespace->addUse( RequestInterface::class );
+		$namespace->addUse( Mailable::class );
 
 		$class = $namespace->addClass( $this->className );
+		$class->addExtend( Mailable::class );
 
 		return $class;
-	}
-
-	private function createHandleMethod( $class, string $method )
-	{
-		$method = $this->createMethod(
-			$class,
-			$method,
-"//...
-return \$next( \$request );
-"
-		);
-
-		$request = $method->addParameter( 'request' );
-		$request->setType( RequestInterface::class );
-		$method->addParameter( 'next' );
 	}
 
 }

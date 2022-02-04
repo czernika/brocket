@@ -1,10 +1,18 @@
 <?php
+/**
+ * Generate WordPress salts
+ *
+ * @package Brocooly
+ * @subpackage Brocket
+ * @since 1.7.6
+ */
 
 declare(strict_types=1);
 
-namespace Brocooly\Console;
+namespace Brocooly\Console\Support;
 
 use Brocooly\Support\Facades\File;
+use Brocooly\Console\SymfonyStyleTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
