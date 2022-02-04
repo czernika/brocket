@@ -34,6 +34,7 @@ class Blueprint extends RouteBlueprint
 		'is_home',
 		'is_month',
 		'is_page',
+		'is_page_template',
 		'is_paged',
 		'is_post_type_archive',
 		'is_privacy_policy',

@@ -45,7 +45,8 @@ class AppServiceProvider implements ServiceProviderInterface
 		$container[ WPEMERGE_REQUEST_KEY ] = $container->extend(
 			WPEMERGE_REQUEST_KEY,
 			function( $request, $c ) {
-				return Request::fromGlobals();
+				$appRequest = apply_filters( 'brocooly.request', Request::fromGlobals() );
+				return $appRequest;
 			}
 		);
 

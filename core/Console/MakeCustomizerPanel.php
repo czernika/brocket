@@ -59,11 +59,9 @@ class MakeCustomizerPanel extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . ' - custom customizer panel',
-				"! Register this class inside `config/customizer.php` file to have effect\n",
-				'@see https://kirki.org/docs/setup/panels-sections/',
-			]
+			$this->className . ' - custom customizer panel',
+			"! Register this class inside `config/customizer.php` file to have effect\n",
+			'@see https://kirki.org/docs/setup/panels-sections/',
 		);
 
 		$class = $this->generateClassCap();

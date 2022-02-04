@@ -78,11 +78,9 @@ class MakeModelPostType extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . ' - custom post type',
-				"! Register this class inside `config/models.php` file to have effect\n",
-				"! It is recommended to flush permalinks\n",
-			]
+			$this->className . ' - custom post type',
+			"! Register this class inside `config/models.php` file to have effect\n",
+			"! It is recommended to flush permalinks\n",
 		);
 
 		$class = $this->generateClassCap();

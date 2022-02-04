@@ -20,6 +20,8 @@ namespace Brocooly\Support\Facades;
  * @method static $this attachments( $attachments = [] )
  * @method static $this mailable( $mailer )
  * @method static $this send()
+ *
+ * @see \Brocooly\Mail\Mailer
  */
 class Mail extends AbstractFacade
 {

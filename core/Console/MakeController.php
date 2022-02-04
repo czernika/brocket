@@ -89,9 +89,7 @@ class MakeController extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . " - custom theme controller\n",
-			]
+			$this->className . " - custom theme controller\n",
 		);
 
 		$class = $this->generateClassCap();

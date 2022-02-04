@@ -65,9 +65,7 @@ class MakeMail extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . " - custom theme mailable\n",
-			]
+			$this->className . " - custom theme mailable\n",
 		);
 
 		$class = $this->generateClassCap();

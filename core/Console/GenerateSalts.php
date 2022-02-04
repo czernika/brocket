@@ -55,14 +55,17 @@ class GenerateSalts extends Command
 			return CreateClassCommand::FAILURE;
 		}
 
-		$replace = File::get( $envFile );
-		foreach( $this->keys as $salt ) {
-			$generated = $salt . '=\'' . wp_generate_password( 64, true, true ) . '\'';
-			$regex   = '/\b' . $salt . '=(.*)/';
-			$replace = preg_replace( $regex, $generated, $replace );
+		try {
+			$replace = File::get( $envFile );
+			foreach( $this->keys as $salt ) {
+				$generated = $salt . '=\'' . wp_generate_password( 64, true, true ) . '\'';
+				$regex   = '/\b' . $salt . '=(.*)/';
+				$replace = preg_replace( $regex, $generated, $replace );
+			}
+			File::put( $envFile, $replace );
+		} catch ( \Throwable $th ) {
+			$this->io->error( $th->getMessage() );
 		}
-
-		File::put( $envFile, $replace );
 
 		$this->io->success( 'Salts has been successfully generated' );
 		return Command::SUCCESS;

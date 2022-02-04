@@ -103,11 +103,9 @@ class MakeCustomizerSection extends CreateClassCommand
 		}
 
 		$this->generateClassComments(
-			[
-				$this->className . ' - custom customizer section',
-				"! Register this class inside `config/customizer.php` file to have effect\n",
-				'@see https://kirki.org/docs/setup/panels-sections/',
-			]
+			$this->className . ' - custom customizer section',
+			"! Register this class inside `config/customizer.php` file to have effect\n",
+			'@see https://kirki.org/docs/setup/panels-sections/',
 		);
 
 		$class = $this->generateClassCap();

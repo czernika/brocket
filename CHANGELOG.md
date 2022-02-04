@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.7.7
+
+- [Feat] Added `new:rule` and `new:request` commands
+- [Feat] Added `is_page_template` routing condition
+- [Fix] Fixed error for `new:model:taxonomy` command
+- [Refactor] Refactored console commands
+
+Release Date: Feb 4th, 2022
+
 ## Release 1.7.6
 
 - [Refactor] Refactored console commands which creates classes. Required input option changed to optional but value will be prompted

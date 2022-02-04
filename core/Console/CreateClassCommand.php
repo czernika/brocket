@@ -124,10 +124,10 @@ class CreateClassCommand extends Command
 	/**
 	 * Add comments to a class file
 	 *
-	 * @param array $comments | comments to add.
+	 * @param $comments | comments to add.
 	 * @return void
 	 */
-	protected function generateClassComments( array $comments )
+	protected function generateClassComments( ...$comments )
 	{
 		foreach ( $comments as $comment ) {
 			$this->file?->addComment( $comment );

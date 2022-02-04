@@ -64,10 +64,8 @@ class MakeProvider extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . " - custom theme service provider\n",
-				"! Register this class inside `config/wpemerge.php` file to have effect\n",
-			]
+			$this->className . " - custom theme service provider\n",
+			"! Register this class inside `config/wpemerge.php` file to have effect\n",
 		);
 
 		$class = $this->generateClassCap();

@@ -109,17 +109,15 @@ class MakeModelTaxonomy extends CreateClassCommand
 		$this->defineDataByArgument( $name );
 
 		$this->generateClassComments(
-			[
-				$this->className . ' - custom taxonomy',
-				"! Register this class inside `config/wpemerge.php` file to have effect\n",
-				"! It is recommended to flush permalinks\n",
-			]
+			$this->className . ' - custom taxonomy',
+			"! Register this class inside `config/wpemerge.php` file to have effect\n",
+			"! It is recommended to flush permalinks\n",
 		);
 
 		$class = $this->generateClassCap();
 
 		if ( $this->postTypeClassName && ! class_exists( $this->postTypeClassName ) ) {
-			$io->warning( 'Model class ' . $this->postTypeClassName . ' doesn\'t exists' );
+			$this->io->warning( 'Model class ' . $this->postTypeClassName . ' doesn\'t exists' );
 		}
 
 		$this->createTaxonomyConstant( $class );

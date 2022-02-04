@@ -21,6 +21,8 @@ use Brocooly\Console\MakeModelTaxonomy;
 use Brocooly\Console\MakeModelPostType;
 use Brocooly\Console\MakeCustomizerPanel;
 use Brocooly\Console\MakeCustomizerSection;
+use Brocooly\Console\MakeRequest;
+use Brocooly\Console\MakeRule;
 
 class Commands
 {
@@ -38,6 +40,8 @@ class Commands
 		MakeModelTaxonomy::class,
 		MakeCustomizerPanel::class,
 		MakeCustomizerSection::class,
+		MakeRequest::class,
+		MakeRule::class,
 		ClearCache::class,
 		GenerateSalts::class,
 	];

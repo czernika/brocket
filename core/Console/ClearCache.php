@@ -41,8 +41,13 @@ class ClearCache extends Command
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) {
 		$loader = new \Timber\Loader();
-		$loader->clear_cache_twig();
-		$loader->clear_cache_timber();
+
+		try {
+			$loader->clear_cache_twig();
+			$loader->clear_cache_timber();
+		} catch ( \Throwable $th ) {
+			$this->io->error( $th->getMessage() );
+		}
 
 		$this->io->success( 'Cache was successfully flushed' );
 		return Command::SUCCESS;
