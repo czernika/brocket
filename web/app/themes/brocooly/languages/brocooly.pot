@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Brocooly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 17:03+0000\n"
+"POT-Creation-Date: 2022-02-06 19:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,10 +15,6 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.5.8; wp-5.9\n"
 "X-Domain: brocooly"
-
-#: resources/views/content/404.twig:26
-msgid "404! Not found"
-msgstr ""
 
 #. Author of the theme
 msgid "Aliakseyenka Ihar "
@@ -33,6 +29,7 @@ msgstr ""
 msgid "Brocooly"
 msgstr ""
 
+#: storage/cache/89/8997fe51596a69063bcf1a90f0abd464430359f83994125fc2c2eb84bf38cd99.php:152
 #: resources/views/layouts/app.twig:13
 msgid "Brocooly Framework"
 msgstr ""
@@ -69,12 +66,30 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: resources/views/content/404.twig:3
+#: storage/cache/b0/b0f2cee09f0b0f5e8cddbe74866bdb02db64c966dbe487d24a587c3b69282ee2.php:52
+#: storage/cache/b0/b0f2cee09f0b0f5e8cddbe74866bdb02db64c966dbe487d24a587c3b69282ee2.php:92
 msgid "Not found"
+msgstr ""
+
+#: src/Http/Controllers/PageController.php:42
+msgid "Page was not found"
+msgstr ""
+
+#: src/Http/Controllers/PageController.php:41
+msgid "Please provide appropriate template for this request"
 msgstr ""
 
 #: resources/views/example.twig:44
 msgid "Read about main Brocooly features"
+msgstr ""
+
+#: src/Http/Controllers/PageController.php:43
+#: resources/views/layouts/error.twig:10
+msgid "Server error"
+msgstr ""
+
+#: src/Http/Controllers/PageController.php:44
+msgid "There has been a critical error on this website"
 msgstr ""
 
 #: resources/views/example.twig:72

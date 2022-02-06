@@ -28,11 +28,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 Route::is_front_page()->handle( 'PageController@front' );
 
 /**
- * -------------------------------------------------------------------------
- * 404 Page
- * -------------------------------------------------------------------------
+ * =========================================================================
+ * Default Pages
+ * =========================================================================
  *
- * If no routes were matched output the content of `content/404.twig` file
- * and set response status to 404
+ * If no routes were matched default one will be included
+ * ! This line should be always at the end
+ *
+ * @since 1.8.4
  */
-Route::is_404()->handle( fn() => output( 'content.404' )->withStatus( 404 ) );
+Route::all( 'PageController@all' );

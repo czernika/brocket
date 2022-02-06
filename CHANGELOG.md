@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.8.4
+
+- [Feat] Added default error handler page
+- [Feat] Added 404-layout
+- [Chore] Updated `.pot` file
+- [Refactor] Refactored 404 handler
+
+Release Date: Feb 6th, 2022
+
 ## Release 1.8.3
 
 - [Fix] Fixed 404 page

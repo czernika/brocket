@@ -1,6 +1,6 @@
-{% extends 'layouts/app.twig' %}
+{% extends 'layouts/error.twig' %}
 
-{% block title %} {{ __( 'Not found', 'brocooly' ) }} | {{ site.name }} {% endblock %}
+{% block title %} {{ error.text }} | {{ site.name }} {% endblock %}
 
 {% block body_class %} h-screen {% endblock %}
 
@@ -23,8 +23,9 @@
 		</svg>
 
 		<h1 class="mb-2 text-3xl font-semibold text-center text-gray-600">
-			{{ __( '404! Not found', 'brocooly' ) }}
+			{{ error.status ~ '! ' ~ error.text }}
 		</h1>
 
 	</div>
 {% endblock %}
+
