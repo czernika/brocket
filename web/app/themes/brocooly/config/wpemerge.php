@@ -9,10 +9,7 @@
  */
 
 use Theme\Providers\ThemeServiceProvider;
-use Brocooly\Providers\AppServiceProvider;
 use Brocooly\Providers\MailServiceProvider;
-use Brocooly\Providers\ModelServiceProvider;
-use Brocooly\Providers\DebugServiceProvider;
 use Brocooly\Providers\CustomizerServiceProvider;
 
 return [
@@ -55,9 +52,6 @@ return [
 		/**
 		 * App Providers
 		 */
-		DebugServiceProvider::class,
-		AppServiceProvider::class,
-		ModelServiceProvider::class,
 		CustomizerServiceProvider::class,
 
 		/**

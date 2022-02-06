@@ -36,9 +36,8 @@ class Config
 	 * @param string $configPath
 	 * @return void
 	 */
-	public static function set( string $configPath )
+	public static function set( string $configPath ) : void
 	{
-
 		if ( static::$configWasSet ) {
 			return;
 		}
@@ -59,7 +58,7 @@ class Config
 	 * @param string|null $key
 	 * @return mixed
 	 */
-	public static function get( ?string $key = null )
+	public static function get( ?string $key = null ) : mixed
 	{
 		if ( $key ) {
 			return Arr::get( static::$data, $key, null );

@@ -69,7 +69,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	private function setAssets()
+	private function setAssets() : array
 	{
 		if ( File::exists( $this->manifestFile ) ) {
 			return (array) json_decode( File::get( $this->manifestFile ) );
@@ -83,7 +83,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	private function defineStyles()
+	private function defineStyles() : array
 	{
 		return $this->getAssetByRegex( config( 'app.assets.styles.regex', '/(\/css\/)[\w]+\.css$/' ) )
 			->map( function( $public, $resource ) {
@@ -104,7 +104,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	private function defineScripts()
+	private function defineScripts() : array
 	{
 		return $this->getAssetByRegex( config( 'app.assets.scripts.regex', '/(\/js\/)[\w]+\.js$/' ) )
 			->map( function( $public, $resource ) {
@@ -125,7 +125,7 @@ class Assets
 	 *
 	 * @return void
 	 */
-	public function loadAssets()
+	public function loadAssets() : void
 	{
 		add_action(
 			'wp_enqueue_scripts',
@@ -154,7 +154,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	public function getStyles()
+	public function getStyles() : array
 	{
 		return $this->styles;
 	}
@@ -164,7 +164,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	public function getScripts()
+	public function getScripts() : array
 	{
 		return $this->scripts;
 	}
@@ -174,7 +174,7 @@ class Assets
 	 *
 	 * @return array
 	 */
-	public function getAssets()
+	public function getAssets() : array
 	{
 		return $this->assets;
 	}
@@ -183,8 +183,9 @@ class Assets
 	 * Gt specific assets by extension
 	 *
 	 * @param string $ext
+	 * @return \Illuminate\Support\Collection
 	 */
-	private function getAssetByRegex( string $regexp )
+	private function getAssetByRegex( string $regexp ) : \Illuminate\Support\Collection
 	{
 		$assets = collect( $this->assets )
 			->filter(
@@ -198,9 +199,10 @@ class Assets
 	 * Get single asset
 	 *
 	 * @param string $key | file name according to manifest.
-	 * @return string
+	 * @return string|null
 	 */
-	public function asset( string $key ) {
+	public function asset( string $key ) : string|null
+	{
 		if ( File::exists( $this->manifestFile ) ) {
 			$assets = $this->getAssets();
 			return array_key_exists( $key, $assets ) ?

@@ -16,8 +16,4 @@ class PageController
 	public function front() {
 		return output( 'content.front-page' );
 	}
-
-	public function notFound() {
-		return output( 'content.404' );
-	}
 }

@@ -32,6 +32,7 @@ Route::is_front_page()->handle( 'PageController@front' );
  * 404 Page
  * -------------------------------------------------------------------------
  *
- * If no routes were matched
+ * If no routes were matched output the content of `content/404.twig` file
+ * and set response status to 404
  */
-Route::is_404()->handle( 'PageController@notFound' );
+Route::is_404()->handle( fn() => output( 'content.404' )->withStatus( 404 ) );

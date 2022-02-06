@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Router;
 
-use WPEmerge\Routing\RouteBlueprint;
 use Illuminate\Support\Str;
+use WPEmerge\Routing\RouteBlueprint;
 
 class Blueprint extends RouteBlueprint
 {
@@ -56,5 +56,17 @@ class Blueprint extends RouteBlueprint
 		}
 
 		throw new \Exception( sprintf( 'Method `%s()` is not allowed WordPress conditional tag', $snake ) );
+	}
+
+	/**
+	 * Undocumented function
+	 *
+	 * @param array|string $views
+	 * @param array $ctx
+	 * @return void
+	 */
+	public function output( array|string $views, array $ctx = [] )
+	{
+		return $this->handle( fn() => output( $views, $ctx ) );
 	}
 }

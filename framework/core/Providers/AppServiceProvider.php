@@ -59,9 +59,9 @@ class AppServiceProvider implements ServiceProviderInterface
 		$container['brocooly.file']       = fn( $c ) => new Filesystem();
 	}
 
-	public function bootstrap($container)
+	public function bootstrap( $container )
 	{
-		$this->extendTwig();
+		$this->extendTwig( $container );
 	}
 
 	/**
@@ -70,13 +70,14 @@ class AppServiceProvider implements ServiceProviderInterface
 	 * @since 1.6.2
 	 * @return void
 	 */
-	private function extendTwig()
+	private function extendTwig( $container )
 	{
 		add_filter(
 			'timber/twig',
-			function( $twig ) {
+			function( $twig ) use ( $container ) {
 				$twig->addFunction( new \Timber\Twig_Function( 'asset', 'asset' ) );
 
+				$twig = apply_filters( 'brocooly.twig', $twig, $container );
 				return $twig;
 			},
 		);

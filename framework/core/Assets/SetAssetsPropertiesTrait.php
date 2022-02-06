@@ -93,7 +93,7 @@ trait SetAssetsPropertiesTrait
 	 * @param array $extra
 	 * @return void
 	 */
-	private function setProperties( array $extra )
+	private function setProperties( array $extra ) : void
 	{
 		foreach( $extra as $key => $value ) {
 			$this->$key = $value;
@@ -105,7 +105,7 @@ trait SetAssetsPropertiesTrait
 	 *
 	 * @return string|array
 	 */
-	public function getCondition()
+	public function getCondition() : string|array
 	{
 		return $this->condition;
 	}
@@ -117,7 +117,7 @@ trait SetAssetsPropertiesTrait
 	 * @param string $file
 	 * @return string
 	 */
-	protected function setAssetName( string $file )
+	protected function setAssetName( string $file ) : string
 	{
 		return $this->prefix . Str::beforeLast( Str::afterLast( $file, '/' ), '.' );
 	}
@@ -128,7 +128,7 @@ trait SetAssetsPropertiesTrait
 	 * @param string $file
 	 * @return string
 	 */
-	protected function setAssetSource( string $file )
+	protected function setAssetSource( string $file ) : string
 	{
 		return BROCOOLY_THEME_PUBLIC_URI . $file;
 	}
@@ -137,9 +137,9 @@ trait SetAssetsPropertiesTrait
 	 * Set asset version
 	 *
 	 * @param string $file
-	 * @return string
+	 * @return int
 	 */
-	protected function setAssetVersion( string $file )
+	protected function setAssetVersion( string $file ) : int
 	{
 		return filemtime( BROCOOLY_THEME_PUBLIC_PATH . $file );
 	}

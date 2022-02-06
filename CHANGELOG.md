@@ -1,5 +1,16 @@
 # Changelog
 
+## Release 1.8.3
+
+- [Fix] Fixed 404 page
+- [Feat] Added `brocooly.twig` filter to extend main twig features
+- [Refactor] Important app providers removed from a theme to be merged with custom config within app bootstrapper
+- [Refactor] Refactored debuggers and helpers
+- [Refactor] Added IDE helpers for `Route` facade
+- [Refactor] Refactored 404 route
+
+Release Date: Feb 6th, 2022
+
 ## Release 1.8.2
 
 - [Revert] Back to original post install script

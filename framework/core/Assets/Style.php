@@ -28,7 +28,7 @@ class Style
 	 * @since 1.7.3
 	 * @return array
 	 */
-	public function getProperties()
+	public function getProperties() : array
 	{
 		return [
 			$this->name,

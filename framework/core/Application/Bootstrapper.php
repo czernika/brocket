@@ -15,6 +15,9 @@ use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Assets\Assets;
 use Brocooly\Support\Traits\HasAppTrait;
+use Brocooly\Providers\AppServiceProvider;
+use Brocooly\Providers\ModelServiceProvider;
+use Brocooly\Providers\DebugServiceProvider;
 
 class Bootstrapper
 {
@@ -38,9 +41,9 @@ class Bootstrapper
 	/**
 	 * Init configuration object
 	 *
-	 * @param string $config
+	 * @param Timber $timber
 	 */
-	public function __construct( Timber $timber, string $config )
+	public function __construct( Timber $timber )
 	{
 		if ( ! defined( 'ABSPATH' ) ) {
 			exit;
@@ -49,7 +52,6 @@ class Bootstrapper
 		$this->timber = $timber;
 
 		$this->setDefinitions();
-		$this->init( $config );
 	}
 
 	/**
@@ -57,7 +59,7 @@ class Bootstrapper
 	 *
 	 * @return void
 	 */
-	public function run()
+	public function run() : void
 	{
 		if ( $this->isBooted ) {
 			return;
@@ -67,7 +69,12 @@ class Bootstrapper
 
 		$this->setAppInstance( Brocooly::make() );
 
-		self::$app->bootstrap( config( 'wpemerge' ) );
+		$config = array_merge_recursive(
+			$this->getBaseAppProviders(),
+			config( 'wpemerge' ),
+		);
+
+		self::$app->bootstrap( $config );
 
 		if ( config( 'app.assets.autoload', true ) ) {
 			$this->loadAssets();
@@ -81,7 +88,7 @@ class Bootstrapper
 	 * @param string $config
 	 * @return void
 	 */
-	private function init( string $config )
+	public function init( string $config ) : void
 	{
 		Config::set( $config );
 
@@ -94,11 +101,27 @@ class Bootstrapper
 	}
 
 	/**
+	 * Get base app providers
+	 *
+	 * @return array
+	 */
+	private function getBaseAppProviders() : array
+	{
+		return [
+			'providers' => [
+				DebugServiceProvider::class,
+				AppServiceProvider::class,
+				ModelServiceProvider::class,
+			],
+		];
+	}
+
+	/**
 	 * Set Timber cache for twig templates
 	 *
 	 * @return void
 	 */
-	private function applyTimberCache()
+	private function applyTimberCache() : void
 	{
 		add_filter(
 			'timber/cache/location',
@@ -121,7 +144,7 @@ class Bootstrapper
 	 *
 	 * @return void
 	 */
-	private function loadAssets()
+	private function loadAssets() : void
 	{
 		$assets = new Assets();
 		$assets->loadAssets();
@@ -132,9 +155,8 @@ class Bootstrapper
 	 *
 	 * @return void
 	 */
-	private function setDefinitions()
+	private function setDefinitions() : void
 	{
-
 		if ( ! defined( 'BROCOOLY_FRAMEWORK_PATH' ) ) {
 			define( 'BROCOOLY_FRAMEWORK_PATH', dirname( __DIR__, 2 ) );
 		}

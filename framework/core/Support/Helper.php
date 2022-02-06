@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Support;
 
-use Pimple\Container;
+use Brocooly\Assets\Assets;
 use Illuminate\Support\Str;
 
 class Helper
@@ -34,14 +34,20 @@ class Helper
 	}
 
 	/**
-	 * Define does key exists in container instance or not
+	 * Get asset path by manifest key
 	 *
-	 * @param Container $container
-	 * @param string    $key | container key to check if it exists
-	 * @return bool
+	 * @param string $path
+	 * @return string
 	 */
-	public static function containerKeyExists( Container $container, string $key ) : bool
+	public static function asset( string $key ) : string
 	{
-		return (bool) $container[ $key ];
+		$asset = ( new Assets() )->asset( $key );
+
+		if ( $asset ) {
+			$publicFilePath = BROCOOLY_THEME_PUBLIC_URI . $asset;
+			return $publicFilePath;
+		}
+
+		return BROCOOLY_THEME_RESOURCES_URI . $key;
 	}
 }

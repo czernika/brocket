@@ -61,14 +61,12 @@ class DebugServiceProvider implements ServiceProviderInterface
 	 */
 	private function bootTwigDumper( Container $container )
 	{
-		if ( Helper::containerKeyExists( $container, 'brocooly.debugger.twig' ) ) {
-			add_filter(
-				'timber/loader/twig',
-				function ( $twig ) use ( $container ) {
-					$twig->addExtension( $container['brocooly.debugger.twig'] );
-					return $twig;
-				}
-			);
-		}
+		add_filter(
+			'timber/loader/twig',
+			function ( $twig ) use ( $container ) {
+				$twig->addExtension( $container['brocooly.debugger.twig'] );
+				return $twig;
+			}
+		);
 	}
 }

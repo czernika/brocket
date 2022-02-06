@@ -11,7 +11,6 @@ use Timber\Timber;
 use Theme\Brocooly;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
-use Brocooly\Assets\Assets;
 
 use function Env\env;
 
@@ -111,7 +110,7 @@ if ( ! function_exists( 'output' ) ) {
 	 *
 	 * @param string|array $view
 	 * @param array $ctx
-	 * @return string
+	 * @return object
 	 */
 	function output( string|array $view, array $ctx = [] ) {
 		$ctx   = array_merge( Timber::context(), ( new Brocooly() )->context(), $ctx );
@@ -129,13 +128,6 @@ if ( ! function_exists( 'asset' ) ) {
 	 * @return string
 	 */
 	function asset( string $filePath ) {
-		$asset = ( new Assets() )->asset( $filePath );
-
-		if ( $asset ) {
-			$publicFilePath = BROCOOLY_THEME_PUBLIC_URI . $asset;
-			return $publicFilePath;
-		}
-
-		return BROCOOLY_THEME_RESOURCES_URI . $filePath;
+		return Helper::asset( $filePath );
 	}
 }
