@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.8.5
+
+- [Fix] Fixed fatal error for wp-cli because of incorrect `wp-cli.yml` syntax
+- [Chore] Updated composer dependencies
+
+Release Date: Feb 6th, 2022
+
 ## Release 1.8.4
 
 - [Feat] Added default error handler page
