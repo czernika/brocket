@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.8.6
+
+- [Feat] Added `body_class` hook
+- [Feat] Disabled emoji
+- [Feat] Removed meta generator
+
+Release Date: Feb 7th, 2022
+
 ## Release 1.8.5
 
 - [Fix] Fixed fatal error for wp-cli because of incorrect `wp-cli.yml` syntax
