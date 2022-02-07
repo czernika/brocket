@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
+use Brocooly\Hooks\Hookable;
 use Brocooly\Request\Request;
 use Brocooly\Router\Blueprint;
 use Illuminate\Filesystem\Filesystem;
@@ -62,6 +63,7 @@ class AppServiceProvider implements ServiceProviderInterface
 	public function bootstrap( $container )
 	{
 		$this->extendTwig( $container );
+		$this->initHooks( $container );
 	}
 
 	/**
@@ -81,5 +83,23 @@ class AppServiceProvider implements ServiceProviderInterface
 				return $twig;
 			},
 		);
+	}
+
+	/**
+	 * Init theme hooks
+	 *
+	 * @since 1.8.7
+	 * @return void
+	 */
+	private function initHooks( $container )
+	{
+		$hooks = apply_filters( 'brocooly.hooks', config( 'app.hooks', [] ), $container );
+
+		foreach ( $hooks as $hook ) {
+			$hookable = new $hook();
+			if ( $hookable instanceof Hookable && method_exists( $hookable, 'init' ) ) {
+				$hookable->init();
+			}
+		}
 	}
 }

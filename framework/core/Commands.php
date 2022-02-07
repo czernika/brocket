@@ -15,6 +15,7 @@ use Brocooly\Console\Support\ClearCache;
 use Brocooly\Console\Support\GenerateSalts;
 use Brocooly\Console\Vendors\CopyDockerVendor;
 use Brocooly\Console\Files\MakeMail;
+use Brocooly\Console\Files\MakeHook;
 use Brocooly\Console\Files\MakeRule;
 use Brocooly\Console\Files\MakeRequest;
 use Brocooly\Console\Files\MakeProvider;
@@ -45,6 +46,7 @@ class Commands
 		MakeCustomizerSection::class,
 		MakeRequest::class,
 		MakeRule::class,
+		MakeHook::class,
 		ClearCache::class,
 		GenerateSalts::class,
 		CopyDockerVendor::class,

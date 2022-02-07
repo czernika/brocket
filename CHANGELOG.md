@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.8.7
+
+- [Feat] Added hookable classes to fire hooks
+- [Feat] Added `new:hook` console command
+- [Refactor] Refactored hooks and ThemeProvider
+
+Release Date: Feb 7th, 2022
 ## Release 1.8.6
 
 - [Feat] Added `body_class` hook

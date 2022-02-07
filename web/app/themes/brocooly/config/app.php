@@ -7,22 +7,33 @@
  * @since 1.5.0
  */
 
+use Brocooly\Hooks\BodyClass;
+use Theme\Hooks\AfterSetupTheme;
+
 return [
 
 	/**
 	 * --------------------------------------------------------------------------
-	 * Get application locale
+	 * Theme hookables
 	 * --------------------------------------------------------------------------
 	 *
-	 * Used for validator factory to receive correct message
-	 * This locale should be the same as directories within `validation` folder
+	 * An array of theme hookable classes
 	 *
-	 * If current locale is `ru_RU`, the path to validation rules file should be
-	 * `languages/validation/ru_RU/validation.php`
-	 *
-	 * @var string
+	 * @since 1.8.7
+	 * @var array
 	 */
-	'locale' => get_locale(),
+	'hooks'  => [
+
+		/**
+		 * App hooks
+		 */
+		BodyClass::class,
+
+		/**
+		 * Custom theme hooks
+		 */
+		AfterSetupTheme::class,
+	],
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -101,5 +112,20 @@ return [
 		'manifest' => 'mix-manifest.json',
 
 	],
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Get application locale
+	 * --------------------------------------------------------------------------
+	 *
+	 * Used for validator factory to receive correct message
+	 * This locale should be the same as directories within `validation` folder
+	 *
+	 * If current locale is `ru_RU`, the path to validation rules file should be
+	 * `languages/validation/ru_RU/validation.php`
+	 *
+	 * @var string
+	 */
+	'locale' => get_locale(),
 
 ];
