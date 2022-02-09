@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.8.9
+
+- [Fix] Fixed `SetAssetsPropertiesTrxait` error when asset file was not present
+- [Feat] Added Russian language pack
+- [Refactor] Refactored example page - added new link, check for user to be logged in and link to WPEmerge documentation
+
+Release Date: Feb 9th, 2022
+
 ## Release 1.8.8
 
 - [Revert] Added front-end files

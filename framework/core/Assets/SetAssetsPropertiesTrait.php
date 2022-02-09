@@ -137,10 +137,14 @@ trait SetAssetsPropertiesTrait
 	 * Set asset version
 	 *
 	 * @param string $file
-	 * @return int
+	 * @return int|null
 	 */
-	protected function setAssetVersion( string $file ) : int
+	protected function setAssetVersion( string $file ) : int|null
 	{
-		return filemtime( BROCOOLY_THEME_PUBLIC_PATH . $file );
+		if ( file_exists( BROCOOLY_THEME_PUBLIC_PATH . $file ) ) {
+			return filemtime( BROCOOLY_THEME_PUBLIC_PATH . $file );
+		}
+
+		return null;
 	}
 }

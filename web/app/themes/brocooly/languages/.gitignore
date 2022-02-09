@@ -4,3 +4,5 @@
 !.gitignore
 
 !*.pot
+!*ru_RU.mo
+!*ru_RU.po
