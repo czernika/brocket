@@ -13,6 +13,7 @@ namespace Brocooly;
 
 use Brocooly\Console\Support\ClearCache;
 use Brocooly\Console\Support\GenerateSalts;
+use Brocooly\Console\Vendors\CopyTestsVendor;
 use Brocooly\Console\Vendors\CopyDockerVendor;
 use Brocooly\Console\Files\MakeMail;
 use Brocooly\Console\Files\MakeHook;
@@ -25,8 +26,6 @@ use Brocooly\Console\Files\MakeModelTaxonomy;
 use Brocooly\Console\Files\MakeModelPostType;
 use Brocooly\Console\Files\MakeCustomizerPanel;
 use Brocooly\Console\Files\MakeCustomizerSection;
-use Brocooly\Console\Vendors\CopyMixVendor;
-use Brocooly\Console\Vendors\CopyTestsVendor;
 
 class Commands
 {
@@ -51,7 +50,6 @@ class Commands
 		GenerateSalts::class,
 		CopyDockerVendor::class,
 		CopyTestsVendor::class,
-		CopyMixVendor::class,
 	];
 
 	/**

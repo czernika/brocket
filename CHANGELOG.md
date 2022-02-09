@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.8.8
+
+- [Revert] Added front-end files
+- [Refactor] Removed `vendor:mix` command
+
+Release Date: Feb 9th, 2022
+
 ## Release 1.8.7
 
 - [Feat] Added hookable classes to fire hooks
@@ -7,6 +14,7 @@
 - [Refactor] Refactored hooks and ThemeProvider
 
 Release Date: Feb 7th, 2022
+
 ## Release 1.8.6
 
 - [Feat] Added `body_class` hook
