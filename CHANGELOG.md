@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.9.0
+
+- [Feat] Added support for custom templates within models
+- [Feat] Added `new:template` console command
+
+Release Date: Feb 10th, 2022
+
 ## Release 1.8.10
 
 - [Feat] Added WordPress babel preset

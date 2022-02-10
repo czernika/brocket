@@ -20,6 +20,7 @@ use Brocooly\Console\Files\MakeHook;
 use Brocooly\Console\Files\MakeRule;
 use Brocooly\Console\Files\MakeRequest;
 use Brocooly\Console\Files\MakeProvider;
+use Brocooly\Console\Files\MakeTemplate;
 use Brocooly\Console\Files\MakeController;
 use Brocooly\Console\Files\MakeMiddleware;
 use Brocooly\Console\Files\MakeModelTaxonomy;
@@ -46,6 +47,7 @@ class Commands
 		MakeRequest::class,
 		MakeRule::class,
 		MakeHook::class,
+		MakeTemplate::class,
 		ClearCache::class,
 		GenerateSalts::class,
 		CopyDockerVendor::class,

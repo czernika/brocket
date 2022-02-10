@@ -53,15 +53,16 @@ class ModelServiceProvider implements ServiceProviderInterface
 	 * @return void
 	 */
 	private function registerPostType( $postType ) {
-		if ( method_exists( $postType, 'register' ) ) {
+		$name = $postType::POST_TYPE;
 
+		if ( method_exists( $postType, 'register' ) ) {
 			$postType->register();
 
 			add_action(
 				'init',
 				function() use ( $postType ) {
 					register_extended_post_type(
-						$postType::POST_TYPE,
+						$name,
 						$postType->getArgs(),
 						$postType->getNames(),
 					);
@@ -75,6 +76,24 @@ class ModelServiceProvider implements ServiceProviderInterface
 				function() use ( $postType ) {
 					$postType->metaboxes();
 				},
+			);
+		}
+
+		/**
+		 * Create template for this post type
+		 */
+		if ( property_exists( $postType, 'templates' ) ) {
+			add_filter(
+				"theme_${name}_templates",
+				function ( $post_templates, $theme, $post, $post_type ) use ( $postType ) {
+					foreach ( (array) $postType->templates as $template ) {
+						$tpl = new $template();
+						$post_templates[ $tpl::SLUG ] = $tpl->label();
+					}
+					return $post_templates;
+				},
+				10,
+				4,
 			);
 		}
 	}
