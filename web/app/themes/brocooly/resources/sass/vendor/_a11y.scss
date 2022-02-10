@@ -36,6 +36,10 @@
 	}
 }
 
+.site-main[tabindex="-1"]:focus {
+	outline: 0;
+}
+
 @media (prefers-reduced-motion) {
 	* {
 		transition-delay: 0s !important;

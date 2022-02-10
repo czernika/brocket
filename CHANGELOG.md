@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.8.10
+
+- [Feat] Added WordPress babel preset
+- [Feat] Added package to handle images and convert them into webp if needed
+
+Release Date: Feb 10th, 2022
+
 ## Release 1.8.9
 
 - [Fix] Fixed `SetAssetsPropertiesTrxait` error when asset file was not present

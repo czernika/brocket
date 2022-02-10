@@ -15,6 +15,7 @@ const mix  = require('laravel-mix');
  */
 require('laravel-mix-clean');
 require('laravel-mix-versionhash');
+require('laravel-mix-simple-image-processing');
 
 /**
  * --------------------------------------------------------------------------
@@ -60,6 +61,24 @@ const browserSyncFiles = {
 		resourcePath + 'sass/**/*.scss',
 		themePath + 'src/**/*.php',
 	],
+};
+
+/**
+ * --------------------------------------------------------------------------
+ * Image handler settings
+ * --------------------------------------------------------------------------
+ *
+ * {@link https://www.npmjs.com/package/laravel-mix-simple-image-processing}
+ */
+const imageConverter = {
+	apply: true,
+	options: {
+		source: imagesPath,
+		destination: publicPath + imagesDir,
+		imageminPngquantOptions: { quality: [0.75, 0.8] },
+		webp: true,
+		imageminWebpOptions: { quality: 80 },
+	},
 };
 
 mix
@@ -164,7 +183,11 @@ mix.alias({...aliases});
  * {@link https://laravel-mix.com/docs/6.0/copying-files}
  */
 if (fs.existsSync(imagesPath)) {
-	mix.copyDirectory(imagesPath, publicPath + imagesDir);
+	if (imageConverter.apply) {
+		mix.imgs(imageConverter.options);
+	} else {
+		mix.copyDirectory(imagesPath, publicPath + imagesDir);
+	}
 }
 
 if (fs.existsSync(fontsPath)) {
