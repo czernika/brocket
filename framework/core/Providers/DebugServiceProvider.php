@@ -13,10 +13,9 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
-use Whoops\Handler\PrettyPageHandler;
 use Pimple\Container;
-use Brocooly\Support\Helper;
 use HelloNico\Twig\DumpExtension;
+use Whoops\Handler\PrettyPageHandler;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class DebugServiceProvider implements ServiceProviderInterface

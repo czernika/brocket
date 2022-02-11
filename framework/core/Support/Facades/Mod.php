@@ -48,7 +48,7 @@ namespace Brocooly\Support\Facades;
  */
 class Mod extends AbstractFacade
 {
-	protected static function accessor( $name, $arguments )
+	protected static function accessor()
 	{
 		return 'brocooly.customizer';
 	}

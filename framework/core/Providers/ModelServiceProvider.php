@@ -60,7 +60,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 
 			add_action(
 				'init',
-				function() use ( $postType ) {
+				function() use ( $postType, $name ) {
 					register_extended_post_type(
 						$name,
 						$postType->getArgs(),

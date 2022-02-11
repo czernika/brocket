@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.9.1
+
+- [Fix] Fixed post type registration error
+
+Release Date: Feb 11th, 2022
+
 ## Release 1.9.0
 
 - [Feat] Added support for custom templates within models
