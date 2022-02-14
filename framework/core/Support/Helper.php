@@ -12,6 +12,8 @@ namespace Brocooly\Support;
 
 use Brocooly\Assets\Assets;
 use Illuminate\Support\Str;
+use Theme\Brocooly;
+use Timber\Timber;
 
 class Helper
 {
@@ -49,5 +51,19 @@ class Helper
 		}
 
 		return BROCOOLY_THEME_RESOURCES_URI . $key;
+	}
+
+	/**
+	 * Get app context
+	 *
+	 * @param array $ctx
+	 * @since 1.9.2
+	 * @return array
+	 */
+	public static function getAppContext( array $ctx ) : array
+	{
+		$timberCtx = Timber::context();
+		$appCtx    = ( new Brocooly() )->context();
+		return array_merge( $timberCtx, $appCtx, $ctx );
 	}
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.9.2
+
+- [Refactor] Refactored context
+
+Release Date: Feb 14th, 2022
+
 ## Release 1.9.1
 
 - [Fix] Fixed post type registration error

@@ -97,7 +97,7 @@ trait MailableTrait
 	 */
 	public function template( string|array $template, array $ctx = [] )
 	{
-		$ctx           = array_merge( Timber::context(), $ctx );
+		$ctx           = Helper::getAppContext( $ctx );
 		$views         = Helper::twigify( $template );
 		$this->message = Timber::compile( $views, $ctx );
 		return $this;
