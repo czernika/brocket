@@ -33,15 +33,36 @@ trait ConditionalQuery
 	 *
 	 * @param $condition
 	 * @param $callback
+	 * @param $else
 	 * @return $this
 	 */
-	public function when( $condition, $callback )
+	public function when( bool $condition, $callback, $else = false )
 	{
 		if ( ( is_callable( $condition ) || is_bool( $condition ) ) && $condition ) {
 			$query = call_user_func_array( $callback, [ $this ] );
 			$this->query = wp_parse_args( $this->query, $query->query );
 		}
 
+		if ( $else && is_callable( $else ) && ! $condition ) {
+			$query = call_user_func_array( $else, [ $this ] );
+			$this->query = wp_parse_args( $this->query, $query->query );
+		}
+
 		return $this;
+	}
+
+	/**
+	 * Pass extra params to a query
+	 * if condition is true
+	 *
+	 * @param $condition
+	 * @param $callback
+	 * @param $else
+	 * @since 1.9.3
+	 * @return $this
+	 */
+	public function ifelse( bool $condition, $if, $else )
+	{
+		return $this->when( $condition, $if, $else );
 	}
 }

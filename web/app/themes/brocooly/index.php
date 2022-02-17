@@ -10,3 +10,5 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package Brocooly
  */
+
+require_once WP_CONTENT_DIR . '/php-error.php';

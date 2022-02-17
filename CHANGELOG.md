@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.9.3
+
+- [Refactor] Add fallback within `index.php`
+- [Refactor] `when()` method of `QueryBuilder` now has a fallback third param
+- [Feat] Added `ifelse()` method of `QueryBuilder` as `when` alias
+
+Release Date: Feb 17th, 2022
+
 ## Release 1.9.2
 
 - [Refactor] Refactored context

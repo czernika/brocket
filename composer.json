@@ -43,7 +43,8 @@
 		"symfony/console": "^6.0",
 		"timber/timber": "^1.19",
 		"vlucas/phpdotenv": "^5.3",
-		"webmozart/assert": "^1.10"
+		"webmozart/assert": "^1.10",
+		"booreiland/responsive-pics": "^1.4"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
