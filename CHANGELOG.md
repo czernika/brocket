@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.9.4
+
+- [Feat] Added defaulted `theme.json` file
+
+Release Date: Feb 17th, 2022
+
 ## Release 1.9.3
 
 - [Refactor] Add fallback within `index.php`
