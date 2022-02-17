@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d2a855e56ec0d06710f6561f36e5f50",
+    "content-hash": "e687feac0f49246c1c399a31ac699fc5",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -170,57 +170,6 @@
                 }
             ],
             "time": "2022-01-24T20:28:47+00:00"
-        },
-        {
-            "name": "booreiland/responsive-pics",
-            "version": "1.4.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Booreiland/responsive-pics.git",
-                "reference": "e0c936627c6ba1a57a38b55e20b2aefce4e30523"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Booreiland/responsive-pics/zipball/e0c936627c6ba1a57a38b55e20b2aefce4e30523",
-                "reference": "e0c936627c6ba1a57a38b55e20b2aefce4e30523",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "^1.0|^2.0",
-                "php": ">=5.5.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Wimer Hazenberg",
-                    "email": "wimer@booreiland.amsterdam",
-                    "homepage": "https://booreiland.amsterdam"
-                },
-                {
-                    "name": "Toine Kamps",
-                    "email": "toine@booreiland.amsterdam",
-                    "homepage": "https://booreiland.amsterdam"
-                }
-            ],
-            "description": "Responsive Pics is a Wordpress tool for resizing images on the fly.",
-            "homepage": "https://responsive.pics",
-            "keywords": [
-                "image",
-                "php",
-                "picture",
-                "resizing",
-                "wordpress"
-            ],
-            "support": {
-                "docs": "https://responsive.pics",
-                "issues": "https://github.com/Booreiland/responsive-pics/issues",
-                "source": "https://github.com/Booreiland/responsive-pics"
-            },
-            "time": "2022-02-08T12:29:13+00:00"
         },
         {
             "name": "composer/installers",
