@@ -7,7 +7,7 @@ use Symfony\Component\Console\Application;
 
 $app = new Application();
 
-foreach ( app( 'brocooly.console.commands' ) as $command ) {
+foreach ( app( BROCOOLY_CONSOLE_COMMANDS_KEY ) as $command ) {
     $commandObject = new $command();
 
     if ( isProduction() && $commandObject->notAllowedInProduction() ) {

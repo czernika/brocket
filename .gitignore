@@ -17,6 +17,7 @@ wp-cli.local.yml
 # All except themes
 web/app/*
 !web/app/themes
+!web/app/php-error.php
 # !web/app/uploads
 
 # End of https://www.toptal.com/developers/gitignore/api/wordpress

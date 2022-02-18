@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.10.1
+
+- [Fix] Added `php-error.php` file
+- [Refactor] Renamed key for app commands
+
+Release Date: Feb 18th, 2022
+
 ## Release 1.10.0
 
 - [Breaking] `cache:flush` command renamed into `view:clear` as it is more correct
