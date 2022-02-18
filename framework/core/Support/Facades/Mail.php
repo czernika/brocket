@@ -27,6 +27,6 @@ class Mail extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return 'brocooly.mail';
+		return BROCOOLY_MAIL_FACTORY_KEY;
 	}
 }

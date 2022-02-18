@@ -25,7 +25,7 @@ class ClearCache extends Command
 	 *
 	 * @var string
 	 */
-	protected static $defaultName = 'cache:flush';
+	protected static $defaultName = 'view:clear';
 
 	/**
 	 * Allow execution in production mode or not

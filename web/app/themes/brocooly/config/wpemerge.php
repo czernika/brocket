@@ -8,7 +8,6 @@
  * @since 1.0.0
  */
 
-use Theme\Providers\ThemeServiceProvider;
 use Brocooly\Providers\MailServiceProvider;
 use Brocooly\Providers\CustomizerServiceProvider;
 
@@ -50,21 +49,15 @@ return [
 	'providers'  => [
 
 		/**
-		 * App Providers
+		 * App or External Providers
 		 */
-		CustomizerServiceProvider::class,
-
-		/**
-		 * Uncomment next line if your theme uses custom mailers.
-		 *
-		 * @since 1.7.0
-		 */
+		// CustomizerServiceProvider::class,
 		// MailServiceProvider::class,
 
 		/**
 		 * Theme Providers
 		 */
-		ThemeServiceProvider::class,
+
 	],
 
 	/**

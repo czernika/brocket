@@ -61,6 +61,6 @@ class File extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return 'brocooly.file';
+		return BROCOOLY_FILE_FACTORY_KEY;
 	}
 }

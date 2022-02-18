@@ -30,7 +30,7 @@ class MakeHook extends CreateClassCommand
 	 *
 	 * @var string
 	 */
-	protected string $rootNamespace = 'Hooks';
+	protected string $rootNamespace = 'Theme\Hooks';
 
 	/**
 	 * Under which path will be created file

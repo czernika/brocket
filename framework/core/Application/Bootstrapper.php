@@ -16,8 +16,10 @@ use Theme\Brocooly;
 use Brocooly\Assets\Assets;
 use Brocooly\Support\Traits\HasAppTrait;
 use Brocooly\Providers\AppServiceProvider;
+use Brocooly\Providers\CommandServiceProvider;
 use Brocooly\Providers\ModelServiceProvider;
 use Brocooly\Providers\DebugServiceProvider;
+use Theme\Providers\ThemeServiceProvider;
 
 class Bootstrapper
 {
@@ -109,9 +111,15 @@ class Bootstrapper
 	{
 		return [
 			'providers' => [
+				CommandServiceProvider::class,
 				DebugServiceProvider::class,
 				AppServiceProvider::class,
 				ModelServiceProvider::class,
+
+				/**
+				 * @since 1.10.0
+				 */
+				ThemeServiceProvider::class,
 			],
 		];
 	}
@@ -202,6 +210,44 @@ class Bootstrapper
 
 		if ( ! defined( 'BROCOOLY_THEME_RESOURCES_URI' ) ) {
 			define( 'BROCOOLY_THEME_RESOURCES_URI', BROCOOLY_THEME_URI . 'resources' );
+		}
+
+		/**
+		 * Storage folder
+		 *
+		 * @since 1.10.0
+		 */
+		if ( ! defined( 'BROCOOLY_THEME_STORAGE_PATH' ) ) {
+			define( 'BROCOOLY_THEME_STORAGE_PATH', BROCOOLY_THEME_PATH . 'storage' );
+		}
+
+		/**
+		 * Container keys
+		 *
+		 * @since 1.10.0
+		 */
+		if ( ! defined( 'BROCOOLY_CONSOLE_COMMANDS_KEY' ) ) {
+			define( 'BROCOOLY_CONSOLE_COMMANDS_KEY', 'brocooly.console.commands' );
+		}
+
+		if ( ! defined( 'BROCOOLY_DEBUGGER_TWIG_KEY' ) ) {
+			define( 'BROCOOLY_DEBUGGER_TWIG_KEY', 'brocooly.debugger.twig' );
+		}
+
+		if ( ! defined( 'BROCOOLY_MAIL_FACTORY_KEY' ) ) {
+			define( 'BROCOOLY_MAIL_FACTORY_KEY', 'brocooly.mail' );
+		}
+
+		if ( ! defined( 'BROCOOLY_CUSTOMIZER_FACTORY_KEY' ) ) {
+			define( 'BROCOOLY_CUSTOMIZER_FACTORY_KEY', 'brocooly.customizer' );
+		}
+
+		if ( ! defined( 'BROCOOLY_VALIDATOR_FACTORY_KEY' ) ) {
+			define( 'BROCOOLY_VALIDATOR_FACTORY_KEY', 'brocooly.validator' );
+		}
+
+		if ( ! defined( 'BROCOOLY_FILE_FACTORY_KEY' ) ) {
+			define( 'BROCOOLY_FILE_FACTORY_KEY', 'brocooly.file' );
 		}
 	}
 }

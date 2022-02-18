@@ -15,6 +15,6 @@ class Validator extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return 'brocooly.validator';
+		return BROCOOLY_VALIDATOR_FACTORY_KEY;
 	}
 }

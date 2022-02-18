@@ -82,7 +82,7 @@ class MailServiceProvider implements ServiceProviderInterface
 
 	public function register( $container )
 	{
-		$container['brocooly.mail'] = fn( $c ) => new Mailer();
+		$container[ BROCOOLY_MAIL_FACTORY_KEY ] = fn( $c ) => new Mailer();
 	}
 
 	public function bootstrap( $container )

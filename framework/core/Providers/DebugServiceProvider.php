@@ -23,7 +23,7 @@ class DebugServiceProvider implements ServiceProviderInterface
 
 	public function register( $container )
 	{
-		$container['brocooly.debugger.twig'] = fn( $c ) => new DumpExtension();
+		$container[ BROCOOLY_DEBUGGER_TWIG_KEY ] = fn( $c ) => new DumpExtension();
 
 		/**
 		 * Override WPEmerge PrettyPage Handler as it cause error
@@ -63,7 +63,7 @@ class DebugServiceProvider implements ServiceProviderInterface
 		add_filter(
 			'timber/loader/twig',
 			function ( $twig ) use ( $container ) {
-				$twig->addExtension( $container['brocooly.debugger.twig'] );
+				$twig->addExtension( $container[ BROCOOLY_DEBUGGER_TWIG_KEY ] );
 				return $twig;
 			}
 		);

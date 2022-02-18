@@ -1,5 +1,18 @@
 # Changelog
 
+## Release 1.10.0
+
+- [Breaking] `cache:flush` command renamed into `view:clear` as it is more correct
+- [Breaking] `ThemeServiceProvider` is now required within app core therefore must exist
+- [Fix] Fixed incorrect namespace for generated hooks
+- [Feat] Added `new:command` console command to create custom theme commands
+- [Feat] Disable global style transient hook
+- [Feat] Disable emoji hook
+- [Refactor] Refactored `Commands` object
+- [Refactor] Refactored some providers
+
+Release Date: Feb 18th, 2022
+
 ## Release 1.9.4
 
 - [Feat] Added defaulted `theme.json` file

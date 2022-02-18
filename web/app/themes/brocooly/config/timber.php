@@ -47,7 +47,7 @@ return [
 		 *
 		 * @var string
 		 */
-		'location' => BROCOOLY_THEME_PATH . 'storage/cache/',
+		'location' => BROCOOLY_THEME_STORAGE_PATH . '/cache',
 	],
 
 ];

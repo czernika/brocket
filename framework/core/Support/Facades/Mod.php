@@ -50,6 +50,6 @@ class Mod extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return 'brocooly.customizer';
+		return BROCOOLY_CUSTOMIZER_FACTORY_KEY;
 	}
 }

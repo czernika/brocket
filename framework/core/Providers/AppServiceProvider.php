@@ -27,7 +27,7 @@ class AppServiceProvider implements ServiceProviderInterface
 		/**
 		 * Extend WPEmerge routing with Facade
 		 */
-		$container[ WPEMERGE_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->extend(
+		$container->extend(
 			WPEMERGE_ROUTING_ROUTE_BLUEPRINT_KEY,
 			function( $blueprint, $c ) {
 				return new Blueprint(
@@ -42,7 +42,7 @@ class AppServiceProvider implements ServiceProviderInterface
 		 *
 		 * @since 1.5.0
 		 */
-		$container[ WPEMERGE_REQUEST_KEY ] = $container->extend(
+		$container->extend(
 			WPEMERGE_REQUEST_KEY,
 			function( $request, $c ) {
 				$appRequest = apply_filters( 'brocooly.request', Request::fromGlobals() );
@@ -55,9 +55,9 @@ class AppServiceProvider implements ServiceProviderInterface
 		 *
 		 * @since 1.5.0
 		 */
-		$container['brocooly.customizer'] = fn( $c ) => new CustomizerFactory();
-		$container['brocooly.validator']  = fn( $c ) => new ValidatorFactory();
-		$container['brocooly.file']       = fn( $c ) => new Filesystem();
+		$container[ BROCOOLY_CUSTOMIZER_FACTORY_KEY ] = fn( $c ) => new CustomizerFactory();
+		$container[ BROCOOLY_VALIDATOR_FACTORY_KEY ]  = fn( $c ) => new ValidatorFactory();
+		$container[ BROCOOLY_FILE_FACTORY_KEY ]       = fn( $c ) => new Filesystem();
 	}
 
 	public function bootstrap( $container )

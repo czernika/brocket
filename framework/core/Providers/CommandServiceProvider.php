@@ -1,24 +1,25 @@
 <?php
 /**
- * Theme ServiceProvider
- * You may register here features related to theme
+ * Console Commands Service Provider
  *
  * @package Brocooly
  * @subpackage Brocket
- * @since 1.0.0
+ * @since 1.10.0
  */
 
 declare(strict_types=1);
 
-namespace Theme\Providers;
+namespace Brocooly\Providers;
+
+use Brocooly\Commands;
 
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
-class ThemeServiceProvider implements ServiceProviderInterface
+class CommandServiceProvider implements ServiceProviderInterface
 {
-
 	public function register( $container )
 	{
+		$container[ BROCOOLY_CONSOLE_COMMANDS_KEY ] = new Commands();
 	}
 
 	public function bootstrap( $container )

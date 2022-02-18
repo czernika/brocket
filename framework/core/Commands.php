@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly;
 
+use Brocooly\Console\Files\MakeCommand;
 use Brocooly\Console\Support\ClearCache;
 use Brocooly\Console\Support\GenerateSalts;
 use Brocooly\Console\Vendors\CopyTestsVendor;
@@ -48,6 +49,7 @@ class Commands
 		MakeRule::class,
 		MakeHook::class,
 		MakeTemplate::class,
+		MakeCommand::class,
 		ClearCache::class,
 		GenerateSalts::class,
 		CopyDockerVendor::class,
@@ -59,7 +61,7 @@ class Commands
 	 *
 	 * @return array
 	 */
-	public static function get() {
+	public function __invoke() {
 		return static::$commands;
 	}
 }

@@ -3,15 +3,11 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/web/wp/wp-load.php';
 
-use Brocooly\Commands;
 use Symfony\Component\Console\Application;
 
 $app = new Application();
 
-# add your commands
-$commands = Commands::get();
-
-foreach ( $commands as $command ) {
+foreach ( app( 'brocooly.console.commands' ) as $command ) {
     $commandObject = new $command();
 
     if ( isProduction() && $commandObject->notAllowedInProduction() ) {

@@ -8,7 +8,9 @@
  */
 
 use Brocooly\Hooks\BodyClass;
+use Theme\Hooks\DisableEmoji;
 use Theme\Hooks\AfterSetupTheme;
+use Theme\Hooks\DisableTransient;
 
 return [
 
@@ -33,6 +35,8 @@ return [
 		 * Custom theme hooks
 		 */
 		AfterSetupTheme::class,
+		DisableTransient::class,
+		DisableEmoji::class,
 	],
 
 	/**
