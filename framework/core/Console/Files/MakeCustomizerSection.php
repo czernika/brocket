@@ -124,7 +124,8 @@ class MakeCustomizerSection extends CreateClassCommand
 		return CreateClassCommand::SUCCESS;
 	}
 
-	private function createArgsMethodContent() {
+	private function createArgsMethodContent()
+	{
 		if ( ! $this->panel ) {
 			return "return esc_html__( '{$this->sectionName}', 'brocooly' );";
 		}
@@ -135,7 +136,8 @@ class MakeCustomizerSection extends CreateClassCommand
 ];";
 	}
 
-	private function createArgsMethod( $class ) {
+	private function createArgsMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'args', $this->createArgsMethodContent() );
 
 		$optionsMethod
@@ -145,13 +147,15 @@ class MakeCustomizerSection extends CreateClassCommand
 			->setReturnType( 'array|string' );
 	}
 
-	private function createFieldsMethodContent() {
+	private function createFieldsMethodContent()
+	{
 		return "return [
 	// Mod::text( 'example_setting', esc_html__( 'Example setting', 'brocooly' ) ),
 ];";
 	}
 
-	private function createFieldsMethod( $class ) {
+	private function createFieldsMethod( $class )
+	{
 		$controlsMethod = $this->createMethod( $class, 'fields', $this->createFieldsMethodContent() );
 
 		$controlsMethod
@@ -161,7 +165,8 @@ class MakeCustomizerSection extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createSectionIdConstant( $class ) {
+	private function createSectionIdConstant( $class )
+	{
 		$sectionConstant = $class->addConstant( 'SECTION_ID', $this->snakeCaseClassName );
 		$sectionConstant->addComment( 'Section id' )
 						->addComment( "Same as `id` setting for `\Kirki\Section()` class\n" )
@@ -171,7 +176,8 @@ class MakeCustomizerSection extends CreateClassCommand
 	/**
 	 * @return object
 	 */
-	protected function generateClassCap() {
+	protected function generateClassCap()
+	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( Mod::class );
 

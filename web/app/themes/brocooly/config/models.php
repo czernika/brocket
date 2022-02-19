@@ -8,6 +8,8 @@
  * @since 1.1.0
  */
 
+use Theme\UI\Menus\PrimaryMenu;
+
 return [
 
 	/**
@@ -56,6 +58,19 @@ return [
 		 * Register them here
 		 * if you wish to add metaboxes
 		 */
+	],
+
+	/**
+	 * --------------------------------------------------------------------------
+	 * Navigation menus
+	 * --------------------------------------------------------------------------
+	 *
+	 * Register menus which may require metaboxes
+	 *
+	 * @var array
+	 */
+	'menus'      => [
+		PrimaryMenu::class,
 	],
 
 ];

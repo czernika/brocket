@@ -28,6 +28,7 @@ use Brocooly\Console\Files\MakeModelTaxonomy;
 use Brocooly\Console\Files\MakeModelPostType;
 use Brocooly\Console\Files\MakeCustomizerPanel;
 use Brocooly\Console\Files\MakeCustomizerSection;
+use Brocooly\Console\Files\MakeMenu;
 
 class Commands
 {
@@ -49,6 +50,7 @@ class Commands
 		MakeRule::class,
 		MakeHook::class,
 		MakeTemplate::class,
+		MakeMenu::class,
 		MakeCommand::class,
 		ClearCache::class,
 		GenerateSalts::class,

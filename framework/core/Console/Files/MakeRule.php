@@ -73,7 +73,8 @@ class MakeRule extends CreateClassCommand
 		return CreateClassCommand::SUCCESS;
 	}
 
-	private function createPassesMethod( $class ) {
+	private function createPassesMethod( $class )
+	{
 		$passesMethod = $this->createMethod( $class, 'passes' );
 		$passesMethod->addParameter( 'attribute' );
 		$passesMethod->addParameter( 'value' );
@@ -82,7 +83,8 @@ class MakeRule extends CreateClassCommand
 	/**
 	 * @return object
 	 */
-	protected function generateClassCap() {
+	protected function generateClassCap()
+	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( Rule::class );
 

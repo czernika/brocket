@@ -15,7 +15,7 @@ use Theme\Models\WP\Post;
 use Illuminate\Support\Str;
 use Brocooly\Models\Taxonomy;
 use Nette\PhpGenerator\Literal;
-use Brocooly\Support\Traits\HasTermMetaboxes;
+use Brocooly\Support\Traits\HasMetaboxes;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -44,7 +44,7 @@ class MakeModelTaxonomy extends CreateClassCommand
 	/**
 	 * Post types attached to taxonomy
 	 *
-	 * @var array
+	 * @var string|array
 	 */
 	private string|array $postTypes;
 
@@ -145,7 +145,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 		return CreateClassCommand::SUCCESS;
 	}
 
-	protected function generateClassCap() {
+	protected function generateClassCap()
+	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( Taxonomy::class );
 		$namespace->addUse( RequiresRegistrationTrait::class );
@@ -165,14 +166,15 @@ class MakeModelTaxonomy extends CreateClassCommand
 		}
 
 		if ( $this->meta ) {
-			$class->addTrait( HasTermMetaboxes::class );
-			$namespace->addUse( HasTermMetaboxes::class );
+			$class->addTrait( HasMetaboxes::class );
+			$namespace->addUse( HasMetaboxes::class );
 		}
 
 		return $class;
 	}
 
-	private function createPostTypesProperty( $class ) {
+	private function createPostTypesProperty( $class )
+	{
 		$class->addProperty( 'postTypes', $this->postTypes )
 			->setProtected()
 			->setType( 'array|string' )
@@ -181,7 +183,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 			->addComment( '@var array|string' );
 	}
 
-	private function createArgsMethodContent() {
+	private function createArgsMethodContent()
+	{
 		return "return [
 	'public'            => true,
 	'show_in_menu'      => true,
@@ -194,7 +197,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 ];";
 	}
 
-	private function createLabelsMethodContent() {
+	private function createLabelsMethodContent()
+	{
 		$taxonomyLabel       = Str::headline( $this->className );
 		$pluralTaxonomyLabel = Str::plural( $taxonomyLabel );
 
@@ -211,7 +215,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 ];";
 	}
 
-	private function createNamesMethodContent() {
+	private function createNamesMethodContent()
+	{
 		$postTypeLabel       = Str::headline( $this->className );
 		$pluralPostTypeLabel = Str::plural( $postTypeLabel );
 
@@ -222,7 +227,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 ];";
 	}
 
-	private function createArgsMethod( $class ) {
+	private function createArgsMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'args', $this->createArgsMethodContent() );
 
 		$optionsMethod
@@ -233,7 +239,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createLabelsMethod( $class ) {
+	private function createLabelsMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'labels', $this->createLabelsMethodContent() );
 
 		$optionsMethod
@@ -244,7 +251,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createNamesMethod( $class ) {
+	private function createNamesMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'names', $this->createNamesMethodContent() );
 
 		$optionsMethod
@@ -255,7 +263,8 @@ class MakeModelTaxonomy extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createTaxonomyConstant( $class ) {
+	private function createTaxonomyConstant( $class )
+	{
 		$taxonomyConstant = $class->addConstant( 'TAXONOMY', $this->snakeCaseClassName );
 		$taxonomyConstant->addComment( "Taxonomy slug\n" )
 						->addComment( '@var string' );

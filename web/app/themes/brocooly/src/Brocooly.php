@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Theme;
 
+use Theme\UI\Menus\PrimaryMenu;
 use WPEmerge\Application\ApplicationTrait;
 
 /** @mixin \WPEmerge\Application\ApplicationMixin */
@@ -28,7 +29,17 @@ class Brocooly
 	 */
 	public function context()
 	{
-		$context = [];
+		$context = [
+
+			/**
+			 * Primary navigation menu
+			 *
+			 * Menu object will be available under menu property
+			 * @example {{ primary.menu }}
+			 * @since 1.11.0
+			 */
+			'primary' => new PrimaryMenu(),
+		];
 
 		return $context;
 	}

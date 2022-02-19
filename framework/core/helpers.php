@@ -64,7 +64,7 @@ if ( ! function_exists( 'isProduction' ) ) {
 	 * @return boolean
 	 */
 	function isProduction() {
-		return env( 'WP_ENV' ) === 'production';
+		return isCurrentEnv( 'production' );
 	}
 }
 

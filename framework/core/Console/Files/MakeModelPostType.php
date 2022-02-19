@@ -13,7 +13,7 @@ namespace Brocooly\Console\Files;
 
 use Illuminate\Support\Str;
 use Brocooly\Models\PostType;
-use Brocooly\Support\Traits\HasPostMetaboxes;
+use Brocooly\Support\Traits\HasMetaboxes;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -108,7 +108,8 @@ class MakeModelPostType extends CreateClassCommand
 		return CreateClassCommand::SUCCESS;
 	}
 
-	private function createArgsMethodContent() {
+	private function createArgsMethodContent()
+	{
 		$postTypeLabel = Str::headline( $this->className );
 
 		return "return [
@@ -124,7 +125,8 @@ class MakeModelPostType extends CreateClassCommand
 ];";
 	}
 
-	private function createLabelsMethodContent() {
+	private function createLabelsMethodContent()
+	{
 		$postTypeLabel       = Str::headline( $this->className );
 		$pluralPostTypeLabel = Str::plural( $postTypeLabel );
 
@@ -143,7 +145,8 @@ class MakeModelPostType extends CreateClassCommand
 ];";
 	}
 
-	private function createNamesMethodContent() {
+	private function createNamesMethodContent()
+	{
 		$postTypeLabel       = Str::headline( $this->className );
 		$pluralPostTypeLabel = Str::plural( $postTypeLabel );
 
@@ -154,7 +157,8 @@ class MakeModelPostType extends CreateClassCommand
 ];";
 	}
 
-	private function createArgsMethod( $class ) {
+	private function createArgsMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'args', $this->createArgsMethodContent() );
 
 		$optionsMethod
@@ -165,7 +169,8 @@ class MakeModelPostType extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createLabelsMethod( $class ) {
+	private function createLabelsMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'labels', $this->createLabelsMethodContent() );
 
 		$optionsMethod
@@ -176,7 +181,8 @@ class MakeModelPostType extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createNamesMethod( $class ) {
+	private function createNamesMethod( $class )
+	{
 		$optionsMethod = $this->createMethod( $class, 'names', $this->createNamesMethodContent() );
 
 		$optionsMethod
@@ -187,13 +193,15 @@ class MakeModelPostType extends CreateClassCommand
 			->setReturnType( 'array' );
 	}
 
-	private function createPostTypeConstant( $class ) {
+	private function createPostTypeConstant( $class )
+	{
 		$postTypeConstant = $class->addConstant( 'POST_TYPE', $this->snakeCaseClassName );
 		$postTypeConstant->addComment( "Post type slug\n" )
 						->addComment( '@var string' );
 	}
 
-	protected function generateClassCap() {
+	protected function generateClassCap()
+	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( PostType::class );
 		$namespace->addUse( RequiresRegistrationTrait::class );
@@ -203,8 +211,8 @@ class MakeModelPostType extends CreateClassCommand
 		$class->addTrait( RequiresRegistrationTrait::class );
 
 		if ( $this->meta ) {
-			$class->addTrait( HasPostMetaboxes::class );
-			$namespace->addUse( HasPostMetaboxes::class );
+			$class->addTrait( HasMetaboxes::class );
+			$namespace->addUse( HasMetaboxes::class );
 		}
 
 		return $class;

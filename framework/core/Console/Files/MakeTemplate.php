@@ -23,7 +23,7 @@ class MakeTemplate extends CreateClassCommand
 	 *
 	 * @var string
 	 */
-	protected static $defaultName = 'new:template';
+	protected static $defaultName = 'new:ui:template';
 
 	/**
 	 * Generated class root namespace (its own namespace excluded)

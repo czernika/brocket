@@ -43,6 +43,6 @@ class AfterSetupTheme implements Hookable
 		 *
 		 * @link https://docs.carbonfields.net/quickstart.html
 		 */
-		// \Carbon_Fields\Carbon_Fields::boot();
+		\Carbon_Fields\Carbon_Fields::boot();
 	}
 }

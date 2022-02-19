@@ -24,11 +24,13 @@
 		</defs>
 	</svg>
 
-	<h1 class="mb-2 text-2xl font-semibold text-center text-gray-600 sm:text-3xl">
+	<h1 class="text-2xl font-semibold text-center text-gray-600 sm:text-3xl">
 		{{ __( 'Brocket Framework v%s', 'brocooly' )|format(theme.version) }}
 	</h1>
 
-	<span class="block mb-6 text-xs text-center text-gray-600 lg:mb-8">{{ __('You can find this file at `resources/views/example.twig`', 'brocooly') }}</span>
+	<span class="block mb-6 text-xs text-center text-gray-600 lg:mb-8">
+		WordPress {{ fn('get_bloginfo', 'version') }}
+	</span>
 
 	<ul class="flex flex-wrap space-x-6 text-center lg:space-x-12">
 
@@ -71,5 +73,4 @@
 		{% endif %}
 
 	</ul>
-
 </div>

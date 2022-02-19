@@ -23,8 +23,8 @@ Thanks to all people which has impact on building this
 - [WordPress](https://wordpress.org/) - WordPress team for making great CMS
 - [TailwindCSS](https://tailwindcss.com/) - the greatest CSS Framework ever
 
-and many others authors of Composer packages and WordPress plugins Brocket uses
+and many other authors of Composer packages and WordPress plugins Brocket uses
 
 ## License
 
-The MIT License
+Brocket Framework runs under MIT [license](https://github.com/czernika/brocket/blob/master/LICENSE.md)

@@ -1,5 +1,20 @@
 # Changelog
 
+## Release 1.11.0
+
+- [Breaking] `new:template` command renamed into `new:ui:template`
+- [Revert] Downgrade to WordPress 5.7.5 by default (with 5.8.3 security release included)
+- [Feat] Disabled core update notification within `functions.php` file (newest releases will be tested but I doubt WordPress will change its policy)
+- [Feat] Added default theme model classes
+- [Feat] Added `PrimaryMenu` class
+- [Feat] Added `new:ui:menu` class
+- [Refactor] Refactored metaboxes container
+- [Docs] Updated `README.md`
+- [Style] Updated default hello-world screen to show current WordPress version
+- [Chore] Update dependencies
+
+Release Date: Feb 19th, 2022
+
 ## Release 1.10.1
 
 - [Fix] Added `php-error.php` file

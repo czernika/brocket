@@ -79,7 +79,8 @@ class MakeCustomizerPanel extends CreateClassCommand
 		return CreateClassCommand::SUCCESS;
 	}
 
-	private function createArgsMethod( $class ) {
+	private function createArgsMethod( $class )
+	{
 		$panelName = Str::headline( $this->className );
 		$method    = $this->createMethod(
 			$class,
@@ -95,7 +96,8 @@ class MakeCustomizerPanel extends CreateClassCommand
 			->setReturnType( 'array|string' );
 	}
 
-	private function createPanelIdConstant( $class ) {
+	private function createPanelIdConstant( $class )
+	{
 		$constant = $class->addConstant( 'PANEL_ID', $this->snakeCaseClassName );
 		$constant->addComment( 'Panel id' )
 						->addComment( "Same as `id` setting for `\Kirki\Panel()` class\n" )

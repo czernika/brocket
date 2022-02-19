@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Providers;
 
+use Theme\Models\WP\User;
+use Theme\Models\WP\Comment;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 
 class ModelServiceProvider implements ServiceProviderInterface
@@ -20,19 +22,23 @@ class ModelServiceProvider implements ServiceProviderInterface
 	{
 		foreach ( config( 'models.post_types', [] ) as $class ) {
 			$container[ $class::POST_TYPE ] = $container->factory(
-				function( $c ) use ( $class ) {
-					return new $class();
-				}
+				fn( $c ) => new $class(),
 			);
 		}
 
 		foreach ( config( 'models.taxonomies', [] ) as $class ) {
 			$container[ $class::TAXONOMY ] = $container->factory(
-				function( $c ) use ( $class ) {
-					return new $class();
-				}
+				fn( $c ) => new $class(),
 			);
 		}
+
+		$container['user'] = $container->factory(
+			fn( $c ) => new User(),
+		);
+
+		$container['comment'] = $container->factory(
+			fn( $c ) => new Comment( 1 ), /* @TODO: change id 1 */
+		);
 	}
 
 	public function bootstrap($container)
@@ -44,6 +50,13 @@ class ModelServiceProvider implements ServiceProviderInterface
 		foreach ( config( 'models.post_types', [] ) as $class ) {
 			$this->registerPostType( $container[ $class::POST_TYPE ] );
 		}
+
+		foreach ( config( 'models.menus', [] ) as $class ) {
+			$this->registerNavMenu( new $class() );
+		}
+
+		$this->registerModelMetaboxes( $container['user'] );
+		$this->registerModelMetaboxes( $container['comment'] );
 	}
 
 	/**
@@ -52,7 +65,8 @@ class ModelServiceProvider implements ServiceProviderInterface
 	 * @param object $postType
 	 * @return void
 	 */
-	private function registerPostType( $postType ) {
+	private function registerPostType( $postType )
+	{
 		$name = $postType::POST_TYPE;
 
 		if ( method_exists( $postType, 'register' ) ) {
@@ -70,14 +84,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 			);
 		}
 
-		if ( method_exists( $postType, 'metaboxes' ) ) {
-			add_action(
-				'carbon_fields_register_fields',
-				function() use ( $postType ) {
-					$postType->metaboxes();
-				},
-			);
-		}
+		$this->registerModelMetaboxes( $postType );
 
 		/**
 		 * Create template for this post type
@@ -104,7 +111,8 @@ class ModelServiceProvider implements ServiceProviderInterface
 	 * @param object $postType
 	 * @return void
 	 */
-	private function registerTaxonomy( $taxonomy ) {
+	private function registerTaxonomy( $taxonomy )
+	{
 		if ( method_exists( $taxonomy, 'register' ) ) {
 
 			$taxonomy->register();
@@ -122,11 +130,40 @@ class ModelServiceProvider implements ServiceProviderInterface
 			);
 		}
 
-		if ( method_exists( $taxonomy, 'metaboxes' ) ) {
+		$this->registerModelMetaboxes( $taxonomy );
+	}
+
+	/**
+	 * Register navigation menu
+	 *
+	 * @param object $menu
+	 * @return void
+	 */
+	private function registerNavMenu( $menu )
+	{
+		add_action(
+			'after_setup_theme',
+			function() use ( $menu ) {
+				register_nav_menu( $menu::LOCATION, $menu->label() );
+			}
+		);
+
+		$this->registerModelMetaboxes( $menu );
+	}
+
+	/**
+	 * Register metaboxes for model
+	 *
+	 * @param object $model
+	 * @return void
+	 */
+	private function registerModelMetaboxes( $model )
+	{
+		if ( method_exists( $model, 'metaboxes' ) ) {
 			add_action(
 				'carbon_fields_register_fields',
-				function() use ( $taxonomy ) {
-					$taxonomy->metaboxes();
+				function() use ( $model ) {
+					$model->metaboxes();
 				},
 			);
 		}

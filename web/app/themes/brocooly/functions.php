@@ -31,6 +31,26 @@ if ( ! class_exists( \Kirki\Compatibility\Kirki::class ) ) {
 }
 
 /**
+ * -------------------------------------------------------------------------
+ * Disable WordPress core update notification
+ * -------------------------------------------------------------------------
+ *
+ * Since 1.11.0 we downgraded to WP 5.7.5 (with 5.8.3 security release included)
+ * as it is has no new features like blog themes etc.
+ * Downgrading has increased speed of website
+ * and reduced amount of extra queries to database
+ *
+ * Remove this lines and update core version via `composer update` command
+ * if you wish use latest release
+ *
+ * @since 1.11.0
+ */
+add_filter(
+	'pre_site_transient_update_core',
+	'__return_false'
+);
+
+/**
  * ==========================================================================
  * Stop line - you may place your code AFTER this block
  * ==========================================================================
