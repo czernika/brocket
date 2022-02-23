@@ -221,6 +221,10 @@ class Bootstrapper
 			define( 'BROCOOLY_THEME_STORAGE_PATH', BROCOOLY_THEME_PATH . 'storage' );
 		}
 
+		if ( ! defined( 'BROCOOLY_THEME_CACHED_CONFIG_FILE' ) ) {
+			define( 'BROCOOLY_THEME_CACHED_CONFIG_FILE', BROCOOLY_THEME_STORAGE_PATH . '/cache/config.php' );
+		}
+
 		/**
 		 * Container keys
 		 *

@@ -44,10 +44,14 @@ class Config
 
 		static::$configWasSet = true;
 
-		$configFiles = glob( $configPath );
+		if ( isProduction() && file_exists( BROCOOLY_THEME_CACHED_CONFIG_FILE ) ) {
+			static::$data = require_once BROCOOLY_THEME_CACHED_CONFIG_FILE;
+		} else {
+			$configFiles = glob( $configPath );
 
-		foreach ( $configFiles as $file ) {
-			static::$data[ pathinfo( $file )['filename'] ] = require_once $file;
+			foreach ( $configFiles as $file ) {
+				static::$data[ pathinfo( $file )['filename'] ] = require_once $file;
+			}
 		}
 	}
 

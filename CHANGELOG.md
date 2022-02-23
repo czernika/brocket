@@ -1,5 +1,16 @@
 # Changelog
 
+## Release 1.11.1
+
+- [Feat] Added `config:cache` and `config:clear` console commands
+- [Feat] Added cached configuration file
+- [Refactor] Refactored cache commands
+- [Refactor] Refactored `Config` class
+- [Refactor] Refactored `isCurrentEnv()` helper
+- [Refactor] Changed cached views path
+
+Release Date: Feb 20th, 2022
+
 ## Release 1.11.0
 
 - [Breaking] `new:template` command renamed into `new:ui:template`

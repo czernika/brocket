@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Brocooly;
 
 use Brocooly\Console\Files\MakeCommand;
-use Brocooly\Console\Support\ClearCache;
+use Brocooly\Console\Support\ClearViewCache;
 use Brocooly\Console\Support\GenerateSalts;
 use Brocooly\Console\Vendors\CopyTestsVendor;
 use Brocooly\Console\Vendors\CopyDockerVendor;
@@ -29,6 +29,9 @@ use Brocooly\Console\Files\MakeModelPostType;
 use Brocooly\Console\Files\MakeCustomizerPanel;
 use Brocooly\Console\Files\MakeCustomizerSection;
 use Brocooly\Console\Files\MakeMenu;
+use Brocooly\Console\Support\CacheConfig;
+use Brocooly\Console\Support\ClearCache;
+use Brocooly\Console\Support\ClearConfigCache;
 
 class Commands
 {
@@ -52,7 +55,9 @@ class Commands
 		MakeTemplate::class,
 		MakeMenu::class,
 		MakeCommand::class,
-		ClearCache::class,
+		ClearViewCache::class,
+		ClearConfigCache::class,
+		CacheConfig::class,
 		GenerateSalts::class,
 		CopyDockerVendor::class,
 		CopyTestsVendor::class,

@@ -11,12 +11,13 @@ declare(strict_types=1);
 
 namespace Brocooly\Console\Support;
 
+use Brocooly\Support\Facades\File;
 use Brocooly\Console\SymfonyStyleTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ClearCache extends Command
+class CacheConfig extends Command
 {
 	use SymfonyStyleTrait;
 
@@ -25,7 +26,7 @@ class ClearCache extends Command
 	 *
 	 * @var string
 	 */
-	protected static $defaultName = 'view:clear';
+	protected static $defaultName = 'config:cache';
 
 	/**
 	 * Allow execution in production mode or not
@@ -41,16 +42,14 @@ class ClearCache extends Command
 	 * @inheritDoc
 	 */
 	protected function execute( InputInterface $input, OutputInterface $output ) {
-		$loader = new \Timber\Loader();
 
-		try {
-			$loader->clear_cache_twig();
-			$loader->clear_cache_timber();
-		} catch ( \Throwable $th ) {
-			$this->io->error( $th->getMessage() );
-		}
+		$content = '<?php return ';
+		$content .= var_export( config(), true );
+		$content .= ';';
 
-		$this->io->success( 'Cache was successfully flushed' );
+		File::put( BROCOOLY_THEME_CACHED_CONFIG_FILE, $content );
+
+		$this->io->success( 'Configuration file was cached' );
 		return Command::SUCCESS;
 	}
 

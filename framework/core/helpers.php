@@ -48,11 +48,11 @@ if ( ! function_exists( 'isCurrentEnv' ) ) {
 	/**
 	 * Check current environment type
 	 *
-	 * @param string $env
+	 * @param string|array $env
 	 * @return boolean
 	 */
-	function isCurrentEnv( string $env ) {
-		return env( 'WP_ENV' ) === $env;
+	function isCurrentEnv( string|array $env ) {
+		return in_array( env( 'WP_ENV' ), (array) $env, true );
 	}
 }
 
