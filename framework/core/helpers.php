@@ -7,8 +7,8 @@
  * @since 1.0.0
  */
 
+use Theme\App;
 use Timber\Timber;
-use Theme\Brocooly;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
 
@@ -93,7 +93,7 @@ if ( ! function_exists( 'app' ) ) {
 	 * @return mixed
 	 */
 	function app( ?string $key = null ) {
-		$app = Brocooly::container();
+		$app = App::container();
 
 		if ( $key ) {
 			return $app[ $key ];
@@ -115,7 +115,7 @@ if ( ! function_exists( 'output' ) ) {
 	function output( string|array $view, array $ctx = [] ) {
 		$ctx   = Helper::getAppContext( $ctx );
 		$views = Helper::twigify( $view );
-		return Brocooly::output( Timber::compile( $views, $ctx ) );
+		return App::output( Timber::compile( $views, $ctx ) );
 	}
 }
 

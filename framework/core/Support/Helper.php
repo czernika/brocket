@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Brocooly\Support;
 
+use Theme\App;
+use Timber\Timber;
 use Brocooly\Assets\Assets;
 use Illuminate\Support\Str;
-use Theme\Brocooly;
-use Timber\Timber;
 
 class Helper
 {
@@ -63,7 +63,7 @@ class Helper
 	public static function getAppContext( array $ctx ) : array
 	{
 		$timberCtx = Timber::context();
-		$appCtx    = ( new Brocooly() )->context();
+		$appCtx    = ( new App() )->context();
 		return array_merge( $timberCtx, $appCtx, $ctx );
 	}
 }

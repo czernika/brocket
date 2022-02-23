@@ -2,7 +2,7 @@
 	"version": 2,
 	"settings": {
         "color": {
-			"duotone": null,
+			"duotone": [],
 			"palette": null,
 			"gradients": null
         },

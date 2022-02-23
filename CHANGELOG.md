@@ -1,5 +1,19 @@
 # Changelog
 
+## Release 1.12.0
+
+- [Breaking] `Brocooly` main class renamed into `App`
+- [Fix] Default `null` setting for `theme.json` file changed as it causes site crash since 5.9.1. See [here](https://core.trac.wordpress.org/ticket/55241#comment:1)
+- [Feat] Added scripts localization
+- [Feat] Added params into `Menu` initialization
+- [Refactor] Refactored `.eslintr.js` file and Eslint webpack plugin
+- [Refactor] Refactored assets and webpack.mix
+- [Refactor] Some changes for IDE support for Models
+- [Chore] Added empty route file `ajax.php` and `admin.php`
+- [Chore] Added `.gitignore` to ignore all `twentysomething` themes 
+
+Release Date: Feb 24th, 2022
+
 ## Release 1.11.3
 
 - [Fix] Changed WPEmerge version (from `0.16.0` to `dev-master`)

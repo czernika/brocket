@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Facades;
 
-use Theme\Brocooly;
+use Theme\App;
 
 /**
  * @method static $this is_404()
@@ -62,6 +62,6 @@ class Route extends AbstractFacade
 {
 	protected static function accessor()
 	{
-		return Brocooly::route();
+		return App::route();
 	}
 }

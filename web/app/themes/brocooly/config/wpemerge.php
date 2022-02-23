@@ -27,8 +27,20 @@ return [
 	 * @var array
 	 */
 	'routes'     => [
-		'web' => [
+		'web'   => [
 			'definitions' => BROCOOLY_THEME_PATH . 'routes/web.php',
+			'attributes'  => [
+				'namespace' => 'Theme\\Http\\Controllers\\',
+			],
+		],
+		'ajax'  => [
+			'definitions' => BROCOOLY_THEME_PATH . 'routes/ajax.php',
+			'attributes'  => [
+				'namespace' => 'Theme\\Http\\Controllers\\',
+			],
+		],
+		'admin' => [
+			'definitions' => BROCOOLY_THEME_PATH . 'routes/admin.php',
 			'attributes'  => [
 				'namespace' => 'Theme\\Http\\Controllers\\',
 			],

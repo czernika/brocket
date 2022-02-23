@@ -24,10 +24,10 @@ require('laravel-mix-simple-image-processing');
  *
  * Set general theme information
  */
-const publicDir    = 'public/';
 const themePath    = 'web/app/themes/brocooly/';
+const publicDir    = 'public/';
 const publicPath   = themePath + publicDir;
-const resourcePath = themePath + 'resources/';
+const resourcePath = themePath + 'resources/assets/';
 const imagesDir    = 'images';
 const imagesPath   = resourcePath + imagesDir;
 const fontsDir     = 'fonts';
@@ -125,7 +125,8 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 const plugins = [
 	new ESLintPlugin({
-		formatter: 'stylish'
+		formatter: 'stylish',
+		failOnError: mix.inProduction(),
 	}),
 ];
 

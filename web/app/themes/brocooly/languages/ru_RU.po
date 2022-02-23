@@ -30,8 +30,8 @@ msgid "Brocooly"
 msgstr "Brocooly"
 
 #: resources/views/layouts/app.twig:13
-msgid "Brocooly Framework"
-msgstr "Brocooly Framework"
+msgid "Brocket Framework"
+msgstr "Brocket Framework"
 
 #. Description of the theme
 msgid ""

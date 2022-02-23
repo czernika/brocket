@@ -14,7 +14,7 @@ use Theme\UI\Menus\PrimaryMenu;
 use WPEmerge\Application\ApplicationTrait;
 
 /** @mixin \WPEmerge\Application\ApplicationMixin */
-class Brocooly
+class App
 {
 	use ApplicationTrait;
 

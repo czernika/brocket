@@ -1,10 +1,11 @@
 <?php
 /**
- * Brocooly Framework - developer-friendly framework
+ * Brocket Framework - developer-friendly framework
  * heavily inspired by Laravel and based on Timber and WPEmerge solutions
  * for WordPress themes development with Bedrock folder structure
  *
  * @package Brocooly
+ * @subpackage Brocket
  * @author Ihar Aliakseyenka <aliha.devs@gmail.com>
  * @since 1.0.0
  */
@@ -57,7 +58,7 @@ add_filter(
  *
  * All you custom functions may be placed here as it is still WordPress installation.
  *
- * ! But Brocooly Framework recommends you NOT to do that
+ * ! But Brocket Framework recommends you NOT to do that
  * and handle logic inside theme source directories.
  *
  * Happy coding!

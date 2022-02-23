@@ -30,9 +30,9 @@ class Menu
 	 */
 	const LOCATION = 'primary';
 
-	public function __construct()
+	public function __construct( array $params = [] )
 	{
-		$this->menu = new TimberMenu( static::LOCATION );
+		$this->menu = new TimberMenu( static::LOCATION, $params );
 	}
 
 	/**

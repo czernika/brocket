@@ -79,7 +79,7 @@ return [
 		],
 
 		'scripts'  => [
-			'regex' => '/(\/js\/)[\w]+\.js$/',
+			'regex'    => '/(\/js\/)[\w]+\.js$/',
 
 			/**
 			 * Enqueue scripts under specific rule
@@ -89,7 +89,25 @@ return [
 			 * Same as for styles but instead of `media` key there is `inFooter`
 			 * ```
 			 */
-			'queue' => [],
+			'queue'    => [],
+
+			/**
+			 * Scripts localization
+			 * Must be an array of arrays
+			 *
+			 * Same params as for `wp_localize_script()`
+			 *
+			 * @since 1.11.4
+			 */
+			'localize' => [
+				[
+					'brocket-app', // brocket default js handler
+					'ajax',
+					[
+						'url' => esc_html( admin_url( 'admin-ajax.php' ) ),
+					],
+				],
+			],
 		],
 
 		/**

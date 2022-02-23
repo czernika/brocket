@@ -62,8 +62,8 @@ use Brocooly\Support\Builders\PostTypeQueryBuilder;
  * @method static self trashed()
  * @method static self future()
  *
- * @method static array all()
- * @method static array get()
+ * @method static \Timber\PostQuery all()
+ * @method static \Timber\PostQuery get()
  * @method static self query( array $query )
  * @method static self with( array $postsIn )
  * @method static self except( array $postsIn )

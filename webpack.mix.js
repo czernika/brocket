@@ -8,7 +8,7 @@ const mix = require('./config/mix.base');
  * Set general theme information
  */
 const themePath    = 'web/app/themes/brocooly/';
-const resourcePath = themePath + 'resources/';
+const resourcePath = themePath + 'resources/assets/';
 
 mix
 

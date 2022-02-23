@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Application;
 
+use Theme\App;
 use Timber\Timber;
-use Theme\Brocooly;
 use Brocooly\Assets\Assets;
 use Brocooly\Support\Traits\HasAppTrait;
 use Brocooly\Providers\AppServiceProvider;
@@ -69,7 +69,7 @@ class Bootstrapper
 
 		$this->isBooted = true;
 
-		$this->setAppInstance( Brocooly::make() );
+		$this->setAppInstance( App::make() );
 
 		$config = array_merge_recursive(
 			$this->getBaseAppProviders(),

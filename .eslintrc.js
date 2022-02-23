@@ -4,7 +4,6 @@ module.exports = {
 	'env': {
 		'browser': true,
 		'es6': true,
-		'node': true,
 	},
 	extends: [
 		'airbnb-base',
@@ -17,6 +16,7 @@ module.exports = {
 	globals: {
 		'wp': true,
 		'Alpine': true,
+		'ajax': true, // script localization
 	},
 	rules: {
 		'no-console': isProd ? 'error' : 'off',
@@ -27,9 +27,7 @@ module.exports = {
 		],
 		'no-tabs': [
 			'error',
-			{
-				'allowIndentationTabs': true,
-			}
+			{ 'allowIndentationTabs': true },
 		],
 		'no-multi-assign': 'off',
 		'no-param-reassign': 'off',
@@ -39,5 +37,6 @@ module.exports = {
 		'/vendor/**/*.js',
 		'/node_modules/**/*.js',
 		'webpack.mix.js',
+		'/config/mix.base.js',
 	]
 }
