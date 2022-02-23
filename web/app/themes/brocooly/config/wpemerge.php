@@ -68,6 +68,8 @@ return [
 
 		/**
 		 * Theme Providers
+		 *
+		 * ! Do NOT register ThemeServiceProvider here
 		 */
 
 	],

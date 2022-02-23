@@ -97,11 +97,11 @@ return [
 			 *
 			 * Same params as for `wp_localize_script()`
 			 *
-			 * @since 1.11.4
+			 * @since 1.12.0
 			 */
 			'localize' => [
 				[
-					'brocket-app', // brocket default js handler
+					'brocket-app', // brocket default js handler.
 					'ajax',
 					[
 						'url' => esc_html( admin_url( 'admin-ajax.php' ) ),

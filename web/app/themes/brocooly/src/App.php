@@ -38,7 +38,7 @@ class App
 			 * @example {{ primary.menu }}
 			 * @since 1.11.0
 			 */
-			'primary' => new PrimaryMenu(),
+			// 'primary' => new PrimaryMenu(),
 		];
 
 		return $context;

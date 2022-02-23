@@ -149,7 +149,7 @@ class Assets
 				/**
 				 * Scripts localization
 				 *
-				 * @since 1.11.4
+				 * @since 1.12.0
 				 */
 				foreach ( config( 'app.assets.scripts.localize', [] ) as $localize ) {
 					wp_localize_script( ...$localize );

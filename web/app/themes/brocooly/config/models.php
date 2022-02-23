@@ -8,6 +8,10 @@
  * @since 1.1.0
  */
 
+use Theme\Models\WP\Tag;
+use Theme\Models\WP\Page;
+use Theme\Models\WP\Post;
+use Theme\Models\WP\Category;
 use Theme\UI\Menus\PrimaryMenu;
 
 return [
@@ -34,6 +38,8 @@ return [
 		 * Register them here
 		 * if you wish to add metaboxes
 		 */
+		// Post::class,
+		// Page::class,
 	],
 
 	/**
@@ -58,6 +64,8 @@ return [
 		 * Register them here
 		 * if you wish to add metaboxes
 		 */
+		// Tag::class,
+		// Category::class,
 	],
 
 	/**
