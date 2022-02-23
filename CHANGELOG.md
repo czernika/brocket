@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.11.3
+
+- [Fix] Changed WPEmerge version (from `0.16.0` to `dev-master`)
+- [Chore] Updated dependencies
+
+Release Date: Feb 23rd, 2022
+
 ## Release 1.11.2
 
 - [Fix] Fixed terms query - previously returning **ALL** terms no matter taxonomy
