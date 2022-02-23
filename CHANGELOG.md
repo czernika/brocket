@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 1.11.2
+
+- [Fix] Fixed terms query - previously returning **ALL** terms no matter taxonomy
+- [Feat] Added `ajax()` method for `Route` facade 
+- [Refactor] Refactored `paginate()` method of query builder
+- [Docs] Added warning for `Route::all()`
+
+Release Date: Feb 23rd, 2022
+
 ## Release 1.11.1
 
 - [Feat] Added `config:cache` and `config:clear` console commands

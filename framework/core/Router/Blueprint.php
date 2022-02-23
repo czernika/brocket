@@ -59,6 +59,20 @@ class Blueprint extends RouteBlueprint
 	}
 
 	/**
+	 * handle ajax requests
+	 *
+	 * @param string $action
+	 * @param string|array $methods
+	 * @param boolean $private
+	 * @param boolean $public
+	 * @return void
+	 */
+	public function ajax( string $action, string|array $methods = 'POST', bool $private = true, bool $public = false )
+	{
+		return $this->methods( (array) $methods )->where( 'ajax', $action, $private, $public );
+	}
+
+	/**
 	 * Undocumented function
 	 *
 	 * @param array|string $views

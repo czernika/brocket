@@ -28,13 +28,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 Route::is_front_page()->handle( 'PageController@front' );
 
 /**
- * =========================================================================
+ * -------------------------------------------------------------------------
  * Default Pages
- * =========================================================================
+ * -------------------------------------------------------------------------
  *
  * If no routes were matched default one will be included
  * ! This line should be always at the end
  *
+ * You should almost always avoid using \App::route()->all()
+ * when defining admin or ajax routes otherwise you will take over all custom admin pages
+ * and/or AJAX requests (even ones created by third party plugins).
+ *
+ * @see https://docs.wpemerge.com/#/framework/routing/defining-routes?id=defining-routes
  * @since 1.8.4
  */
 Route::all( 'PageController@all' );

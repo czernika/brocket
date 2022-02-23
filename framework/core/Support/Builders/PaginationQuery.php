@@ -16,7 +16,7 @@ trait PaginationQuery
 	/**
 	 * Set posts per page param
 	 *
-	 * @param integer|null $postsPerPage
+	 * @param integer|string|null $postsPerPage
 	 * @return self
 	 */
 	public function paginate( ?int $postsPerPage = null ) : self
@@ -32,10 +32,10 @@ trait PaginationQuery
 	 * Set pagination offset
 	 *
 	 * @since 1.4.2
-	 * @param integer $offset
+	 * @param integer|string $offset
 	 * @return self
 	 */
-	public function offset( int $offset ) : self
+	public function offset( int|string $offset ) : self
 	{
 		$this->query['offset'] = $offset;
 		return $this;
@@ -45,12 +45,13 @@ trait PaginationQuery
 	 * Set paged query param
 	 *
 	 * @since 1.4.2
-	 * @param integer $paged
+	 * @param integer|string $paged
 	 * @return self
 	 */
-	public function paged( int $paged ) : self
+	public function paged( int|string $paged ) : self
 	{
 		$this->query['paged'] = $paged;
 		return $this;
 	}
 }
+

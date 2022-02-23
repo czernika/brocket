@@ -25,6 +25,10 @@ Thanks to all people which has impact on building this
 
 and many other authors of Composer packages and WordPress plugins Brocket uses
 
+## Known issues
+
+1. AJAX routes are not compatible with PHP8 (Unknown named parameter). Depends on WPEmerge support
+
 ## License
 
 Brocket Framework runs under MIT [license](https://github.com/czernika/brocket/blob/master/LICENSE.md)

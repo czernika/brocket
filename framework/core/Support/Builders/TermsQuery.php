@@ -25,6 +25,7 @@ trait TermsQuery
 	 */
 	public function terms( $args = null, array $maybe = [] ) : mixed
 	{
+		$args['taxonomy'] = $this->classMap::TAXONOMY;
 		return Timber::get_terms( $args, $maybe, $this->classMap );
 	}
 }
