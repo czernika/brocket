@@ -80,4 +80,57 @@ trait DateQuery
 		$this->query = wp_parse_args( [ 'date_query' => $dateQuery ], $this->query );
 		return $this;
 	}
+
+	/**
+	 * Get posts for current week
+	 *
+	 * @return self
+	 */
+	public function weekly()
+	{
+		$dateQuery  = [
+			'date_query' => [
+				[ 'year' => date( 'Y' ) ],
+				[ 'week' => date( 'W' ) ],
+			],
+		];
+		$this->query = wp_parse_args( $dateQuery, $this->query );
+
+		return $this;
+	}
+
+	/**
+	 * Get posts for current month
+	 *
+	 * @return self
+	 */
+	public function monthly()
+	{
+		$dateQuery  = [
+			'date_query' => [
+				[ 'year'  => date( 'Y' ) ],
+				[ 'month' => date( 'm' ) ],
+			],
+		];
+		$this->query = wp_parse_args( $dateQuery, $this->query );
+
+		return $this;
+	}
+
+	/**
+	 * Get posts for current year
+	 *
+	 * @return self
+	 */
+	public function yearly()
+	{
+		$dateQuery  = [
+			'date_query' => [
+				[ 'year'  => date( 'Y' ) ],
+			],
+		];
+		$this->query = wp_parse_args( $dateQuery, $this->query );
+
+		return $this;
+	}
 }

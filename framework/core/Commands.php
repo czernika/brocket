@@ -30,7 +30,6 @@ use Brocooly\Console\Files\MakeCustomizerPanel;
 use Brocooly\Console\Files\MakeCustomizerSection;
 use Brocooly\Console\Files\MakeMenu;
 use Brocooly\Console\Support\CacheConfig;
-use Brocooly\Console\Support\ClearCache;
 use Brocooly\Console\Support\ClearConfigCache;
 
 class Commands

@@ -61,7 +61,7 @@ trait ConditionalQuery
 	 * @since 1.9.3
 	 * @return $this
 	 */
-	public function ifelse( bool $condition, $if, $else )
+	public function ifElse( bool $condition, $if, $else )
 	{
 		return $this->when( $condition, $if, $else );
 	}

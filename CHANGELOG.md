@@ -5,14 +5,16 @@
 - [Breaking] `Brocooly` main class renamed into `App`
 - [Fix] Default `null` setting for `theme.json` file changed as it causes site crash since 5.9.1. See [here](https://core.trac.wordpress.org/ticket/55241#comment:1)
 - [Feat] Added scripts localization
+- [Feat] Added shortcuts for `DateQuery` builder
 - [Feat] Added params into `Menu` initialization
 - [Refactor] Refactored `.eslintr.js` file and Eslint webpack plugin
+- [Refactor] Default WordPress models are now required
 - [Refactor] Refactored assets and webpack.mix
 - [Refactor] Some changes for IDE support for Models
 - [Chore] Added empty route file `ajax.php` and `admin.php`
 - [Chore] Added `.gitignore` to ignore all `twentysomething` themes 
 
-Release Date: Feb 24th, 2022
+Release Date: Mar 4th, 2022
 
 ## Release 1.11.3
 

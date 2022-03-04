@@ -48,5 +48,9 @@ class PostTypeQueryBuilder extends QueryBuilder
 	{
 		$this->query['post_type']   = $this->postType;
 		$this->query['post_status'] = [ 'publish' ];
+
+		if ( app( $this->postType ) ) {
+			$this->query['posts_per_page'] = app( $this->postType )->getPostsPerPage();
+		}
 	}
 }

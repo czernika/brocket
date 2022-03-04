@@ -91,6 +91,19 @@ class PostType extends Post
 	protected array $terms = [];
 
 	/**
+	 * How many posts retrieve per get request
+	 *
+	 * @var integer|null
+	 */
+	protected $postsPerPage = null;
+
+	public function getPostsPerPage()
+	{
+		$defaults = config( 'query.defaults.posts_per_page' ) ?: get_option( 'posts_per_page' );
+		return $this->postsPerPage ?: $defaults;
+	}
+
+	/**
 	 * Build query to retrieve posts
 	 *
 	 * @param string $name

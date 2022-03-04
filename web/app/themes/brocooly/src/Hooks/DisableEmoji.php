@@ -1,7 +1,6 @@
 <?php
-
 /**
- * DisableEmoji - custom theme hook
+ * Disable emoji
  *
  * @since 1.10.0
  * @package Brocooly

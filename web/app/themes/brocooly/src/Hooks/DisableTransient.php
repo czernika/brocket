@@ -1,5 +1,4 @@
 <?php
-
 /**
  * When not using `theme.json` file
  * WordPress still set 4 transients for global styles

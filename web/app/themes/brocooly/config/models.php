@@ -34,12 +34,9 @@ return [
 
 		/**
 		 * WordPress post types
-		 *
-		 * Register them here
-		 * if you wish to add metaboxes
 		 */
-		// Post::class,
-		// Page::class,
+		Post::class,
+		Page::class,
 	],
 
 	/**
@@ -60,12 +57,9 @@ return [
 
 		/**
 		 * WordPress taxonomies
-		 *
-		 * Register them here
-		 * if you wish to add metaboxes
 		 */
-		// Tag::class,
-		// Category::class,
+		Tag::class,
+		Category::class,
 	],
 
 	/**
