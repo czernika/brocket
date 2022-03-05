@@ -12,8 +12,6 @@ use Timber\Timber;
 use Brocooly\Support\Helper;
 use Brocooly\Application\Config;
 
-use function Env\env;
-
 if ( ! function_exists( 'dump' ) ) {
 
 	/**
@@ -129,5 +127,19 @@ if ( ! function_exists( 'asset' ) ) {
 	 */
 	function asset( string $filePath ) {
 		return Helper::asset( $filePath );
+	}
+}
+
+if ( ! function_exists( 'env' ) ) {
+
+	/**
+	 * Get environment value
+	 *
+	 * @param string $key
+	 * @param mixed $default
+	 * @return mixed
+	 */
+	function env( string $key, $default = null ) {
+		return Env\env( $key ) ?: $default;
 	}
 }

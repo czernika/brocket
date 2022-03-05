@@ -18,8 +18,6 @@
 use Carbon\Carbon;
 use Roots\WPConfig\Config;
 
-use function Env\env;
-
 /**
  * --------------------------------------------------------------------------
  * Define app path
@@ -67,7 +65,7 @@ if ( file_exists( BROCOOLY_APP_PATH . '/.env' ) ) {
  *
  * Default: production
  */
-define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' );
+define( 'WP_ENV', env( 'WP_ENV', 'production' ) );
 Config::define( 'WP_ENVIRONMENT_TYPE', WP_ENV );
 
 /**
@@ -95,10 +93,10 @@ Config::define( 'WP_CONTENT_URL', Config::get( 'WP_HOME' ) . Config::get( 'CONTE
 Config::define( 'DB_NAME', env( 'DB_NAME' ) );
 Config::define( 'DB_USER', env( 'DB_USER' ) );
 Config::define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) );
-Config::define( 'DB_HOST', env( 'DB_HOST' ) ?: 'localhost' );
+Config::define( 'DB_HOST', env( 'DB_HOST', 'localhost' ) );
 Config::define( 'DB_CHARSET', 'utf8mb4' );
 Config::define( 'DB_COLLATE', '' );
-$table_prefix = env( 'DB_PREFIX' ) ?: 'wp_'; // phpcs:disable WordPress.WP.GlobalVariablesOverride
+$table_prefix = env( 'DB_PREFIX', 'wp_' ); // phpcs:disable WordPress.WP.GlobalVariablesOverride
 
 if ( env( 'DATABASE_URL' ) ) {
 	// phpcs:disable WordPress.WP.AlternativeFunctions
@@ -130,7 +128,7 @@ Config::define( 'NONCE_SALT', env( 'NONCE_SALT' ) );
  * --------------------------------------------------------------------------
  */
 Config::define( 'AUTOMATIC_UPDATER_DISABLED', true );
-Config::define( 'DISABLE_WP_CRON', env( 'DISABLE_WP_CRON' ) ?: false );
+Config::define( 'DISABLE_WP_CRON', env( 'DISABLE_WP_CRON', false ) );
 
 /**
  * --------------------------------------------------------------------------
@@ -151,14 +149,14 @@ Config::define( 'DISALLOW_FILE_MODS', true );
  * Limit the number of post revisions that WordPress stores (true (default WP): store every revision).
  * --------------------------------------------------------------------------
  */
-Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 3 );
+Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS', 3 ) );
 
 /**
  * --------------------------------------------------------------------------
  * Debug settings
  * --------------------------------------------------------------------------
  */
-$debug_log = env( 'WP_DEBUG_LOG' ) ?? false;
+$debug_log = env( 'WP_DEBUG_LOG', false );
 
 if ( $debug_log && class_exists( 'Carbon\Carbon' ) ) {
 	$date = Carbon::now()->format( 'Y-m-d' );

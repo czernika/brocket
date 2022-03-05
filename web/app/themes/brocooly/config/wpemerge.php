@@ -28,21 +28,21 @@ return [
 	 */
 	'routes'     => [
 		'web'   => [
-			'definitions' => BROCOOLY_THEME_PATH . 'routes/web.php',
+			'definitions' => BROCOOLY_THEME_ROUTES_PATH . '/web.php',
 			'attributes'  => [
 				'namespace' => 'Theme\\Http\\Controllers\\',
 			],
 		],
 		'ajax'  => [
-			'definitions' => BROCOOLY_THEME_PATH . 'routes/ajax.php',
+			'definitions' => BROCOOLY_THEME_ROUTES_PATH . '/ajax.php',
 			'attributes'  => [
-				'namespace' => 'Theme\\Http\\Controllers\\',
+				'namespace' => 'Theme\\Http\\Controllers\\Ajax\\',
 			],
 		],
 		'admin' => [
-			'definitions' => BROCOOLY_THEME_PATH . 'routes/admin.php',
+			'definitions' => BROCOOLY_THEME_ROUTES_PATH . '/admin.php',
 			'attributes'  => [
-				'namespace' => 'Theme\\Http\\Controllers\\',
+				'namespace' => 'Theme\\Http\\Controllers\\Admin\\',
 			],
 		],
 	],

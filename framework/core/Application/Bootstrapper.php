@@ -226,6 +226,15 @@ class Bootstrapper
 		}
 
 		/**
+		 * Routes folder
+		 *
+		 * @since 1.12.1
+		 */
+		if ( ! defined( 'BROCOOLY_THEME_ROUTES_PATH' ) ) {
+			define( 'BROCOOLY_THEME_ROUTES_PATH', BROCOOLY_THEME_PATH . 'routes' );
+		}
+
+		/**
 		 * Container keys
 		 *
 		 * @since 1.10.0

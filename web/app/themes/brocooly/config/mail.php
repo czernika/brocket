@@ -7,8 +7,6 @@
  * @since 1.7.0
  */
 
-use function Env\env;
-
 return [
 
 	/**
@@ -20,7 +18,7 @@ return [
 	 *
 	 * @var string
 	 */
-	'default' => env( 'MAIL_MAILER' ) ?? 'wordpress',
+	'default' => env( 'MAIL_MAILER', 'wordpress' ),
 
 	/**
 	 * -------------------------------------------------------------------------
@@ -63,29 +61,29 @@ return [
 		 */
 		'mailtrap'  => [
 			'transport'  => 'smtp',
-			'host'       => env( 'MAIL_HOST' ) ?? 'smtp.mailtrap.io',
-			'port'       => env( 'MAIL_PORT' ) ?? 2525,
+			'host'       => env( 'MAIL_HOST', 'smtp.mailtrap.io' ),
+			'port'       => env( 'MAIL_PORT', 2525 ),
 			'username'   => env( 'MAIL_USERNAME' ),
 			'password'   => env( 'MAIL_PASSWORD' ),
-			'encryption' => env( 'MAIL_ENCRYPTION' ) ?? 'tls',
+			'encryption' => env( 'MAIL_ENCRYPTION', 'tls' ),
 		],
 
 		'google'    => [
 			'transport'  => 'smtp',
-			'host'       => env( 'MAIL_HOST' ) ?? 'smtp.googlemail.com',
-			'port'       => env( 'MAIL_PORT' ) ?? 465,
+			'host'       => env( 'MAIL_HOST', 'smtp.googlemail.com' ),
+			'port'       => env( 'MAIL_PORT', 465 ),
 			'username'   => env( 'MAIL_USERNAME' ),
 			'password'   => env( 'MAIL_PASSWORD' ),
-			'encryption' => env( 'MAIL_ENCRYPTION' ) ?? 'tls',
+			'encryption' => env( 'MAIL_ENCRYPTION', 'tls' ),
 		],
 
 		'yandex'    => [
 			'transport'  => 'smtp',
-			'host'       => env( 'MAIL_HOST' ) ?? 'smtp.yandex.ru',
-			'port'       => env( 'MAIL_PORT' ) ?? 587,
+			'host'       => env( 'MAIL_HOST', 'smtp.yandex.ru' ),
+			'port'       => env( 'MAIL_PORT', 587 ),
 			'username'   => env( 'MAIL_USERNAME' ),
 			'password'   => env( 'MAIL_PASSWORD' ),
-			'encryption' => env( 'MAIL_ENCRYPTION' ) ?? 'ssl',
+			'encryption' => env( 'MAIL_ENCRYPTION', 'ssl' ),
 		],
 
 	],
@@ -100,8 +98,8 @@ return [
 	 * @var array
 	 */
 	'from'    => [
-		'name'    => env( 'MAIL_FROM_NAME' ) ?? get_bloginfo( 'name' ),
-		'address' => env( 'MAIL_FROM_ADDRESS' ) ?? get_option( 'admin_email' ),
+		'name'    => env( 'MAIL_FROM_NAME', get_bloginfo( 'name' ) ),
+		'address' => env( 'MAIL_FROM_ADDRESS', get_option( 'admin_email' ) ),
 	],
 
 	/**

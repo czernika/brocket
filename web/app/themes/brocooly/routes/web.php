@@ -35,7 +35,7 @@ Route::is_front_page()->handle( 'PageController@front' );
  * If no routes were matched default one will be included
  * ! This line should be always at the end
  *
- * You should almost always avoid using \App::route()->all()
+ * You should almost always avoid using `Route::all()`
  * when defining admin or ajax routes otherwise you will take over all custom admin pages
  * and/or AJAX requests (even ones created by third party plugins).
  *

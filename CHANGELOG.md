@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.12.1
+
+- [Feat] Added `env()` helper
+- [Refactor] Removed `theme.json` file completely as causing extra queries
+
+Release Date: Feb 23rd, 2022
+
 ## Release 1.12.0
 
 - [Breaking] `Brocooly` main class renamed into `App`
