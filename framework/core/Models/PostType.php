@@ -99,7 +99,7 @@ class PostType extends Post
 
 	public function getPostsPerPage()
 	{
-		$defaults = config( 'query.defaults.posts_per_page' ) ?: get_option( 'posts_per_page' );
+		$defaults = config( 'query.defaults.posts_per_page', 10 );
 		return $this->postsPerPage ?: $defaults;
 	}
 

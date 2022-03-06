@@ -21,7 +21,7 @@
 		"php": "^8.0",
 		"aristath/kirki": "^4.0",
 		"composer/installers": "^1.12",
-		"czernika/brocket-framework": "*",
+		"czernika/brocket-framework": "dev-master",
 		"filp/whoops": "^2.14",
 		"hellonico/twig-dump-extension": "^1.1",
 		"htmlburger/carbon-fields": "^3.3",
@@ -41,7 +41,7 @@
 		"roots/wp-config": "1.0.0",
 		"roots/wp-password-bcrypt": "1.1.0",
 		"symfony/console": "^6.0",
-		"timber/timber": "^1.19",
+		"timber/timber": "^1.19.1",
 		"vlucas/phpdotenv": "^5.3",
 		"webmozart/assert": "^1.10"
 	},

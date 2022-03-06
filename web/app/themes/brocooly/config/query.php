@@ -37,7 +37,7 @@ return [
 	 * @var array
 	 */
 	'defaults' => [
-		'posts_per_page' => get_option( 'posts_per_page' ), // phpcs:ignore WordPress.WP.PostsPerPage
+		'posts_per_page' => get_option( 'posts_per_page', 10 ), // phpcs:ignore WordPress.WP.PostsPerPage
 	],
 
 ];

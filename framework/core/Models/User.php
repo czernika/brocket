@@ -16,4 +16,8 @@ use Timber\User as TimberUser;
 class User extends TimberUser
 {
 
+	public static function current()
+	{
+		return new static( get_current_user_id() );
+	}
 }

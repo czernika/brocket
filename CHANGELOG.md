@@ -5,7 +5,7 @@
 - [Feat] Added `env()` helper
 - [Refactor] Removed `theme.json` file completely as causing extra queries
 
-Release Date: Feb 23rd, 2022
+Release Date: Mar 5th, 2022
 
 ## Release 1.12.0
 

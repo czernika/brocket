@@ -43,7 +43,7 @@ return [
 		'apply'    => isProduction(),
 
 		/**
-		 * Cache location
+		 * View files cache location
 		 *
 		 * @var string
 		 */
