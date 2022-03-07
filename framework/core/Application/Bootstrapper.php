@@ -41,6 +41,55 @@ class Bootstrapper
 	public Timber $timber;
 
 	/**
+	 * Theme base path
+	 *
+	 * @var string
+	 */
+	private string $basePath;
+
+	/**
+	 * Theme base uri
+	 *
+	 * @var string
+	 */
+	private string $baseUri;
+
+	/**
+	 * Languages dir name
+	 *
+	 * @var string
+	 */
+	private string $langDir = 'languages';
+
+	/**
+	 * Public dir name
+	 *
+	 * @var string
+	 */
+	private string $publicDir = 'public';
+
+	/**
+	 * Resources dir name
+	 *
+	 * @var string
+	 */
+	private string $resourcesDir = 'resources';
+
+	/**
+	 * Storage dir name
+	 *
+	 * @var string
+	 */
+	private string $storageDir = 'storage';
+
+	/**
+	 * Routes dir name
+	 *
+	 * @var string
+	 */
+	private string $routesDir = 'routes';
+
+	/**
 	 * Init configuration object
 	 *
 	 * @param Timber $timber
@@ -53,7 +102,7 @@ class Bootstrapper
 
 		$this->timber = $timber;
 
-		$this->setDefinitions();
+		$this->setAppContainerKeys();
 	}
 
 	/**
@@ -87,12 +136,20 @@ class Bootstrapper
 	 * Initialize configuration object
 	 * and Timber resource directory
 	 *
-	 * @param string $config
+	 * @param string $basePath
+	 * @param string $baseUri
 	 * @return void
 	 */
-	public function init( string $config ) : void
+	public function setBase( string $basePath, string $baseUri ) : void
 	{
-		Config::set( $config );
+		$this->basePath = $basePath;
+		$this->baseUri  = $baseUri;
+
+		$this->setBasePath();
+
+		Config::set(
+			wp_normalize_path( $this->basePath . '/config/*.php' )
+		);
 
 		$this->timber::$dirname = config( 'timber.views', 'resources/views' );
 		$this->timber::$cache   = config( 'timber.cache.apply' );
@@ -163,18 +220,18 @@ class Bootstrapper
 	 *
 	 * @return void
 	 */
-	private function setDefinitions() : void
+	private function setBasePath() : void
 	{
 		if ( ! defined( 'BROCOOLY_FRAMEWORK_PATH' ) ) {
 			define( 'BROCOOLY_FRAMEWORK_PATH', dirname( __DIR__, 2 ) );
 		}
 
 		if ( ! defined( 'BROCOOLY_THEME_PATH' ) ) {
-			define( 'BROCOOLY_THEME_PATH', trailingslashit( get_template_directory() ) );
+			define( 'BROCOOLY_THEME_PATH',  $this->basePath );
 		}
 
 		if ( ! defined( 'BROCOOLY_THEME_URI' ) ) {
-			define( 'BROCOOLY_THEME_URI', trailingslashit( get_template_directory_uri() ) );
+			define( 'BROCOOLY_THEME_URI', $this->baseUri );
 		}
 
 		/**
@@ -183,7 +240,7 @@ class Bootstrapper
 		 * @since 1.5.0
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_LANG_PATH' ) ) {
-			define( 'BROCOOLY_THEME_LANG_PATH', BROCOOLY_THEME_PATH . 'languages' );
+			define( 'BROCOOLY_THEME_LANG_PATH', BROCOOLY_THEME_PATH . $this->langDir );
 		}
 
 		/**
@@ -192,11 +249,11 @@ class Bootstrapper
 		 * @since 1.7.3
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_PUBLIC_PATH' ) ) {
-			define( 'BROCOOLY_THEME_PUBLIC_PATH', BROCOOLY_THEME_PATH . 'public' );
+			define( 'BROCOOLY_THEME_PUBLIC_PATH', BROCOOLY_THEME_PATH . $this->publicDir );
 		}
 
 		if ( ! defined( 'BROCOOLY_THEME_PUBLIC_URI' ) ) {
-			define( 'BROCOOLY_THEME_PUBLIC_URI', BROCOOLY_THEME_URI . 'public' );
+			define( 'BROCOOLY_THEME_PUBLIC_URI', BROCOOLY_THEME_URI . $this->publicDir );
 		}
 
 		/**
@@ -205,11 +262,11 @@ class Bootstrapper
 		 * @since 1.7.3
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_RESOURCES_PATH' ) ) {
-			define( 'BROCOOLY_THEME_RESOURCES_PATH', BROCOOLY_THEME_PATH . 'resources' );
+			define( 'BROCOOLY_THEME_RESOURCES_PATH', BROCOOLY_THEME_PATH . $this->resourcesDir );
 		}
 
 		if ( ! defined( 'BROCOOLY_THEME_RESOURCES_URI' ) ) {
-			define( 'BROCOOLY_THEME_RESOURCES_URI', BROCOOLY_THEME_URI . 'resources' );
+			define( 'BROCOOLY_THEME_RESOURCES_URI', BROCOOLY_THEME_URI . $this->resourcesDir );
 		}
 
 		/**
@@ -218,7 +275,7 @@ class Bootstrapper
 		 * @since 1.10.0
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_STORAGE_PATH' ) ) {
-			define( 'BROCOOLY_THEME_STORAGE_PATH', BROCOOLY_THEME_PATH . 'storage' );
+			define( 'BROCOOLY_THEME_STORAGE_PATH', BROCOOLY_THEME_PATH . $this->storageDir );
 		}
 
 		if ( ! defined( 'BROCOOLY_THEME_CACHED_CONFIG_FILE' ) ) {
@@ -231,9 +288,18 @@ class Bootstrapper
 		 * @since 1.12.1
 		 */
 		if ( ! defined( 'BROCOOLY_THEME_ROUTES_PATH' ) ) {
-			define( 'BROCOOLY_THEME_ROUTES_PATH', BROCOOLY_THEME_PATH . 'routes' );
+			define( 'BROCOOLY_THEME_ROUTES_PATH', BROCOOLY_THEME_PATH . $this->routesDir );
 		}
+	}
 
+	/**
+	 * Set application keys
+	 *
+	 * @since 1.12.2
+	 * @return void
+	 */
+	private function setAppContainerKeys()
+	{
 		/**
 		 * Container keys
 		 *

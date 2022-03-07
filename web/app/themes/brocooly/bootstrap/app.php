@@ -26,15 +26,16 @@ $app = new Bootstrapper(
 
 /**
  * -------------------------------------------------------------------------
- * Initialize configuration object and Timber library
+ * Set base theme path and uri
  * -------------------------------------------------------------------------
  *
- * It creates configuration instance and defines
+ * It creates configuration instance and defines base path, app constants
  *
- * @since 1.8.4
+ * @since 1.12.2
  */
-$app->init(
-	wp_normalize_path( BROCOOLY_THEME_PATH . 'config/*.php' ),
+$app->setBase(
+	trailingslashit( get_template_directory() ),
+	trailingslashit( get_template_directory_uri() ),
 );
 
 /**
