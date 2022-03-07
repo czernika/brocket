@@ -158,10 +158,16 @@ if (fs.existsSync(iconsPath)) {
 	);
 }
 
+const webpackConfig = {
+	plugins,
+};
+
+if(!mix.inProduction()) {
+	webpackConfig.devtool = 'source-map';
+}
+
 mix.webpackConfig(webpack => {
-	return {
-		plugins,
-	};
+	return webpackConfig;
 });
 
 /**

@@ -1,5 +1,13 @@
 # Changelog
 
+## Release 1.12.2
+
+- [Fix] Fixed sourcemaps not being generated for development environment
+- [Feat] Added `daily()`, `weekly()`, `monthly()`, `yearly()` date queries
+- [Refactor] Refactored post status query
+
+Release Date: Mar th, 2022
+
 ## Release 1.12.1
 
 - [Feat] Added `env()` helper

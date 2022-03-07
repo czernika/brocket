@@ -82,6 +82,24 @@ trait DateQuery
 	}
 
 	/**
+	 * Get posts for current day
+	 *
+	 * @return self
+	 */
+	public function daily()
+	{
+		$dateQuery  = [
+			'date_query' => [
+				[ 'year' => date( 'Y' ) ],
+				[ 'day'  => date( 'z' ) ],
+			],
+		];
+		$this->query = wp_parse_args( $dateQuery, $this->query );
+
+		return $this;
+	}
+
+	/**
 	 * Get posts for current week
 	 *
 	 * @return self
