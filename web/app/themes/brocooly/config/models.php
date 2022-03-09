@@ -72,7 +72,7 @@ return [
 	 * @var array
 	 */
 	'menus'      => [
-		PrimaryMenu::class,
+		// PrimaryMenu::class,
 	],
 
 ];

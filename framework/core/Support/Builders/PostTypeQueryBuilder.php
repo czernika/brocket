@@ -40,7 +40,7 @@ class PostTypeQueryBuilder extends QueryBuilder
 	}
 
 	/**
-	 * Set basic query params
+	 * Set basic query paramss
 	 *
 	 * @return void
 	 */
@@ -49,8 +49,10 @@ class PostTypeQueryBuilder extends QueryBuilder
 		$this->query['post_type']   = $this->postType;
 		$this->query['post_status'] = [ 'publish' ];
 
-		if ( app( $this->postType ) ) {
-			$this->query['posts_per_page'] = app( $this->postType )->getPostsPerPage();
+		if ( property_exists( app( $this->postType ), 'postsPerPage' ) ) {
+			$postType = $this->postType;
+			$postType = new $postType();
+			$this->query['posts_per_page'] = $postType->getPostsPerPage();
 		}
 	}
 }

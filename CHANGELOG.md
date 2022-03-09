@@ -5,6 +5,7 @@
 - [Fix] Fixed sourcemaps not being generated for development environment
 - [Feat] Added `daily()`, `weekly()`, `monthly()`, `yearly()` date queries
 - [Refactor] Refactored post status query
+- [Refactor] Refactored `ModelServiceProvider` to prevent extra queries
 
 Release Date: Mar th, 2022
 

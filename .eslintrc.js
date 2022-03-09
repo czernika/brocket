@@ -38,5 +38,5 @@ module.exports = {
 		'/node_modules/**/*.js',
 		'webpack.mix.js',
 		'/config/mix.base.js',
-	]
+	],
 }

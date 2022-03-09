@@ -34,9 +34,9 @@ return [
 		/**
 		 * Custom theme hooks
 		 */
-		AfterSetupTheme::class,
-		DisableTransient::class,
 		DisableEmoji::class,
+		AfterSetupTheme::class,
+		// DisableTransient::class,
 	],
 
 	/**

@@ -21,24 +21,14 @@ class ModelServiceProvider implements ServiceProviderInterface
 	public function register( $container )
 	{
 		foreach ( config( 'models.post_types', [] ) as $class ) {
-			$container[ $class::POST_TYPE ] = $container->factory(
-				fn( $c ) => new $class(),
-			);
+			$container[ $class::POST_TYPE ] = $class;
 		}
 
 		foreach ( config( 'models.taxonomies', [] ) as $class ) {
-			$container[ $class::TAXONOMY ] = $container->factory(
-				fn( $c ) => new $class(),
-			);
+			$container[ $class::TAXONOMY ] = $class;
 		}
 
-		$container['user'] = $container->factory(
-			fn( $c ) => new User(),
-		);
-
-		$container['comment'] = $container->factory(
-			fn( $c ) => new Comment( 1 ), /* @TODO: change id 1 */
-		);
+		$container['user'] = User::class;
 	}
 
 	public function bootstrap($container)
@@ -56,7 +46,6 @@ class ModelServiceProvider implements ServiceProviderInterface
 		}
 
 		$this->registerModelMetaboxes( $container['user'] );
-		$this->registerModelMetaboxes( $container['comment'] );
 	}
 
 	/**
@@ -70,6 +59,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 		$name = $postType::POST_TYPE;
 
 		if ( method_exists( $postType, 'register' ) ) {
+			$postType = new $postType();
 			$postType->register();
 
 			add_action(
@@ -90,6 +80,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 		 * Create template for this post type
 		 */
 		if ( property_exists( $postType, 'templates' ) ) {
+			$postType = new $postType();
 			add_filter(
 				"theme_${name}_templates",
 				function ( $post_templates, $theme, $post, $post_type ) use ( $postType ) {
@@ -114,7 +105,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 	private function registerTaxonomy( $taxonomy )
 	{
 		if ( method_exists( $taxonomy, 'register' ) ) {
-
+			$taxonomy = new $taxonomy();
 			$taxonomy->register();
 
 			add_action(
@@ -160,6 +151,7 @@ class ModelServiceProvider implements ServiceProviderInterface
 	private function registerModelMetaboxes( $model )
 	{
 		if ( method_exists( $model, 'metaboxes' ) ) {
+			$model = new $model();
 			add_action(
 				'carbon_fields_register_fields',
 				function() use ( $model ) {
