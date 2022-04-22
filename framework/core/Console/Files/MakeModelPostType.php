@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Brocooly\Support\Traits\RequiresRegistrationTrait;
+use Brocooly\Support\Traits\Registerable;
 
 class MakeModelPostType extends CreateClassCommand
 {
@@ -204,11 +204,11 @@ class MakeModelPostType extends CreateClassCommand
 	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( PostType::class );
-		$namespace->addUse( RequiresRegistrationTrait::class );
+		$namespace->addUse( Registerable::class );
 
 		$class = $namespace->addClass( $this->className );
 		$class->addExtend( PostType::class );
-		$class->addTrait( RequiresRegistrationTrait::class );
+		$class->addTrait( Registerable::class );
 
 		if ( $this->meta ) {
 			$class->addTrait( HasMetaboxes::class );

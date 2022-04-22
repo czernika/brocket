@@ -2,12 +2,15 @@
 
 ## Release 1.12.2
 
+- [Breaking] `RequiresRegistrationTrait` renamed into `Registerable`
 - [Fix] Fixed sourcemaps not being generated for development environment
+- [Chore] Updated core packages
 - [Feat] Added `daily()`, `weekly()`, `monthly()`, `yearly()` date queries
 - [Refactor] Refactored post status query
 - [Refactor] Refactored `ModelServiceProvider` to prevent extra queries
+- [Refactor] Refactored Enums and Status Query builder
 
-Release Date: Mar th, 2022
+Release Date: Apr 22nd, 2022
 
 ## Release 1.12.1
 

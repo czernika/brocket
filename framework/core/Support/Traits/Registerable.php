@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Traits;
 
-trait RequiresRegistrationTrait
+trait Registerable
 {
 
 	/**

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Builders;
 
-use Framework\Core\Enum\PostStatus;
+use Brocooly\Enum\PostStatus;
 
 trait StatusQuery
 {
@@ -49,7 +49,7 @@ trait StatusQuery
 	 */
 	public function withDrafts() : self
 	{
-		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::DRAFT ] );
+		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::DRAFT() ] );
 		return $this;
 	}
 
@@ -60,7 +60,7 @@ trait StatusQuery
 	 */
 	public function withTrashed() : self
 	{
-		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::TRASHED ] );
+		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::TRASHED() ] );
 		return $this;
 	}
 
@@ -71,7 +71,7 @@ trait StatusQuery
 	 */
 	public function withFuture() : self
 	{
-		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::FUTURE ] );
+		$this->query['post_status'] = wp_parse_args( $this->query['post_status'], [ PostStatus::FUTURE() ] );
 		return $this;
 	}
 
@@ -83,7 +83,7 @@ trait StatusQuery
 	 */
 	public function drafts() : self
 	{
-		$this->query['post_status'] = PostStatus::DRAFT;
+		$this->query['post_status'] = PostStatus::DRAFT();
 		return $this;
 	}
 
@@ -95,7 +95,7 @@ trait StatusQuery
 	 */
 	public function trashed() : self
 	{
-		$this->query['post_status'] = PostStatus::TRASHED;
+		$this->query['post_status'] = PostStatus::TRASHED();
 		return $this;
 	}
 
@@ -107,7 +107,7 @@ trait StatusQuery
 	 */
 	public function future() : self
 	{
-		$this->query['post_status'] = PostStatus::FUTURE;
+		$this->query['post_status'] = PostStatus::FUTURE();
 		return $this;
 	}
 
@@ -119,7 +119,7 @@ trait StatusQuery
 	 */
 	public function anyStatus() : self
 	{
-		$this->query['post_status'] = PostStatus::all();
+		$this->query['post_status'] = PostStatus::values();
 		return $this;
 	}
 }

@@ -20,7 +20,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Brocooly\Support\Traits\RequiresRegistrationTrait;
+use Brocooly\Support\Traits\Registerable;
 
 class MakeModelTaxonomy extends CreateClassCommand
 {
@@ -149,11 +149,11 @@ class MakeModelTaxonomy extends CreateClassCommand
 	{
 		$namespace = $this->file->addNamespace( $this->rootNamespace );
 		$namespace->addUse( Taxonomy::class );
-		$namespace->addUse( RequiresRegistrationTrait::class );
+		$namespace->addUse( Registerable::class );
 
 		$class = $namespace->addClass( $this->className );
 		$class->addExtend( Taxonomy::class );
-		$class->addTrait( RequiresRegistrationTrait::class );
+		$class->addTrait( Registerable::class );
 
 		if ( null === $this->postType ) {
 			$this->postTypes = [ new Literal( 'Post::POST_TYPE' ) ];

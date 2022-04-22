@@ -11,69 +11,62 @@
 
 declare(strict_types=1);
 
-namespace Framework\Core\Enum;
+namespace Brocooly\Enum;
 
-class PostStatus
+use MyCLabs\Enum\Enum;
+
+/**
+ * @method static PostStatus PUBLISHED()
+ * @method static PostStatus FUTURE()
+ * @method static PostStatus DRAFT()
+ * @method static PostStatus PENDING()
+ * @method static PostStatus PRIVATE()
+ * @method static PostStatus TRASHED()
+ * @method static PostStatus AUTO()
+ * @method static PostStatus INHERIT()
+ */
+final class PostStatus extends Enum
 {
 
 	/**
 	 * Viewable by everyone
 	 */
-	const PUBLISHED = 'publish';
+	private const PUBLISHED = 'publish';
 
 	/**
 	 * Scheduled to be published in a future date
 	 */
-	const FUTURE = 'future';
+	private const FUTURE = 'future';
 
 	/**
 	 * Incomplete post viewable by anyone with proper user role
 	 */
-	const DRAFT = 'draft';
+	private const DRAFT = 'draft';
 
 	/**
 	 * Awaiting a user with the publish_posts capability
 	 * (typically a user assigned the Editor role) to publish
 	 */
-	const PENDING = 'pending';
+	private const PENDING = 'pending';
 
 	/**
 	 * Viewable only to WordPress users at Administrator level
 	 */
-	const PRIVATE = 'private';
+	private const PRIVATE = 'private';
 
 	/**
 	 * Posts in the Trash are assigned the trash status
 	 */
-	const TRASHED = 'trash';
+	private const TRASHED = 'trash';
 
 	/**
 	 * Revisions that WordPress saves automatically while you are editing
 	 */
-	const AUTO = 'auto-draft';
+	private const AUTO = 'auto-draft';
 
 	/**
 	 * Used with a child post (such as Attachments and Revisions)
 	 * to determine the actual status from the parent post
 	 */
-	const INHERIT = 'inherit';
-
-	/**
-	 * Get all post types
-	 *
-	 * @return array
-	 */
-	public static function all() : array
-	{
-		return [
-			static::PUBLISHED,
-			static::FUTURE,
-			static::DRAFT,
-			static::PENDING,
-			static::PRIVATE,
-			static::TRASHED,
-			static::AUTO,
-			static::INHERIT,
-		];
-	}
+	private const INHERIT = 'inherit';
 }
