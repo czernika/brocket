@@ -19,7 +19,6 @@
 	],
 	"require": {
 		"php": "^8.0",
-		"aristath/kirki": "^4.0",
 		"composer/installers": "^1.12",
 		"czernika/brocket-framework": "dev-master",
 		"filp/whoops": "^2.14",
@@ -44,7 +43,9 @@
 		"timber/timber": "^1.19.2",
 		"vlucas/phpdotenv": "^5.3",
 		"webmozart/assert": "^1.10",
-		"myclabs/php-enum": "^1.8"
+		"myclabs/php-enum": "^1.8",
+		"wpackagist-plugin/kirki": "^4.0",
+		"wpackagist-plugin/clean-image-filenames": "^1.3"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6",
@@ -102,8 +103,7 @@
 				"type:wordpress-theme"
 			],
 			"web/app/vendor/{$vendor}/{$name}": [
-				"htmlburger/carbon-fields",
-				"aristath/kirki"
+				"htmlburger/carbon-fields"
 			]
 		},
 		"wordpress-install-dir": "web/wp"

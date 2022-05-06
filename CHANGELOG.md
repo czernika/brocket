@@ -1,5 +1,12 @@
 # Changelog
 
+## Release 1.12.3
+
+- [Feat] Added maintenance mode page
+- [Feat] Added `spritemap`, `mod` functions and `antispambot` filter
+
+Release Date: Apr , 2022
+
 ## Release 1.12.2
 
 - [Breaking] `RequiresRegistrationTrait` renamed into `Registerable`

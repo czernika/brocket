@@ -50,7 +50,7 @@ class PostTypeQueryBuilder extends QueryBuilder
 		$this->query['post_status'] = [ 'publish' ];
 
 		if ( property_exists( app( $this->postType ), 'postsPerPage' ) ) {
-			$postType = $this->postType;
+			$postType = app( $this->postType );
 			$postType = new $postType();
 			$this->query['posts_per_page'] = $postType->getPostsPerPage();
 		}

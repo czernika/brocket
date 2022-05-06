@@ -78,6 +78,14 @@ class AppServiceProvider implements ServiceProviderInterface
 			'timber/twig',
 			function( $twig ) use ( $container ) {
 				$twig->addFunction( new \Timber\Twig_Function( 'asset', 'asset' ) );
+				$twig->addFunction( new \Timber\Twig_Function( 'spritemap', 'spritemap' ) );
+				$twig->addFunction( new \Timber\Twig_Function( 'mod', 'mod' ) );
+
+				/**
+				 * WordPress filters
+				 */
+				$twig->addFilter( new \Timber\Twig_Filter( 'antispambot', 'antispambot' ) );
+				$twig->addFilter( new \Timber\Twig_Filter( 'zeroise', 'zeroise' ) );
 
 				$twig = apply_filters( 'brocooly.twig', $twig, $container );
 				return $twig;

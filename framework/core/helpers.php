@@ -130,6 +130,24 @@ if ( ! function_exists( 'asset' ) ) {
 	}
 }
 
+if ( ! function_exists( 'spritemap' ) ) {
+
+	/**
+	 * Get SVG icon out of spritemap
+	 *
+	 * @param string $icon | icon id
+	 * @param string $spritemap | spritemap file name
+	 * @return string
+	 */
+	function spritemap( string $icon, string $spritemap = '/public/spritemap.svg' ) {
+		$svg  = '<svg><use xlink:href="';
+		$svg .= get_template_directory_uri() . $spritemap . '#' . $icon;
+		$svg .= '"></use></svg>';
+
+		return $svg;
+	}
+}
+
 if ( ! function_exists( 'env' ) ) {
 
 	/**
@@ -141,5 +159,26 @@ if ( ! function_exists( 'env' ) ) {
 	 */
 	function env( string $key, $default = null ) {
 		return Env\env( $key ) ?: $default;
+	}
+}
+
+if ( ! function_exists( 'mod' ) ) {
+
+	/**
+	 * Theme mod wrapper
+	 *
+	 * @param string  $key | theme mod helper.
+	 * @param mixed   $default | default value.
+	 * @param boolean $prefixed | prefix value or not.
+	 * @return mixed
+	 */
+	function mod( string $key, $default = null, bool $prefixed = true ) {
+		$themeMod = $key;
+
+		if ( $prefixed ) {
+			$prefix   = config( 'customizer.prefix' );
+			$themeMod = $prefix . $key;
+		}
+		return get_theme_mod( $themeMod, $default );
 	}
 }
