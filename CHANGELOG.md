@@ -1,11 +1,17 @@
 # Changelog
 
+## Release 1.12.4
+
+- [Feat] Added scoped query Builder
+
+Release Date: May 9th, 2022
+
 ## Release 1.12.3
 
 - [Feat] Added maintenance mode page
 - [Feat] Added `spritemap`, `mod` functions and `antispambot` filter
 
-Release Date: Apr , 2022
+Release Date: Apr 30th, 2022
 
 ## Release 1.12.2
 

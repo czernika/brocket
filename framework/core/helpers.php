@@ -182,3 +182,17 @@ if ( ! function_exists( 'mod' ) ) {
 		return get_theme_mod( $themeMod, $default );
 	}
 }
+
+
+if ( ! function_exists( 'event' ) ) {
+
+	/**
+	 * Handle event
+	 *
+	 * @param object $event
+	 * @return void
+	 */
+	function event( object $event ) {
+		return $event->handle();
+	}
+}

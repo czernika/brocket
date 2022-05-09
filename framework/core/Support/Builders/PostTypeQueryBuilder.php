@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Brocooly\Support\Builders;
 
+use Illuminate\Support\Str;
+
 class PostTypeQueryBuilder extends QueryBuilder
 {
 
@@ -54,5 +56,19 @@ class PostTypeQueryBuilder extends QueryBuilder
 			$postType = new $postType();
 			$this->query['posts_per_page'] = $postType->getPostsPerPage();
 		}
+	}
+
+
+	public function scope( string $method, array $arguments )
+	{
+		$name = 'scope' . Str::ucfirst( $method );
+
+		$postType = app( $this->postType );
+		$postType = new $postType();
+
+		/** @var \Timber\PostQuery */
+		$query = $postType->$name( $this, ...$arguments );
+
+		return $this->query( $query->query );
 	}
 }

@@ -23,8 +23,12 @@ trait PaginationQuery
 	{
 		if ( $postsPerPage ) {
 			$this->query['posts_per_page'] = $postsPerPage;
-			$this->query['paged']          = max( 1, get_query_var( 'paged' ) );
 		}
+
+		if ( ! array_key_exists( 'paged', $this->query ) ) {
+			$this->query['paged'] = absint( max( 1, get_query_var( 'paged' ) ) );
+		}
+
 		return $this;
 	}
 
@@ -54,4 +58,5 @@ trait PaginationQuery
 		return $this;
 	}
 }
+
 

@@ -23,17 +23,5 @@ trait CollectionQuery
 		$this->collection = collect( $this->getPosts() );
 		return $this->collection;
 	}
-
-	/**
-	 * Get any \Illuminate\Support\Collection method
-	 *
-	 * TODO add list of available methods
-	 * @param string $method
-	 * @param array $arguments
-	 * @return mixed
-	 */
-	public function __call( $method, $arguments )
-	{
-		return $this->collect()?->$method( ...$arguments );
-	}
 }
+

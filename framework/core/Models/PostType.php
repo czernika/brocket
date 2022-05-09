@@ -113,6 +113,11 @@ class PostType extends Post
 	public static function __callStatic( string $name, array $arguments )
 	{
 		$builder = new PostTypeQueryBuilder( static::POST_TYPE, static::class );
+
+		if ( ! method_exists( $builder, $name ) ) {
+			return call_user_func_array( [ $builder, 'scope' ], [ $name, $arguments ] );
+		}
+
 		return call_user_func_array( [ $builder, $name ], $arguments );
 	}
 
@@ -131,3 +136,4 @@ class PostType extends Post
 		return $this->terms[ $term ];
 	}
 }
+
