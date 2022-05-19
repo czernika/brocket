@@ -20,7 +20,7 @@ class Blueprint extends RouteBlueprint
 	/**
 	 * Allowed WordPress conditional tags
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	private array $allowedConditionals = [
 		'is_404',
@@ -55,11 +55,11 @@ class Blueprint extends RouteBlueprint
 			return $this->get()->where( $snake, ...$arguments );
 		}
 
-		throw new \Exception( sprintf( 'Method `%s()` is not allowed WordPress conditional tag', $snake ) );
+		throw new \InvalidArgumentException( sprintf( 'Method `%s()` is not allowed WordPress conditional tag', $snake ) );
 	}
 
 	/**
-	 * handle ajax requests
+	 * Handle ajax requests
 	 *
 	 * @param string $action
 	 * @param string|array $methods
@@ -73,7 +73,7 @@ class Blueprint extends RouteBlueprint
 	}
 
 	/**
-	 * Undocumented function
+	 * Get simple output
 	 *
 	 * @param array|string $views
 	 * @param array $ctx
