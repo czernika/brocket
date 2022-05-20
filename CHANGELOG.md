@@ -1,5 +1,11 @@
 # Changelog
 
+## Release 1.13.0
+
+- [Refactor] Core files were separated from project
+
+Release Date: May 20th, 2022
+
 ## Release 1.12.4
 
 - [Feat] Added scoped query Builder
